@@ -3,6 +3,8 @@ package com.salesianostriana.proyectotaquillacine.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 
 //Clase POJO normal
@@ -12,7 +14,7 @@ import javax.persistence.Entity;
 public class Pelicula {
 	
 	@Id
-	@GenerateValues
+	@GeneratedValue
 	
 	private int idPelicula;
 	private String titulo;

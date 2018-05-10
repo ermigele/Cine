@@ -1,6 +1,9 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 //Clase POJO normal
 
@@ -8,7 +11,7 @@ import javax.persistence.Entity;
 @Entity
 public class Entrada {
 	@Id
-	@GenerateValues
+	@GeneratedValue
 	
 	
 	private long numEntrada;
