@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Meta Tags -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Formulario Pelicula</title>
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+
+
+    <!--Formulario Pelicula-->
+    
+    <div class="container">
+            <h2>Formulario de Pelicula</h2>
+        <form>
+    <!-- Titulo -->
+
+            <div class="form-group">
+                <label for="tituloPelicula">Titulo </label>
+                <input type="text" id="tituloPelicula" class="form-control">
+            </div>                   
+
+    <!-- /Titulo -->
+                            
+    <!-- Seleccion de Genero -->
+
+       
+          <div class="form-row align-items-center">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Genero</label>
+              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option value="1">Acción</option>
+                    <option value="2">Animación</option>
+                    <option value="3">Aventuras</option>
+                    <option value="4">Bélico</option>
+                    <option value="5">Biográfica</option>
+                    <option value="6">Ciencia ficción</option>
+                    <option value="7">Cine Negro</option>
+                    <option value="8">Comedia</option>
+                    <option value="9">Drama</option>
+                    <option value="10">Fantasía</option>
+                    <option value="11">Musical</option>
+                    <option value="12">Romance</option>
+                    <option value="13">Terror</option>
+                    <option value="14">Thriller</option>
+                </select>
+            </div>
+    <!--/Seleccion de Genero-->
+
+            <br>
+         
+
+    <!--Radio Edades-->
+
+            <div class="form-group">
+                <p>Edades </p>
+
+                <div class="form-check">
+                    <input name="102" type="radio" class="with-gap" id="radio107">
+                    <label for="radio107">Menores de 7 años</label>
+                </div>
+                                                
+                <div class="form-check">
+                    <input name="102" type="radio" class="with-gap" id="radio108" checked>
+                    <label for="radio108">Menores de 12 años</label>
+                </div>
+                           
+
+                <div class="form-check">
+                    <input name="102" type="radio" class="with-gap" id="radio109">
+                    <label for="radio109">Menores de 16 años</label>
+                </div>
+                                            
+                <div class="form-check">
+                    <input name="102" type="radio" class="with-gap" id="radio110" checked>
+                    <label for="radio110">Menores de 18 años</label>
+                </div>
+
+                <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio111" checked>
+                        <label for="radio111">Mayores de 18 años</label>
+                </div>
+
+         
+        </div>
+    <!--Radio Edades-->
+
+
+
+    <!-- DESCRIPCION  Text Area -->
+            <label for="defaultFormMessageModalEx">Descripción</label>
+            <textarea type="text" id="defaultFormMessageModalEx" class="md-textarea form-control"></textarea>
+                
+            <div class="text-center mt-4 mb-2">
+                <button type="submit" class="btn btn-default">Guardar</button>
+            </div>
+            
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=" anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript " src="js/mdb.min.js "></script>
+
+</body>
+</html>

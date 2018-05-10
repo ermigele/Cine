@@ -7,8 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class Usuario {
 
-
-		
+//ATRIBUTOS	
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -17,6 +17,8 @@ public class Usuario {
 		
 	private String pass;
 		
+//CONSTRUCTORES	
+	
 	public Usuario() { }
 
 	public Usuario(String username, String pass) {
@@ -24,6 +26,8 @@ public class Usuario {
 		this.pass = pass;
 	}
 
+//GETTERS & SETTERS	
+	
 	public Long getId() {
 		return id;
 	}
