@@ -16,7 +16,7 @@ public class Pelicula {
 	@Id
 	@GeneratedValue
 	
-	private int idPelicula;
+	private long idPelicula;
 	private String titulo;
 	private String genero;
 	private String director;
@@ -27,7 +27,7 @@ public class Pelicula {
 	
 	public Pelicula () { }
 	
-	public Pelicula(int idPelicula, String titulo, String genero, String director, Date estreno, int duracion) {
+	public Pelicula(long idPelicula, String titulo, String genero, String director, Date estreno, int duracion) {
 		this.idPelicula = idPelicula;
 		this.titulo = titulo;
 		this.genero = genero;
@@ -39,12 +39,12 @@ public class Pelicula {
 	
 //Getters & Setters	
 
-	public int getIdPelicula() {
+	public long getIdPelicula() {
 		return idPelicula;
 	}
 
 
-	public void setIdPelicula(int idPelicula) {
+	public void setIdPelicula(long idPelicula) {
 		this.idPelicula = idPelicula;
 	}
 

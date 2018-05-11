@@ -13,7 +13,6 @@ public class Entrada {
 	@Id
 	@GeneratedValue
 	
-	
 	private long numEntrada;
 	private Pelicula pelicula;
 	private Sala sala;

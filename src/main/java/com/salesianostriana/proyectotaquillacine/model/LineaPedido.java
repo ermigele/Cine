@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 @Entity
 public class LineaPedido {
 	
-	
+	private long id;
 	private int cantidad;
 	private Entrada entrada;
 	
@@ -16,7 +16,8 @@ public class LineaPedido {
 	
 	public LineaPedido() { }
 	
-	public LineaPedido(int cantidad, Entrada entrada) {
+	public LineaPedido(long id, int cantidad, Entrada entrada) {
+		this.id = id;
 		this.cantidad = cantidad;
 		this.entrada = entrada;
 	}
@@ -24,8 +25,18 @@ public class LineaPedido {
 
 //Getters & Setters
 
+	
+	
 	public int getCantidad() {
 		return cantidad;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public void setCantidad(int cantidad) {
@@ -42,7 +53,7 @@ public class LineaPedido {
 
 	@Override
 	public String toString() {
-		return "LineaPedido [cantidad=" + cantidad + ", entrada=" + entrada + "]";
+		return "LineaPedido [id=" + id + ", cantidad=" + cantidad + ", entrada=" + entrada + "]";
 	}
 	
 	

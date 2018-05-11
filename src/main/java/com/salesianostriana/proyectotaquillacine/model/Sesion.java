@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 @Entity
 public class Sesion {
 	
+	private long idSesion;
 	private Date horaSesion;
 	private Pelicula pelicula;
 	private Sala sala;
@@ -19,7 +20,8 @@ public class Sesion {
 	
 	public Sesion() { }
 	
-	public Sesion(Date horaSesion, Pelicula pelicula, Sala sala) {
+	public Sesion(long idSesion, Date horaSesion, Pelicula pelicula, Sala sala) {
+		this.idSesion = idSesion;
 		this.horaSesion = horaSesion;
 		this.pelicula = pelicula;
 		this.sala = sala;
@@ -27,10 +29,20 @@ public class Sesion {
 
 //Getters & Setters	
 
+	
+	
 	public Date getHoraSesion() {
 		return horaSesion;
 	}
 
+
+	public long getIdSesion() {
+		return idSesion;
+	}
+
+	public void setIdSesion(long idSesion) {
+		this.idSesion = idSesion;
+	}
 
 	public void setHoraSesion(Date horaSesion) {
 		this.horaSesion = horaSesion;
@@ -59,7 +71,8 @@ public class Sesion {
 
 	@Override
 	public String toString() {
-		return "Sesion [horaSesion=" + horaSesion + ", pelicula=" + pelicula + ", sala=" + sala + "]";
+		return "Sesion [idSesion=" + idSesion + ", horaSesion=" + horaSesion + ", pelicula=" + pelicula + ", sala="
+				+ sala + "]";
 	}
 	
 	

@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 @Entity
 public class Pedido {
 
+	private long id;
 	private List<LineaPedido> LineaPedido;
 
 	
@@ -17,15 +18,29 @@ public class Pedido {
 	public Pedido() { }
 	
 	
-	public Pedido(List<com.salesianostriana.proyectotaquillacine.model.LineaPedido> lineaPedido) {
+	public Pedido(long id, List<com.salesianostriana.proyectotaquillacine.model.LineaPedido> lineaPedido) {
+		this.id = id;
 		LineaPedido = lineaPedido;
 	}
 
 
 //Getters & Setters	
 
+	
+	
+	
 	public List<LineaPedido> getLineaPedido() {
 		return LineaPedido;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 
@@ -36,7 +51,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [LineaPedido=" + LineaPedido + "]";
+		return "Pedido [id=" + id + ", LineaPedido=" + LineaPedido + "]";
 	}
 	
 	

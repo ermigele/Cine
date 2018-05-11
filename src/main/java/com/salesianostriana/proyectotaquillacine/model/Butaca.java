@@ -1,6 +1,7 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
@@ -10,23 +11,39 @@ import javax.persistence.Id;
 public class Butaca {
 
 	
-	@Id
-	private int numButaca;
+	@Id @GeneratedValue
 	
+	private long idButaca;
+	private int numButaca;
+	private int fila;
 	
 //Constructores
 	
 	public Butaca () { }
 
 
-	public Butaca(int numButaca) {
+	public Butaca(long idButaca, int numButaca, int fila) {
+		this.idButaca = idButaca;
 		this.numButaca = numButaca;
+		this.fila = fila;
 	}
 
 //Getters & Setters	
 
+
+
 	public int getNumButaca() {
 		return numButaca;
+	}
+
+
+	public long getId() {
+		return idButaca;
+	}
+
+
+	public void setId(long id) {
+		this.idButaca = id;
 	}
 
 
@@ -35,11 +52,20 @@ public class Butaca {
 	}
 
 
+	public int getFila() {
+		return fila;
+	}
+
+
+	public void setFila(int fila) {
+		this.fila = fila;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Butaca [numButaca=" + numButaca + "]";
+		return "Butaca [id=" + idButaca + ", numButaca=" + numButaca + ", fila=" + fila + "]";
 	}
-	
 	
 	
 	
