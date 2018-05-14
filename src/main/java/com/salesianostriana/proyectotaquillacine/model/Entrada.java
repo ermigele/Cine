@@ -4,11 +4,14 @@ package com.salesianostriana.proyectotaquillacine.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 //Clase POJO normal
 
 
 @Entity
+@Table(name="Entrada")
+
 public class Entrada {
 	@Id
 	@GeneratedValue

@@ -3,11 +3,14 @@ package com.salesianostriana.proyectotaquillacine.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 //Clase POJO normal
 
 @Entity
+@Table(name="Sala")
+
 public class Sala {
 
 	

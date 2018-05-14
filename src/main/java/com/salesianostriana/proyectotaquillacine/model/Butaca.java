@@ -1,17 +1,23 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 //Clase POJO normal
 
 @Entity
+@Table(name="Butaca")
 public class Butaca {
 
 	
 	@Id @GeneratedValue
+	
+	@OneToOne(fetch=FetchType.LAZY)
 	
 	private long idButaca;
 	private int numButaca;

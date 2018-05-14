@@ -1,10 +1,13 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 //Clase POJO normal
 
 @Entity
+@Table(name="LineaPedido")
+
 public class LineaPedido {
 	
 	private long id;

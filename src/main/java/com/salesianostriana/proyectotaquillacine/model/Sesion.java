@@ -3,12 +3,15 @@ package com.salesianostriana.proyectotaquillacine.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 //Clase POJO normal
 
 
 @Entity
+@Table(name="Sesion")
+
 public class Sesion {
 	
 	private long idSesion;
