@@ -14,11 +14,9 @@ import javax.persistence.Table;
 @Table(name="Butaca")
 public class Butaca {
 
+	//@OneToOne(fetch=FetchType.LAZY)
 	
 	@Id @GeneratedValue
-	
-	@OneToOne(fetch=FetchType.LAZY)
-	
 	private long idButaca;
 	private int numButaca;
 	private int fila;

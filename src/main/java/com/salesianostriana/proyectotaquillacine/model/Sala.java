@@ -3,6 +3,8 @@ package com.salesianostriana.proyectotaquillacine.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 
 public class Sala {
 
-	
+	@Id @GeneratedValue
 	private long idSala;
 	private int numSala;
 	private List<Butaca> listaButacas;

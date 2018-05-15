@@ -4,6 +4,7 @@ package com.salesianostriana.proyectotaquillacine.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //Clase POJO normal
@@ -15,13 +16,14 @@ import javax.persistence.Table;
 public class Entrada {
 	@Id
 	@GeneratedValue
-	
 	private long numEntrada;
 	private Pelicula pelicula;
 	private Sala sala;
 	private Sesion sesion;
 	private Butaca butaca;
 	private double precio;
+	@OneToOne
+	private LineaPedido lineaPedido;
 	
 //constructores
 	

@@ -2,8 +2,13 @@ package com.salesianostriana.proyectotaquillacine.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 //Clase POJO normal
@@ -13,7 +18,13 @@ import javax.persistence.Table;
 
 public class Pedido {
 
+	@Id @GeneratedValue
 	private long id;
+	
+	@OneToMany(
+	        cascade = CascadeType.ALL, 
+	        orphanRemoval = true
+	    )
 	private List<LineaPedido> LineaPedido;
 
 	

@@ -18,7 +18,6 @@ public class Pelicula {
 	
 	@Id
 	@GeneratedValue
-	
 	private long idPelicula;
 	private String titulo;
 	private String genero;
