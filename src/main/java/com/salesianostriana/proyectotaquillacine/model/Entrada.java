@@ -4,6 +4,8 @@ package com.salesianostriana.proyectotaquillacine.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //Clase POJO normal
@@ -13,24 +15,25 @@ import javax.persistence.Table;
 @Table(name="Entrada")
 
 public class Entrada {
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
+	private long id;
 	
-	private long numEntrada;
-	private Pelicula pelicula;
-	private Sala sala;
+	@ManyToOne
 	private Sesion sesion;
+	
+	@OneToOne
 	private Butaca butaca;
 	private double precio;
+	
+	@OneToOne
+	private LineaPedido lineaPedido;
 	
 //constructores
 	
 	public Entrada() { }
 	
-	public Entrada(long numEntrada, Pelicula pelicula, Sala sala, Sesion sesion, Butaca butaca, double precio) {
-		this.numEntrada = numEntrada;
-		this.pelicula = pelicula;
-		this.sala = sala;
+	public Entrada(Sesion sesion, Butaca butaca, double precio) {
+
 		this.sesion = sesion;
 		this.butaca = butaca;
 		this.precio = precio;
@@ -39,35 +42,6 @@ public class Entrada {
 	
 //Getters & Setters
 	
-	public long getNumEntrada() {
-		return numEntrada;
-	}
-
-
-	public void setNumEntrada(long numEntrada) {
-		this.numEntrada = numEntrada;
-	}
-
-
-	public Pelicula getPelicula() {
-		return pelicula;
-	}
-
-
-	public void setPelicula(Pelicula pelicula) {
-		this.pelicula = pelicula;
-	}
-
-
-	public Sala getSala() {
-		return sala;
-	}
-
-
-	public void setSala(Sala sala) {
-		this.sala = sala;
-	}
-
 
 	public Sesion getSesion() {
 		return sesion;
@@ -99,7 +73,7 @@ public class Entrada {
 
 	@Override
 	public String toString() {
-		return "Entrada [numEntrada=" + numEntrada + ", pelicula=" + pelicula + ", sala=" + sala + ", sesion=" + sesion
+		return "Entrada [sesion=" + sesion
 				+ ", butaca=" + butaca + ", precio=" + precio + "]";
 	}
 	

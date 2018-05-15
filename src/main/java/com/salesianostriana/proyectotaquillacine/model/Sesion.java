@@ -1,8 +1,12 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -13,42 +17,49 @@ import javax.persistence.Table;
 @Table(name="Sesion")
 
 public class Sesion {
+	@Id @GeneratedValue
+	private LocalTime horaSesion;
+	private Date fecha;
 	
-	private long idSesion;
-	private Date horaSesion;
+	@ManyToOne
 	private Pelicula pelicula;
+	
+	@ManyToOne
 	private Sala sala;
 	
 //Constructores	
 	
 	public Sesion() { }
 	
-	public Sesion(long idSesion, Date horaSesion, Pelicula pelicula, Sala sala) {
-		this.idSesion = idSesion;
+
+	public Sesion(LocalTime horaSesion, Date fecha, Pelicula pelicula, Sala sala) {
 		this.horaSesion = horaSesion;
+		this.fecha = fecha;
 		this.pelicula = pelicula;
 		this.sala = sala;
 	}
 
+
 //Getters & Setters	
 
-	
-	
-	public Date getHoraSesion() {
+
+	public LocalTime getHoraSesion() {
 		return horaSesion;
 	}
 
 
-	public long getIdSesion() {
-		return idSesion;
-	}
-
-	public void setIdSesion(long idSesion) {
-		this.idSesion = idSesion;
-	}
-
-	public void setHoraSesion(Date horaSesion) {
+	public void setHoraSesion(LocalTime horaSesion) {
 		this.horaSesion = horaSesion;
+	}
+
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 
@@ -70,14 +81,13 @@ public class Sesion {
 	public void setSala(Sala sala) {
 		this.sala = sala;
 	}
-
+	
 
 	@Override
 	public String toString() {
-		return "Sesion [idSesion=" + idSesion + ", horaSesion=" + horaSesion + ", pelicula=" + pelicula + ", sala="
-				+ sala + "]";
+		return "Sesion [horaSesion=" + horaSesion + ", fecha=" + fecha + ", pelicula="
+				+ pelicula + ", sala=" + sala + "]";
 	}
-	
-	
+
 	
 }

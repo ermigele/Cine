@@ -1,10 +1,13 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,6 +28,12 @@ public class Pelicula {
 	private String director;
 	private Date estreno;
 	private int duracion;
+	
+	@ManyToOne
+	private Sala sala;
+	
+	@OneToMany
+	private Set<Sesion> sesion;
 	
 //Contructores	
 	

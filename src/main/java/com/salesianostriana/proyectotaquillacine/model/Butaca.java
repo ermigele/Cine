@@ -17,12 +17,12 @@ public class Butaca {
 	
 	@Id @GeneratedValue
 	
-	@OneToOne(fetch=FetchType.LAZY)
-	
 	private long idButaca;
 	private int numButaca;
 	private int fila;
 	
+	@OneToOne
+	private Entrada entrada;
 //Constructores
 	
 	public Butaca () { }

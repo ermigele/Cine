@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 
+/*
 @Controller
 public class PeliculaController {
 
@@ -15,7 +16,7 @@ public class PeliculaController {
 	@GetMapping("/pelicula/{id}")
 	public String detallePeliucla(@PathVariable("id") long id, Model model) {
 		
-		Pelicula p = peliculaService.obtenerUnaPelicula(id);
+	Pelicula p = peliculaService.obtenerUnaPelicula(id);
 		
 		if(p != null) {
 			model.addAttribute("pelicula",p);
@@ -45,3 +46,5 @@ public class PeliculaController {
 	
 	
 }
+
+*/

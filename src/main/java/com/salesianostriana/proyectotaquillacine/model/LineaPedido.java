@@ -1,6 +1,9 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //Clase POJO normal
@@ -9,9 +12,12 @@ import javax.persistence.Table;
 @Table(name="LineaPedido")
 
 public class LineaPedido {
+	@Id @GeneratedValue
 	
 	private long id;
 	private int cantidad;
+	
+	@OneToOne
 	private Entrada entrada;
 	
 	
