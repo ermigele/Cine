@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 //Clase POJO normal
@@ -19,9 +20,17 @@ public class Pedido {
 	@Id
 	@GeneratedValue
 
+	@Id @GeneratedValue
 	private long id;
 	
+<<<<<<< HEAD
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+=======
+	@OneToMany(
+	        cascade = CascadeType.ALL, 
+	        orphanRemoval = true
+	    )
+>>>>>>> branch 'master' of https://github.com/ermigele/Cine
 	private List<LineaPedido> LineaPedido;
 
 	

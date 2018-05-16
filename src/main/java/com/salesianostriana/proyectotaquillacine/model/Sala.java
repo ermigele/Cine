@@ -5,7 +5,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.OneToMany;
+=======
+>>>>>>> branch 'master' of https://github.com/ermigele/Cine
 import javax.persistence.Table;
 
 
@@ -15,8 +18,14 @@ import javax.persistence.Table;
 @Table(name="Sala")
 
 public class Sala {
+<<<<<<< HEAD
 	@Id @GeneratedValue
 	
+=======
+
+	@Id @GeneratedValue
+	private long idSala;
+>>>>>>> branch 'master' of https://github.com/ermigele/Cine
 	private int numSala;
 	
 	@OneToMany

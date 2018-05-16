@@ -14,9 +14,13 @@ import javax.persistence.Table;
 @Table(name="Butaca")
 public class Butaca {
 
+	//@OneToOne(fetch=FetchType.LAZY)
 	
 	@Id @GeneratedValue
+<<<<<<< HEAD
 	
+=======
+>>>>>>> branch 'master' of https://github.com/ermigele/Cine
 	private long idButaca;
 	private int numButaca;
 	private int fila;

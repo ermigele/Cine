@@ -11,7 +11,7 @@ import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 /*
 @Controller
 public class PeliculaController {
-
+ /*
 	
 	@GetMapping("/pelicula/{id}")
 	public String detallePeliucla(@PathVariable("id") long id, Model model) {
@@ -44,7 +44,7 @@ public class PeliculaController {
 		return "peliculas";
 	}
 	
-	
+ */	
 }
 
 */
