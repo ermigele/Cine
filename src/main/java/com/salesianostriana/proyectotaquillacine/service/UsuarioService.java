@@ -12,8 +12,8 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repositorio;
 	
-	public Usuario login(String username, String pass) {
-		return repositorio.findFirstByUsernameAndPass(username, pass);
+	public Usuario login(String user, String pass) {
+		return repositorio.findFirstByUserAndPass(user, pass);
 	}
 	
 	public Iterable<Usuario> findAll() {

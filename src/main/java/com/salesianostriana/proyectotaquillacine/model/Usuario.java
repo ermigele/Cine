@@ -11,7 +11,7 @@ public class Usuario {
 	@GeneratedValue
 	private Long id;
 	
-	private String username;
+	private String user;
 	
 	private String pass;
 	
@@ -19,8 +19,8 @@ public class Usuario {
 	
 	public Usuario() { }
 
-	public Usuario(String username, String pass, boolean isAdmin) {
-		this.username = username;
+	public Usuario(String user, String pass, boolean isAdmin) {
+		this.user = user;
 		this.pass = pass;
 		this.isAdmin = isAdmin;
 	}
@@ -33,12 +33,12 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUser() {
+		return user;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setgetUser(String user) {
+		this.user = user;
 	}
 
 	public String getPass() {
@@ -64,7 +64,7 @@ public class Usuario {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (isAdmin ? 1231 : 1237);
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -89,17 +89,17 @@ public class Usuario {
 				return false;
 		} else if (!pass.equals(other.pass))
 			return false;
-		if (username == null) {
-			if (other.username != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!username.equals(other.username))
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", username=" + username + ", pass=" + pass + ", isAdmin=" + isAdmin + "]";
+		return "Usuario [id=" + id + ", user=" + user + ", pass=" + pass + ", isAdmin=" + isAdmin + "]";
 	}
 
 }

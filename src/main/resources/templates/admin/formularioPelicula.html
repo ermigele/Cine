@@ -17,9 +17,9 @@
 
      <!-- DurationPicker -->
     
-    <link href="../static/css/duration-picker.css" rel="stylesheet">
-    <script src="../static/js/code.jquery.com/jquery.min.js"></script>
-    <script src="../static/js/duration-picker.js"></script>
+    <link href="../../static/css/duration-picker.css" rel="stylesheet">
+    <script src="../../static/js/code.jquery.com/jquery.min.js"></script>
+    <script src="../../static/js/duration-picker.js"></script>
 
     <title>Formulario Pelicula</title>
 
@@ -132,32 +132,32 @@
                 
                 <div class="form-check">
                     <input name="102" type="radio" class="with-gap" id="radio106" checked>
-                    <img src="../static/image/A.ico"/>
+                    <img src="../../static/image/A.ico"/>
                     <label for="radio111">(Todos los publicos)</label>
                 </div>
 
                 <div class="form-check">
                     <input name="102" type="radio" class="with-gap" id="radio107">
-                    <img src="../static/image/7.ico"/>
+                    <img src="../../static/image/7.ico"/>
                     <label for="radio107">(Menores de 7 años)</label>
                 </div>
                                                 
                 <div class="form-check">
                     <input name="102" type="radio" class="with-gap" id="radio108" checked>
-                    <img src="../static/image/12.ico"/>
+                    <img src="../../static/image/12.ico"/>
                     <label for="radio108">(Menores de 12 años)</label>
                 </div>
                            
 
                 <div class="form-check">
                     <input name="102" type="radio" class="with-gap" id="radio109">
-                    <img src="../static/image/16.ico"/>
+                    <img src="../../static/image/16.ico"/>
                     <label for="radio109">(Menores de 16 años)</label>
                 </div>
                                             
                 <div class="form-check">
                     <input name="102" type="radio" class="with-gap" id="radio110" checked>
-                    <img src="../static/image/18.ico"/>
+                    <img src="../../static/image/18.ico"/>
                     <label for="radio110">(Menores de 18 años)</label>
                 </div>
 
@@ -166,12 +166,13 @@
 
         <!--Radio Edades-->
     
-        
+        <br>
            
         <!-- Duracion -->
 
             <div>
-                <p>Duracion</p>
+                <label for='duration'>Duracion</label>
+                
                 <input type="text" id="duration" name="duration">
                 <script>
                     $("#duration").durationPicker({
@@ -213,6 +214,7 @@
             
             <div id="datepicker"></div>
                 <div id="datos">
+                    <br>
                     <label for='fecha'>Fecha de estreno:</label>
                      <!-- Campo de texto que recibira el valor seleccionado en el datepicker 
                     le he puesto el atributo readonly para no poder escribir directamente -->

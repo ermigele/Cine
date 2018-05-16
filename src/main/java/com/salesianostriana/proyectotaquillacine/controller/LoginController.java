@@ -24,34 +24,34 @@ public class LoginController {
 	private HttpSession session;
 	
 	@GetMapping({ "/", "/login" })
-	public String showLogin(Model model) {
+	public String mostrarogin(Model model) {
 		model.addAttribute("loginUser", new LoginUser());
 		return "login";
 
 	}
 	
-	@PostMapping("/checkLogin")
-	public String doLogin(@ModelAttribute("loginUser") LoginUser loginUser, BindingResult bindingResult, Model model) {
+	@PostMapping("/verificarLogin")
+	public String verificarLogin (@ModelAttribute("loginUser") LoginUser loginUser, BindingResult bindingResult, Model model) {
 
 		Usuario user = usuarioService.login(loginUser.getUsuario(), loginUser.getPass());
 
 		if (user != null && user.isAdmin()) {
 
-			session.setAttribute("usuarioActual", user);
+			session.setAttribute("Usuario", user);
 			return "redirect:/admin/index";
 		} else if (user != null) {
-			session.setAttribute("usuarioActual", user);
+			session.setAttribute("Usuario", user);
 			return "redirect:/app/index";
 		} else {
-			model.addAttribute("loginError", "El usuario o contraseÃ±a no es vÃ¡lido");
+			model.addAttribute("loginError", "El usuario o contraseña no es válido");
 			return "login";
 		}
 
 	}
 	
-	@GetMapping("/logout")
-	public String doLogout(Model model) {
-		session.setAttribute("usuarioActual", null);
+	@GetMapping("/cerrarSesion")
+	public String cerrarSesion (Model model) {
+		session.setAttribute("Usuario", null);
 		return "redirect:/";
 	}
 	
