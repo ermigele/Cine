@@ -1,7 +1,6 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -17,16 +16,14 @@ public class Butaca {
 	//@OneToOne(fetch=FetchType.LAZY)
 	
 	@Id @GeneratedValue
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
+
 	private long idButaca;
 	private int numButaca;
 	private int fila;
 	
 	@OneToOne
 	private Entrada entrada;
+	
 //Constructores
 	
 	public Butaca () { }

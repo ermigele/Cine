@@ -3,10 +3,7 @@ package com.salesianostriana.proyectotaquillacine.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-<<<<<<< HEAD
 import javax.persistence.OneToOne;
-=======
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 import javax.persistence.Table;
 
 //Clase POJO normal
@@ -16,16 +13,9 @@ import javax.persistence.Table;
 
 public class LineaPedido {
 	@Id @GeneratedValue
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
+
 	private long id;
 	private int cantidad;
-<<<<<<< HEAD
-=======
-	private Pedido pedido;
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 	
 	@OneToOne
 	private Entrada entrada;

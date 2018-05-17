@@ -1,43 +1,36 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
 	
-	@Id
-	@GeneratedValue
+//ATRIBUTOS	
+	
+	@Id @GeneratedValue
 	private Long id;
-	
-<<<<<<< HEAD
+	@Column(name = "user", nullable=true)
 	private String user;
-=======
-	private String username;
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
-	
+	@Column(name = "pass", nullable=true)
 	private String pass;
-	
-<<<<<<< HEAD
-=======
-	private boolean male;
-	
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 	private boolean isAdmin;
-	
+
+//CONSTRCUTORES	
 	public Usuario() { }
 
-<<<<<<< HEAD
-	public Usuario(String user, String pass, boolean isAdmin) {
+	public Usuario(Long id, String user, String pass, boolean isAdmin) {
+		this.id = id;
 		this.user = user;
-=======
-	public Usuario(String username, String pass, boolean isAdmin) {
-		this.username = username;
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 		this.pass = pass;
 		this.isAdmin = isAdmin;
 	}
+
+//GETTERS & SETTERS
 
 	public Long getId() {
 		return id;
@@ -51,7 +44,7 @@ public class Usuario {
 		return user;
 	}
 
-	public void setgetUser(String user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
@@ -78,7 +71,6 @@ public class Usuario {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (isAdmin ? 1231 : 1237);
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
-<<<<<<< HEAD
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -117,44 +109,5 @@ public class Usuario {
 		return "Usuario [id=" + id + ", user=" + user + ", pass=" + pass + ", isAdmin=" + isAdmin + "]";
 	}
 
-=======
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (isAdmin != other.isAdmin)
-			return false;
-		if (pass == null) {
-			if (other.pass != null)
-				return false;
-		} else if (!pass.equals(other.pass))
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", username=" + username + ", pass=" + pass + ", isAdmin=" + isAdmin + "]";
-	}
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 }
 	

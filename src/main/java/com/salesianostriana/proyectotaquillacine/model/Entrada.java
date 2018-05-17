@@ -4,10 +4,7 @@ package com.salesianostriana.proyectotaquillacine.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-<<<<<<< HEAD
 import javax.persistence.ManyToOne;
-=======
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,25 +15,16 @@ import javax.persistence.Table;
 @Table(name="Entrada")
 
 public class Entrada {
-<<<<<<< HEAD
+
 	@Id @GeneratedValue
 	private long id;
+	private double precio;
 	
 	@ManyToOne
-=======
-	@Id
-	@GeneratedValue
-	private long numEntrada;
-	private Pelicula pelicula;
-	private Sala sala;
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 	private Sesion sesion;
 	
 	@OneToOne
 	private Butaca butaca;
-	private double precio;
-	@OneToOne
-	private LineaPedido lineaPedido;
 	
 	@OneToOne
 	private LineaPedido lineaPedido;

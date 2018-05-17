@@ -12,3 +12,8 @@ Syntax error in SQL statement "INSERT INTO USUARIO
 VALUES 1[*], NULL, 'user', 'user'"; expected "("; SQL statement:
 INSERT INTO USUARIO
 VALUES 1, NULL, 'user', 'user' [42001-197]
+2018-05-16 19:24:17 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "USUARIOS" no encontrada
+Table "USUARIOS" not found; SQL statement:
+select *
+from usuarios [42102-197]

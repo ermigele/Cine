@@ -38,17 +38,21 @@ public class Pelicula {
 	
 	public Pelicula () { }
 	
-	public Pelicula(long idPelicula, String titulo, String genero, String director, Date estreno, int duracion) {
+	public Pelicula(long idPelicula, String titulo, String genero, String director, Date estreno, int duracion,
+			Sala sala, Set<Sesion> sesion) {
 		this.idPelicula = idPelicula;
 		this.titulo = titulo;
 		this.genero = genero;
 		this.director = director;
 		this.estreno = estreno;
 		this.duracion = duracion;
+		this.sala = sala;
+		this.sesion = sesion;
 	}
-
 	
 //Getters & Setters	
+
+
 
 	public long getIdPelicula() {
 		return idPelicula;

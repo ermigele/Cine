@@ -2,14 +2,10 @@ package com.salesianostriana.proyectotaquillacine.model;
 
 import java.time.LocalTime;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-<<<<<<< HEAD
 import javax.persistence.ManyToOne;
-=======
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 import javax.persistence.Table;
 
 
@@ -24,13 +20,7 @@ public class Sesion {
 	private LocalTime horaSesion;
 	private Date fecha;
 	
-<<<<<<< HEAD
 	@ManyToOne
-=======
-	@Id @GeneratedValue
-	private long idSesion;
-	private Date horaSesion;
->>>>>>> branch 'master' of https://github.com/ermigele/Cine
 	private Pelicula pelicula;
 	
 	@ManyToOne
