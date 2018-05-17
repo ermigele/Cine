@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.salesianostriana.proyectotaquillacine.model.Usuario;
+/*
 
 @Configuration
 	public class SecurityConfiguration {
@@ -117,3 +118,6 @@ import com.salesianostriana.proyectotaquillacine.model.Usuario;
 			
 		}
 }
+
+ * 
+ */

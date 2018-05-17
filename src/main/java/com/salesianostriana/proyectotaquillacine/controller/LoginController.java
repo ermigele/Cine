@@ -33,17 +33,15 @@ public class LoginController {
 
 		Usuario user = usuarioService.login(loginUser.getUser(), loginUser.getPass());
 
-	
+		session.setAttribute("usuarioActual", user);
 		
 		if (user != null && user.isAdmin()) {
-
-			session.setAttribute("Usuario", user);
 			return "redirect:/admin/index";
 		} else if (user != null) {
-			session.setAttribute("Usuario", user);
 			return "redirect:/app/index";
 		} else {
-			model.addAttribute("loginError", "El usuario o contraseña no es válido");return "login";
+			model.addAttribute("loginError", "El usuario o contraseña no es válido");
+			return "login";
 		}
 
 	}

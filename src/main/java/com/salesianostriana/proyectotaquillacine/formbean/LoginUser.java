@@ -1,9 +1,5 @@
 package com.salesianostriana.proyectotaquillacine.formbean;
 
-
-
-import javax.persistence.Column;
-
 public class LoginUser {
 
 //ATRIBUTOS
@@ -41,8 +37,9 @@ public class LoginUser {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
+		
 		return result;
 	}
 
