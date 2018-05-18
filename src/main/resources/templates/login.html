@@ -23,14 +23,13 @@
 </head>
 <body>
         <div class="container">
-                <div class="row">
-                    <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <h2>Login</h2>
-                            <h2>Registar</h2>
-                            <hr>
-                        </div>
-                </div>
+            <div class="text-center">
+                    <h2 class="d-inline ml-2">Login</h2> 
+                    <a class="h2" href="registroUsuario/registrar.html">Registar</a>
+            </div>       
+        </div>
+                 
+        <hr>
      
      <!-- Usuario -->
         <form  th:object="${loginUser}" class="form-horizontal" role="form" method="POST" th:action="@{/verificarLogin}">     

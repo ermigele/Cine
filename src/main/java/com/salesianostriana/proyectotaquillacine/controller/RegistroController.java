@@ -18,17 +18,17 @@ public class RegistroController {
 	private UsuarioService usuarioService;
 	
 	
-	@GetMapping({ "/", "/registrar"})
+	@GetMapping({ "/registrar"})
 	public String mostrarRegistro(Model model) {	
-		model.addAttribute("loginUser", new Usuario());
-		return "registro";
+		model.addAttribute("registroUser", new Usuario());
+		return "registroUsuario/registrar";
 	}
 	
-	@PostMapping({"/registrar"})
-	public String registrar(Model model, @ModelAttribute Usuario user, BindingResult bindingResult) {
+	@PostMapping({"/addUsuario"})
+	public String registrarse(Model model, @ModelAttribute("registroUser") Usuario user, BindingResult bindingResult) {
 		usuarioService.save(user);
 		
-		return "redirect: /login";
+		return "redirect:/login";
 	}
 	
 }

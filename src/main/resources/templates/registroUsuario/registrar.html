@@ -17,13 +17,13 @@
     
     
     <!-- Nombre Página -->
-    <title>Resgistro</title>
+    <title>Registro</title>
 
    
 </head>
-<body
+<body>
     <div class="container">
-        <form  th:object="${loginUser}" class="form-horizontal" role="form" method="POST" th:action="@{/registrarUser}">
+        <form  th:object="${registroUser}" class="form-horizontal" role="form" method="POST" th:action="@{/addUsuario}">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
@@ -31,55 +31,6 @@
                     <hr>
                 </div>
             </div>
-           
-            <div class="row">
-                    <div class="col-md-3 field-label-responsive">
-                        <label for="user">Nombre</label>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre" required autofocus>
-                            </div>
-                        </div>
-                    </div>
-                    
-            </div>
-            <div class="row">
-                <div class="col-md-3 field-label-responsive">
-                    <label for="user">Apellidos</label>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                                <input type="text" name="apellidos" class="form-control" id="user" placeholder="Apellidos" required autofocus/>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-md-5 field-label-responsive">
-                    <label for="genero">Genero</label>
-                </div>    
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <div class="radio">
-                            <label><input type="radio" name="varon"> Hombre </label> <i class="fa fa-mars"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                        <div class="radio">
-                            <label><input type="radio" name="mujer"> Mujer </label> <i class="fa fa-venus"></i> 
-                        </div>
-                    </div>
-            </div>
-
             <div class="row"> 
                 <div class="col-md-3 field-label-responsive">
                     <label for="user">Usuario</label>
@@ -88,7 +39,7 @@
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                                <input type="text" name="user" class="form-control" id="user" placeholder="Usuario" required autofocus>
+                                <input th:field="*{user}" type="text" name="user" class="form-control" id="user" placeholder="Usuario" required autofocus>
                             </div>
                         </div>
                     </div>
@@ -113,7 +64,7 @@
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                            <input type="text" name="email" class="form-control" id="email" placeholder="tu@email.com" required autofocus>
+                            <input th:field="*{email}" type="text" name="email" class="form-control" id="email" placeholder="tu@email.com" required autofocus>
                         </div>
                     </div>
                 </div>
@@ -133,7 +84,7 @@
                     <div class="form-group has-danger">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input type="password" name="password" class="form-control" id="password"
+                            <input th:field="*{pass}" type="password" name="password" class="form-control" id="password"
                                    placeholder="Contraseña" required>
                         </div>
                     </div>
