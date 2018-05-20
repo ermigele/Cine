@@ -3,6 +3,7 @@ package com.salesianostriana.proyectotaquillacine.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -13,13 +14,15 @@ import javax.persistence.Table;
 @Table(name="Butaca")
 public class Butaca {
 
-	//@OneToOne(fetch=FetchType.LAZY)
 	
 	@Id @GeneratedValue
 
 	private long idButaca;
 	private int numButaca;
 	private int fila;
+	
+	@ManyToOne
+	private Sala sala;
 	
 	@OneToOne
 	private Entrada entrada;
@@ -64,6 +67,36 @@ public class Butaca {
 	}
 
 
+	public long getIdButaca() {
+		return idButaca;
+	}
+
+
+	public void setIdButaca(long idButaca) {
+		this.idButaca = idButaca;
+	}
+
+
+	public Sala getSala() {
+		return sala;
+	}
+
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+
+
+	public Entrada getEntrada() {
+		return entrada;
+	}
+
+
+	public void setEntrada(Entrada entrada) {
+		this.entrada = entrada;
+	}
+
+
 	public void setFila(int fila) {
 		this.fila = fila;
 	}
@@ -71,7 +104,8 @@ public class Butaca {
 
 	@Override
 	public String toString() {
-		return "Butaca [id=" + idButaca + ", numButaca=" + numButaca + ", fila=" + fila + "]";
+		return "Butaca [idButaca=" + idButaca + ", numButaca=" + numButaca + ", fila=" + fila + ", sala=" + sala
+				+ ", entrada=" + entrada + "]";
 	}
 	
 	

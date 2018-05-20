@@ -24,18 +24,18 @@
 <body>
         <div class="container">
             <div class="text-center">
-                    <h2 class="d-inline ml-2">Login</h2> 
-                    <a class="h2" href="registroUsuario/registrar.html">Registar</a>
+                    <h2 class="d-inline">Login</h2>
+                    <a class="h2" th:href="@{/registroUsuario/registrar.html}">Registrarse</a> 
             </div>       
         </div>
                  
         <hr>
      
      <!-- Usuario -->
-        <form  th:object="${loginUser}" class="form-horizontal" role="form" method="POST" th:action="@{/verificarLogin}">     
+        <form  th:object="${loginUser}" class="form-horizontal" role="form" method="POST" th:action="{verificarLogin">     
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group has-danger">
                         <label class="sr-only" for="usuario">Usuario</label>
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -52,7 +52,7 @@
               
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
                         <label class="sr-only" for="password">Contraseña</label>
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -90,27 +90,6 @@
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Acceder</button>
                     <a class="btn btn-link" href="/password/reset">¿Has olvidado la contraseña?</a>
-                </div>
-            </div>
-        </form>
-        <form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
-            <div class="form-group">
-                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-                    </div>
                 </div>
             </div>
         </form>

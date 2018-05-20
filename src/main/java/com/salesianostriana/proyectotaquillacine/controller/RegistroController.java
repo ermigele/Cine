@@ -25,9 +25,8 @@ public class RegistroController {
 	}
 	
 	@PostMapping({"/addUsuario"})
-	public String registrarse(Model model, @ModelAttribute("registroUser") Usuario user, BindingResult bindingResult) {
+	public String submit(@ModelAttribute("registroUser") Usuario user, BindingResult bindingResult, Model model ) {
 		usuarioService.save(user);
-		
 		return "redirect:/login";
 	}
 	

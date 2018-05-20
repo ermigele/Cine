@@ -18,7 +18,7 @@ public class Sala {
 
 	@Id @GeneratedValue
 	private long idSala;
-	private int numSala;
+	private String nombreSala;
 	
 	@OneToMany
 	private List<Butaca> listaButacas;
@@ -28,17 +28,27 @@ public class Sala {
 	public Sala() { }
 	
 
-	public Sala(int numSala, List<Butaca> listaButacas) {
+	public Sala(String nombreSala, List<Butaca> listaButacas) {
 
-		this.numSala = numSala;
+		this.nombreSala = nombreSala;
 		this.listaButacas = listaButacas;
 	}
 
 //Getters & Setters	
 
 
-	public int getNumSala() {
-		return numSala;
+	public String getNombreSala() {
+		return nombreSala;
+	}
+
+	
+	public long getIdSala() {
+		return idSala;
+	}
+
+
+	public void setIdSala(long idSala) {
+		this.idSala = idSala;
 	}
 
 
@@ -52,8 +62,8 @@ public class Sala {
 	}
 
 
-	public void setNumSala(int numSala) {
-		this.numSala = numSala;
+	public void setNombreSala(String nombreSala) {
+		this.nombreSala = nombreSala;
 	}
 	
 	
