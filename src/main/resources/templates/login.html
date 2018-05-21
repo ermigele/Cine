@@ -25,14 +25,13 @@
         <div class="container">
             <div class="text-center">
                     <h2 class="d-inline">Login</h2>
-                    <a class="h2" th:href="@{/registroUsuario/registrar.html}">Registrarse</a> 
+                    <a class="h2" th:href="@{/registrar}">Registrarse</a> 
             </div>       
         </div>
                  
         <hr>
-     
      <!-- Usuario -->
-        <form  th:object="${loginUser}" class="form-horizontal" role="form" method="POST" th:action="{verificarLogin">     
+        <form  th:object="${loginUser}" class="form-horizontal" role="form" method="POST" th:action="@{/verificarLogin}">     
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-5">

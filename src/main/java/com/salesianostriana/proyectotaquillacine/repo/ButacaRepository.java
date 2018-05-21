@@ -6,5 +6,4 @@ import com.salesianostriana.proyectotaquillacine.model.Butaca;
 
 public interface ButacaRepository extends JpaRepository<Butaca, Long> {
 
-
 }

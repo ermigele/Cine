@@ -58,7 +58,7 @@
 
 
     <!--Formulario Pelicula-->
-    <form>
+    <form th:object="${nuevaPelicula}" role="form" method="POST"  th:action="@{/addPelicula}">
 
         <div class="container">
                 <h2>Formulario de Pelicula</h2>

@@ -2,6 +2,7 @@ package com.salesianostriana.proyectotaquillacine.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.proyectotaquillacine.formbean.NuevaSala;
 import com.salesianostriana.proyectotaquillacine.model.Butaca;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
+import com.salesianostriana.proyectotaquillacine.service.ButacaService;
 import com.salesianostriana.proyectotaquillacine.service.SalaService;
 
+@Controller
 public class SalaController {
 
 	
 	@Autowired
 	public SalaService salaService;
+	
+	@Autowired
+	public ButacaService butacaService;
 	
 	
 	@GetMapping({"nuevaSala"})
@@ -25,23 +31,23 @@ public class SalaController {
 		model.addAttribute("nuevaSala", new NuevaSala());
 		return "/admin/formularioSala";
 		
-		
 	}
+	
 	
 	@PostMapping({"addSala"})
 	public String submit (@ModelAttribute("nuevaSala") NuevaSala nuevaSala, BindingResult bindingResult, Model model ) {
 		
 		Sala sala = new Sala ();
-		sala.setNombreSala(nuevaSala.getNombreSala());
+		sala.setNombreSala(nuevaSala.getNombreSala()); //
 		
-		//Guardo la sala antes de empezar a meter las butacas
-		salaService.save(sala);
 		
-		//limite de butacas - datos que entran por HTML
+		salaService.save(sala); //Guardo la sala antes de empezar a meter las butacas
+		
+		//Limite de butacas - Datos que entran por el input de HTML
 		int butacasXFila = nuevaSala.getNumButacaXFila();
 		int numFilas = nuevaSala.getNumFila();
 		
-		//bucleo de mapeo de las salas
+		//Bucleo de mapeo de las salas
 		for(int i = 0; i<numFilas;i++) {
 			for(int j=0; j< butacasXFila;j++) {
 				
@@ -56,8 +62,7 @@ public class SalaController {
 		newButaca.setSala(sala);
 		
 						
-			//butacaService.save(newButaca);
-			
+			butacaService.save(newButaca); //Guardo las butacas		
 			}
 		}
 		

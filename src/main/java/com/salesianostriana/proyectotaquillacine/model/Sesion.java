@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 public class Sesion {
 	@Id @GeneratedValue
+	
+	private long idSesion;
 	private LocalTime horaSesion;
 	private Date fecha;
 	
@@ -30,14 +32,13 @@ public class Sesion {
 	
 	public Sesion() { }
 	
-
-	public Sesion(LocalTime horaSesion, Date fecha, Pelicula pelicula, Sala sala) {
+	public Sesion(long idSesion, LocalTime horaSesion, Date fecha, Pelicula pelicula, Sala sala) {
+		this.idSesion = idSesion;
 		this.horaSesion = horaSesion;
 		this.fecha = fecha;
 		this.pelicula = pelicula;
 		this.sala = sala;
 	}
-
 
 //Getters & Setters	
 
@@ -46,6 +47,14 @@ public class Sesion {
 		return horaSesion;
 	}
 
+
+	public long getIdSesion() {
+		return idSesion;
+	}
+
+	public void setIdSesion(long idSesion) {
+		this.idSesion = idSesion;
+	}
 
 	public void setHoraSesion(LocalTime horaSesion) {
 		this.horaSesion = horaSesion;
@@ -84,7 +93,7 @@ public class Sesion {
 
 	@Override
 	public String toString() {
-		return "Sesion [horaSesion=" + horaSesion + ", fecha=" + fecha + ", pelicula="
+		return "Sesion [idSesion=" + idSesion + ", horaSesion=" + horaSesion + ", fecha=" + fecha + ", pelicula="
 				+ pelicula + ", sala=" + sala + "]";
 	}
 
