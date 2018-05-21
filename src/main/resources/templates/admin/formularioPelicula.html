@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <!-- Meta Tags -->
@@ -28,9 +28,10 @@
 
      <!-- DurationPicker -->
     
-    <link href="../../static/css/duration-picker.css" rel="stylesheet">
+    <link th:href="@{/css/duration-picker.css}" rel="stylesheet">
     <script src="../../static/js/code.jquery.com/jquery.min.js"></script>
     <script src="../../static/js/duration-picker.js"></script>
+
 
    
 
@@ -39,18 +40,18 @@
 
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+    <link  th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Font Awesome -->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
+    <link th:href="@{/css/mdb.min.css}" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
 
 </head>
@@ -72,7 +73,8 @@
 
                 <div class="form-group">
                     <label for="tituloPelicula">Titulo </label>
-                    <input type="text" id="tituloPelicula" class="form-control">
+                    <input th:field="*{titulo}" type="text" id="titulo" class="form-control">
+                    
                 </div>                   
 
             <!-- /Titulo -->
@@ -82,7 +84,7 @@
 
                 <div class="form-group">
                         <label for="nombreDirector">Director </label>
-                        <input type="text" id="nombreDirector" class="form-control">
+                        <input th:field="director" type="text" id="director" class="form-control">
                 </div>   
 
             <!-- /Director -->
@@ -90,22 +92,9 @@
 
             <!-- Seleccion de Genero -->
                 <div class="form-row align-items-center">
-                    <label class="mr-sm-2" for="generoGrupo">Genero</label>
-                <select class="custom-select mr-sm-2" id="generoGrupo">
-                        <option value="1">Acción</option>
-                        <option value="2">Animación</option>
-                        <option value="3">Aventuras</option>
-                        <option value="4">Bélico</option>
-                        <option value="5">Biográfica</option>
-                        <option value="6">Ciencia ficción</option>
-                        <option value="7">Cine Negro</option>
-                        <option value="8">Comedia</option>
-                        <option value="9">Drama</option>
-                        <option value="10">Fantasía</option>
-                        <option value="11">Musical</option>
-                        <option value="12">Romance</option>
-                        <option value="13">Terror</option>
-                        <option value="14">Thriller</option>
+                    <label class="mr-sm-2" th:for="${#ids.prev('genero')}">Genero</label>
+                <select th:field="${nuevaPelicula.genero}" class="custom-select mr-sm-2" id="genero">
+                        <option th:each=" grupoGenero : ${genero}" value="${grupoGenero}" th:text="${grupoGenero}">Acción</option>
                     </select>
                 </div>
             <!--/Seleccion de Genero-->
@@ -148,7 +137,7 @@
                     <div class="form-check">
                         <input name="102" type="radio" class="with-gap" id="radio106" checked>
                         <img src="../../static/image/A.ico"/>
-                        <label for="radio111">(Todos los publicos)</label>
+                        <label for="radio106">(Todos los publicos)</label>
                     </div>
 
                     <div class="form-check">
@@ -178,6 +167,20 @@
 
                 </div>
 
+                <ul><div class="form-check">
+                    <li th:each="grupoEdad : ${edad}"><input type="radio"
+                        th:field="${nuevaPelicula.edad}" th:value="${grupoEdad}" /> <!--  <label
+                        th:for="${#ids.prev('tipo')}"
+                        th:text="#{${'seedstarter.tipo.' + tipoProducto}}">Tipo de producto</label>-->
+                        <!-- Esto nos  da el id del elemento previo pintado, porque estamos 
+                        pintando el radio antes que el label. Si fuese al revés, pintar antes el label que el radio
+                        usaríamos el método	next que también existe. Para ese radio, pintamos la etiqueta que sea
+                        con el nombre guardado en el array de tipos normalmente.
+                        En resumen, sirve para que al pinchar en el label, también se marque el radio previo--> 
+                        <label
+                        th:for="${#ids.prev('edad')}" th:text="${grupoEdad}">imagen</label></li>
+                    </div>
+
 
             <!--Radio Edades-->
         
@@ -188,7 +191,7 @@
                 <div>
                     <label for='duration'>Duracion</label>
                     
-                    <input type="text" id="duration" name="duration">
+                    <input th:field="*{duracion}" type="text" id="duration" name="duration">
                     <script>
                         $("#duration").durationPicker({
                             hours: {
@@ -233,7 +236,7 @@
                         <label for='fecha'>Fecha de estreno:</label>
                         <!-- Campo de texto que recibira el valor seleccionado en el datepicker 
                         le he puesto el atributo readonly para no poder escribir directamente -->
-                        <input type='text' name='fecha' id='fecha' readonly />
+                        <input th:field="*{estreno}" type='text' name='fecha' id='fecha' readonly />
                 </div>
                     <script>
                         $( "#datepicker" ).datepicker({

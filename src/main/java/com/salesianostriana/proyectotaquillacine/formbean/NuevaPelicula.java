@@ -9,6 +9,7 @@ public class NuevaPelicula {
 	private String titulo; //CLASE PELICULA
 	private String genero;
 	private String director;
+	private String edad;
 	private Date estreno;
 	private int duracion; // -PELICULA
 	
@@ -20,11 +21,12 @@ public class NuevaPelicula {
 	
 	public NuevaPelicula () { }
 	
-	public NuevaPelicula(String titulo, String genero, String director, Date estreno, int duracion, String nombreSala,
+	public NuevaPelicula(String titulo, String genero, String director, String edad, Date estreno, int duracion, String nombreSala,
 			LocalTime horaSesion) {
 		this.titulo = titulo;
 		this.genero = genero;
 		this.director = director;
+		this.edad = edad;
 		this.estreno = estreno;
 		this.duracion = duracion;
 		this.nombreSala = nombreSala;
@@ -52,6 +54,15 @@ public class NuevaPelicula {
 	public void setDirector(String director) {
 		this.director = director;
 	}
+	
+	public String getEdad() {
+		return edad;
+	}
+
+	public void setEdad(String edad) {
+		this.edad = edad;
+	}
+
 	public Date getEstreno() {
 		return estreno;
 	}
@@ -83,6 +94,7 @@ public class NuevaPelicula {
 		int result = 1;
 		result = prime * result + ((director == null) ? 0 : director.hashCode());
 		result = prime * result + duracion;
+		result = prime * result + ((edad == null) ? 0 : edad.hashCode());
 		result = prime * result + ((estreno == null) ? 0 : estreno.hashCode());
 		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
 		result = prime * result + ((horaSesion == null) ? 0 : horaSesion.hashCode());
@@ -106,6 +118,11 @@ public class NuevaPelicula {
 		} else if (!director.equals(other.director))
 			return false;
 		if (duracion != other.duracion)
+			return false;
+		if (edad == null) {
+			if (other.edad != null)
+				return false;
+		} else if (!edad.equals(other.edad))
 			return false;
 		if (estreno == null) {
 			if (other.estreno != null)
@@ -137,11 +154,10 @@ public class NuevaPelicula {
 
 	@Override
 	public String toString() {
-		return "NuevaPelicula [titulo=" + titulo + ", genero=" + genero + ", director=" + director + ", estreno="
-				+ estreno + ", duracion=" + duracion + ", nombreSala=" + nombreSala + ", horaSesion=" + horaSesion
-				+ "]";
+		return "NuevaPelicula [titulo=" + titulo + ", genero=" + genero + ", director=" + director + ", edad=" + edad
+				+ ", estreno=" + estreno + ", duracion=" + duracion + ", nombreSala=" + nombreSala + ", horaSesion="
+				+ horaSesion + "]";
 	}
-	
-	
+
 	
 }

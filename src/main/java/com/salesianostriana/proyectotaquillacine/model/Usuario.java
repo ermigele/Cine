@@ -19,8 +19,7 @@ public class Usuario {
 //CONSTRCUTORES	
 	public Usuario() { }
 
-	public Usuario(Long id, String user, String email, String pass, boolean isAdmin) {
-		this.id = id;
+	public Usuario(String user, String email, String pass, boolean isAdmin) {
 		this.user = user;
 		this.email = email;
 		this.pass = pass;
