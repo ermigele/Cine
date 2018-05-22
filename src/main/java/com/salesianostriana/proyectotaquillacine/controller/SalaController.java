@@ -8,6 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.salesianostriana.proyectotaquillacine.formbean.NuevaSala;
 import com.salesianostriana.proyectotaquillacine.model.Butaca;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
@@ -15,8 +17,10 @@ import com.salesianostriana.proyectotaquillacine.service.ButacaService;
 import com.salesianostriana.proyectotaquillacine.service.SalaService;
 
 @Controller
+//@RequestMapping("/admin")
 public class SalaController {
 
+	
 	
 	@Autowired
 	public SalaService salaService;
@@ -25,16 +29,19 @@ public class SalaController {
 	public ButacaService butacaService;
 	
 	
-	@GetMapping({"nuevaSala"})
+	@GetMapping({"/nuevaSala"})
 	public String mostrarFormSala (Model model){
 		model.addAttribute("nuevaSala", new NuevaSala());
+		
+		model.addAttribute("salitas", salaService.findAll());
+		
 		return "/admin/formularioSala";
 		//return "/admin/test";
-		
 	}
 	
+
 	
-	@PostMapping({"addSala"})
+	@PostMapping({"/addSala"})
 	public String submit (@ModelAttribute("nuevaSala") NuevaSala nuevaSala, BindingResult bindingResult, Model model ) {
 		
 		Sala sala = new Sala ();
@@ -66,6 +73,8 @@ public class SalaController {
 			}
 		}
 		
-		return "redirect:app/index";
+		return "redirect:/admin/index";
 	}
+	
+	
 }

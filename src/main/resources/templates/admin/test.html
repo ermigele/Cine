@@ -28,7 +28,7 @@
     <hr>
     <div class="container">
 
-    <form  th:object="${salita}" class="form-horizontal" role="form" method="POST" th:action="@{/verificarLogin}">     
+    <form th:object="${salita}" class="form-horizontal" role="form" method="POST" th:action="@{/verificarLogin}">     
     	<div class="form-group">
             <label class="col-sm-2 control-label" for="sala">Nº Sala</label>
             <div class="col-md-2">
@@ -57,6 +57,24 @@
         </div>
     
     </form> 
+    
+    <br>
+    
+    <hr>
+    	
+        <div class="col-sm-offset-2"></div>
+	        <table table class="table table-striped">
+	            <tr>
+	                <th>Salas</th><th>Nº Filas</th><th>Nº Butacas</th>
+	            </tr>
+	            <tr th:each=" i : ${salitas} ">
+	                <td th:text="${i.nombreSala}"></td><td th:text="${i.numButacaXFila}"></td><td th:text="${i.numFila"}></td>
+	            </tr>
+	        </table>
+
+    <p>hola</p>
+    
+  
    </div>
 </body>
 </html>

@@ -14,20 +14,20 @@ public class Usuario {
 	private String user;
 	private String email;
 	private String pass;
-	private boolean isAdmin;
+	private boolean admin;
 
 //CONSTRCUTORES	
 	public Usuario() { }
 
-	public Usuario(String user, String email, String pass, boolean isAdmin) {
+	public Usuario(String user, String email, String pass, boolean admin) {
 		this.user = user;
 		this.email = email;
 		this.pass = pass;
-		this.isAdmin = isAdmin;
+		this.admin = admin;
 	}
 
 //GETTERS & SETTERS
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -61,20 +61,20 @@ public class Usuario {
 	}
 
 	public boolean isAdmin() {
-		return isAdmin;
+		return admin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (admin ? 1231 : 1237);
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + (isAdmin ? 1231 : 1237);
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -89,6 +89,8 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
+		if (admin != other.admin)
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -98,8 +100,6 @@ public class Usuario {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (isAdmin != other.isAdmin)
 			return false;
 		if (pass == null) {
 			if (other.pass != null)
@@ -116,9 +116,14 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", user=" + user + ", email=" + email + ", pass=" + pass + ", isAdmin=" + isAdmin
+		return "Usuario [id=" + id + ", user=" + user + ", email=" + email + ", pass=" + pass + ", admin=" + admin
 				+ "]";
 	}
 
+
+
+	
+	
+	
 }
 	

@@ -20,4 +20,4 @@ public class UsuarioController {
 		model.addAttribute("usuario", session.getAttribute("usuarioActual"));
 		return "app/index";
 	}
-	}
+}
