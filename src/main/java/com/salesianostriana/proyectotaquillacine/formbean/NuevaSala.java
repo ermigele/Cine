@@ -1,5 +1,6 @@
 package com.salesianostriana.proyectotaquillacine.formbean;
 
+
 public class NuevaSala {
 	
 //ATRIBUTOS	

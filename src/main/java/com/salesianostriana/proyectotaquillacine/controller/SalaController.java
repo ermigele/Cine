@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.salesianostriana.proyectotaquillacine.formbean.NuevaSala;
 import com.salesianostriana.proyectotaquillacine.model.Butaca;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
@@ -30,6 +29,7 @@ public class SalaController {
 	public String mostrarFormSala (Model model){
 		model.addAttribute("nuevaSala", new NuevaSala());
 		return "/admin/formularioSala";
+		//return "/admin/test";
 		
 	}
 	
