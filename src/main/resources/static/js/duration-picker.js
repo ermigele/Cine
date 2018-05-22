@@ -129,17 +129,17 @@
 
     $.fn.durationPicker.defaults = {
         hours: {
-        	label: "h",
+        	label: "Hora",
         	min: 0,
-        	max: 24
+        	max: 59
         },
         minutes: {
-        	label: "m",
+        	label: "Minutos",
         	min: 0,
         	max: 59
         },
         seconds: {
-        	label: "s",
+        	label: "Segundos",
         	min: 0,
         	max: 59
         },
