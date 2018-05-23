@@ -63,13 +63,13 @@ public class SalaController {
 				
 				Butaca newButaca = new Butaca();
 				
-				newButaca.setFila(numFilaActual);
-				newButaca.setNumButaca(numButacaActual);	
-			
-		newButaca.setSala(sala);
+				newButaca.setNumFila(numFilaActual);
+				newButaca.setNumButacaXFila(numButacaActual);	
+		sala.addButaca(newButaca);	
+
 		
 						
-			butacaService.save(newButaca); //Guardo las butacas		
+//			butacaService.save(newButaca); //Guardo las butacas		
 			}
 		}
 		

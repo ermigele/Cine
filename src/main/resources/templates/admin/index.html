@@ -33,12 +33,15 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="admin/formularioPelicula.html"  th:href="@{/nuevaPelicula}">Añadir peliculas</a>
+            <a class="nav-link" href="admin/formularioPelicula.html"  th:href="@{/admin/nuevaPelicula}">Añadir peliculas</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+          <a class="nav-link" href="admin/cartelera.html" th:href="@{/admin/listadoPeliculas}">Cartelera</a>
+      </ul>
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="admin/areaContacto.html"  th:href="@{areaContacto}">Area de contacto</a>
+            <a class="nav-link" href="admin/areaContacto.html"  th:href="@{/admin/areaContacto}">Area de contacto</a>
           </li>
         </ul>
       </div>
@@ -99,7 +102,7 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" src="../../static/image/iconoAñadir.jpg" alt="50">
+          <img class="card-img-top" th:src="@{~/image/iconoAñadir.jpg}" alt="50">
           <div class="card-body">
             <h4 class="card-title">Añadir pelicula</h4>
           </div>

@@ -18,8 +18,8 @@ public class Butaca {
 	@Id @GeneratedValue
 
 	private long idButaca;
-	private int numButaca;
-	private int fila;
+	private int numButacaXFila;
+	private int numFila;
 	
 	@ManyToOne
 	private Sala sala;
@@ -32,44 +32,22 @@ public class Butaca {
 	public Butaca () { }
 
 
-	public Butaca(long idButaca, int numButaca, int fila) {
+
+	public Butaca(long idButaca, int numButacaXFila, int numFila, Sala sala, Entrada entrada) {
 		this.idButaca = idButaca;
-		this.numButaca = numButaca;
-		this.fila = fila;
+		this.numButacaXFila = numButacaXFila;
+		this.numFila = numFila;
+		this.sala = sala;
+		this.entrada = entrada;
 	}
-
+	
+	
 //Getters & Setters	
-
-
-
-	public int getNumButaca() {
-		return numButaca;
-	}
-
-
-	public long getId() {
-		return idButaca;
-	}
-
-
-	public void setId(long id) {
-		this.idButaca = id;
-	}
-
-
-	public void setNumButaca(int numButaca) {
-		this.numButaca = numButaca;
-	}
-
-
-	public int getFila() {
-		return fila;
-	}
-
 
 	public long getIdButaca() {
 		return idButaca;
 	}
+
 
 
 	public void setIdButaca(long idButaca) {
@@ -77,9 +55,35 @@ public class Butaca {
 	}
 
 
+
+	public int getNumButacaXFila() {
+		return numButacaXFila;
+	}
+
+
+
+	public void setNumButacaXFila(int numButacaXFila) {
+		this.numButacaXFila = numButacaXFila;
+	}
+
+
+
+	public int getNumFila() {
+		return numFila;
+	}
+
+
+
+	public void setNumFila(int numFila) {
+		this.numFila = numFila;
+	}
+
+
+
 	public Sala getSala() {
 		return sala;
 	}
+
 
 
 	public void setSala(Sala sala) {
@@ -87,9 +91,11 @@ public class Butaca {
 	}
 
 
+
 	public Entrada getEntrada() {
 		return entrada;
 	}
+
 
 
 	public void setEntrada(Entrada entrada) {
@@ -97,17 +103,17 @@ public class Butaca {
 	}
 
 
-	public void setFila(int fila) {
-		this.fila = fila;
-	}
-
 
 	@Override
 	public String toString() {
-		return "Butaca [idButaca=" + idButaca + ", numButaca=" + numButaca + ", fila=" + fila + ", sala=" + sala
-				+ ", entrada=" + entrada + "]";
+		return "Butaca [idButaca=" + idButaca + ", numButacaXFila=" + numButacaXFila + ", numFila=" + numFila
+				+ ", sala=" + sala + ", entrada=" + entrada + "]";
 	}
-	
-	
+
+
+
+
+
+
 	
 }

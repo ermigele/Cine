@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.salesianostriana.proyectotaquillacine.service.UsuarioService;
 
 @Controller
@@ -26,12 +26,24 @@ public class AdminController {
 		return "admin/index";
 	}
 	
-	
-	
 	@GetMapping({"/areaContacto"})
 	public String mostrarUsuarios(Model model) {
 		
 		model.addAttribute("usuarios", usuarioService.findAll());
 		return "admin/areaContacto";
 	}
+	
+	@GetMapping({"/borrar/{id}"})
+	public String eliminarUsuarios(@PathVariable("id") long id) {
+		usuarioService.delete(usuarioService.findOne(id));
+		return "redirect:/admin/areaContacto";
+	}
+	
+	@GetMapping({"/editar/{id}"})
+	public String editarUsuarios(@PathVariable("id") long id, Model model) {
+		model.addAttribute("registroUser", usuarioService.findOne(id));
+		usuarioService.edit(usuarioService.findOne(id));
+		return "registroUsuario/registrar";
+	}
+	
 }
