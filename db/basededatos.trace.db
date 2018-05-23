@@ -2391,3 +2391,11 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/mam
 org.h2.jdbc.JdbcSQLException: Tabla "SALA" no encontrada
 Table "SALA" not found; SQL statement:
 select sala0_.idSala as idSala1_7_, sala0_.nombreSala as nombreSa2_7_ from Sala sala0_ [42102-197]
+2018-05-23 22:25:39 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "TABLE" no encontrada
+Table "TABLE" not found; SQL statement:
+delete table butaca [42102-197]
+2018-05-23 22:25:39 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "TABLE" no encontrada
+Table "TABLE" not found; SQL statement:
+delete table sala [42102-197]

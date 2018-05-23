@@ -1,5 +1,6 @@
 package com.salesianostriana.proyectotaquillacine.controller;
 
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,64 +18,58 @@ import com.salesianostriana.proyectotaquillacine.service.ButacaService;
 import com.salesianostriana.proyectotaquillacine.service.SalaService;
 
 @Controller
-//@RequestMapping("/admin")
+// @RequestMapping("/admin")
 public class SalaController {
 
-	
-	
 	@Autowired
 	public SalaService salaService;
-	
+
 	@Autowired
 	public ButacaService butacaService;
-	
-	
-	@GetMapping({"/nuevaSala"})
-	public String mostrarFormSala (Model model){
-		model.addAttribute("nuevaSala", new NuevaSala());
-		
-		model.addAttribute("salitas", salaService.findAll());
-		
-		return "/admin/formularioSala";
-		//return "/admin/test";
-	}
-	
 
-	
-	@PostMapping({"/addSala"})
-	public String submit (@ModelAttribute("nuevaSala") NuevaSala nuevaSala, BindingResult bindingResult, Model model ) {
-		
-		Sala sala = new Sala ();
-		sala.setNombreSala(nuevaSala.getNombreSala()); //
-		
-		
-		salaService.save(sala); //Guardo la sala antes de empezar a meter las butacas
-		
-		//Limite de butacas - Datos que entran por el input de HTML
+	@GetMapping({ "/nuevaSala" })
+	public String mostrarFormSala(Model model) {
+		model.addAttribute("nuevaSala", new NuevaSala());
+
+		// model.addAttribute("salitas", salaService.findAll());
+		model.addAttribute("butaquitas", butacaService.findAll());
+
+		return "/admin/formularioSala";
+	}
+
+	@PostMapping({ "/addSala" })
+	public String submit(@ModelAttribute("nuevaSala") NuevaSala nuevaSala, BindingResult bindingResult, Model model) {
+
+
+        Sala sala = new Sala();
+		sala.setNombreSala(nuevaSala.getNombreSala()); // Asigno a la clase Sala la variable nombreSala que recogo del
+														// formulario
+
+		salaService.save(sala); // Guardo la sala antes de empezar a meter las butacas
+
+		// Limite de butacas - Datos que entran por el input de HTML
 		int butacasXFila = nuevaSala.getNumButacaXFila();
 		int numFilas = nuevaSala.getNumFila();
-		
-		//Bucleo de mapeo de las salas
-		for(int i = 0; i<numFilas;i++) {
-			for(int j=0; j< butacasXFila;j++) {
-				
+
+		// Bucleo de mapeo de las salas
+		for (int i = 1; i < numFilas+1; i++) {
+			for (int j = 1; j < butacasXFila+1; j++) {
+
 				int numFilaActual = i;
 				int numButacaActual = j;
-				
-				Butaca newButaca = new Butaca();
-				
-				newButaca.setNumFila(numFilaActual);
-				newButaca.setNumButacaXFila(numButacaActual);	
-		sala.addButaca(newButaca);	
 
-		
-						
-//			butacaService.save(newButaca); //Guardo las butacas		
+				Butaca newButaca = new Butaca();
+
+				newButaca.setNumFila(numFilaActual);
+				newButaca.setNumButacaXFila(numButacaActual);
+
+				newButaca.setSala(sala);
+
+				butacaService.save(newButaca); // Guardo las butacas
 			}
 		}
-		
+
 		return "redirect:/admin/index";
 	}
-	
-	
+
 }

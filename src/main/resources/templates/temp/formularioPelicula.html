@@ -7,8 +7,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            #mySESION {
+                width: 100%;
+                padding: 50px 0;
+                text-align: center;
+                background-color: lightblue;
+                margin-top: 20px;
+                display: none;
+            }
+        </style>
 
      <!-- DataPicker -->
      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/flick/jquery-ui.min.css">
@@ -20,6 +31,9 @@
     <link th:href="@{/css/duration-picker.css}" rel="stylesheet">
     <script src="../../static/js/code.jquery.com/jquery.min.js"></script>
     <script src="../../static/js/duration-picker.js"></script>
+
+
+   
 
 
     <title>Formulario Pelicula</title>
@@ -43,11 +57,13 @@
 </head>
 <body>
 
-    <!--Formulario Pelicula-->
-    <div class="container">
-     <form th:object="${nuevaPelicula}" role="form" method="POST"  th:action="@{/addPelicula}">
 
-        <h2>Formulario de Pelicula</h2>
+    <!--Formulario Pelicula-->
+    <form th:object="${nuevaPelicula}" role="form" method="POST"  th:action="@{/addPelicula}">
+
+        <div class="container">
+                <h2>Formulario de Pelicula</h2>
+            <form>
 
         <!-- Grupo Columna -->        
         <div class="row">
@@ -68,7 +84,7 @@
 
                 <div class="form-group">
                         <label for="nombreDirector">Director </label>
-                        <input th:field="*{director}" type="text" id="director" class="form-control">
+                        <input th:field="director" type="text" id="director" class="form-control">
                 </div>   
 
             <!-- /Director -->
@@ -117,10 +133,36 @@
                 <div class="form-group">
                     <p>Clasificación por edades </p>
 
+                    
                     <div class="form-check">
                         <input name="102" type="radio" class="with-gap" id="radio106" checked>
                         <img src="../../static/image/A.ico"/>
                         <label for="radio106">(Todos los publicos)</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio107">
+                        <img src="../../static/image/7.ico"/>
+                        <label for="radio107">(Menores de 7 años)</label>
+                    </div>
+                                                    
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio108" checked>
+                        <img src="../../static/image/12.ico"/>
+                        <label for="radio108">(Menores de 12 años)</label>
+                    </div>
+                            
+
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio109">
+                        <img src="../../static/image/16.ico"/>
+                        <label for="radio109">(Menores de 16 años)</label>
+                    </div>
+                                                
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio110" checked>
+                        <img src="../../static/image/18.ico"/>
+                        <label for="radio110">(Menores de 18 años)</label>
                     </div>
 
                 </div>
@@ -221,6 +263,39 @@
         </div>
 
         </div>
+
+
+            <!-- Sesiones  SPOILER -->
+        <script>
+            function myFunction() {
+                var x = document.getElementById("mySESION");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
+
+        <button onclick="myFunction()">Sesiones</button>
+
+		<div id='sesiones' style='display:none'>
+			<table>
+				<tr>
+					<td>Salas</td>
+					<td>Salas</td>
+					<td>Salas</td>
+					<td>Salas</td>
+					<td>Salas</td>
+				</tr>
+			</table>
+		</div>
+
+        <div id="mySESION">
+             This is my DIV element.
+        </div>
+
+
     </form>
         <!-- /Sesiones  SPOILER  -->
        

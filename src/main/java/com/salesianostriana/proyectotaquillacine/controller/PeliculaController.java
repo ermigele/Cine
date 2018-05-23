@@ -46,12 +46,12 @@ public class PeliculaController {
 		
 		
 		
-/* Otra posible mejor idea, hacer un FORMBEAN con el nombre EDAD y crear una coleccion con la edad y el icono con su correspondiente ruta.
- * 		
- *		Creamos un array de String para los tipos de edad. Nos servirá para trabajar con radiobuttons en la vista y recoger 
-		lo que el usuario pincha
+// Otra posible mejor idea, hacer un FORMBEAN con el nombre EDAD y crear una coleccion con la edad y el icono con su correspondiente ruta.
+ 		
+	//	Creamos un array de String para los tipos de edad. Nos servirá para trabajar con radiobuttons en la vista y recoger 
+	//	lo que el usuario pincha
 				
-		String[] edad = new String [] {"+18", "-7", "-12", "-16", "+18" };
+		String[] edad = new String [] {"Todos los publicos", "Menores de 7 años", "Menores de 12 años", "Menores de 16 años", "Menores de 18 años" };
 		model.addAttribute("edad", edad);
 		
 		
@@ -59,7 +59,6 @@ public class PeliculaController {
 		String[] iconoEdad = new String [] {"../../static/image/A.ico", "../../static/image/7.ico", "../../static/image/12.ico", "../../static/image/16.ico", "../../static/image/18.ico" };
 		model.addAttribute("iconoEdad", iconoEdad);
 		
-*/
 		
 		return "/formularioPelicula";
 	}

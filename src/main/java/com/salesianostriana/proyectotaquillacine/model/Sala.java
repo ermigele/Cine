@@ -60,6 +60,7 @@ public class Sala {
 		this.nombreSala = nombreSala;
 	}
 
+	/*
 	//metodo Helper   Añadir
 	public Sala addButaca(Butaca b) {  
 		if (b != null) {					//Comprueba que existe la butaca
@@ -69,8 +70,9 @@ public class Sala {
 		return this;						//Devuelve la butaca
 	}
 
+	*/
 	
-	
+	/*
 	//método Helper Eliminar
 	public Sala removeButaca (Butaca b) {  
 		if (b != null) {						//Comprueba que exista la butaca
@@ -79,4 +81,6 @@ public class Sala {
 		}
 		return this;							//te devuelve el objeto eliminado
 	}
+	
+	*/
 }
