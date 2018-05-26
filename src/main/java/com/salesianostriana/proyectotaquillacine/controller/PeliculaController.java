@@ -37,7 +37,8 @@ public class PeliculaController {
 	@GetMapping( "/nuevaPelicula" )
 	public String mostrarFormulario(Model model) {
 		
-		model.addAttribute("FormPelicula", new NuevaPelicula());
+		
+		model.addAttribute("nuevaPelicula", new NuevaPelicula());
 		
 		//Creamos un array de String para los generos de las peliculas. Sera para trabajar con el menu desplegable ("Select")
 		
@@ -55,12 +56,12 @@ public class PeliculaController {
 		model.addAttribute("edad", edad);
 		
 		
-		// Creamos un array para los iconos de las imagenes que van junto al radiobuttons
+		/* Creamos un array para los iconos de las imagenes que van junto al radiobuttons
 		String[] iconoEdad = new String [] {"../../static/image/A.ico", "../../static/image/7.ico", "../../static/image/12.ico", "../../static/image/16.ico", "../../static/image/18.ico" };
 		model.addAttribute("iconoEdad", iconoEdad);
+		*/
 		
-		
-		return "/formularioPelicula";
+		return "/admin/formularioPelicula";
 	}
 	
 	@PostMapping ( "/addPelicula" )

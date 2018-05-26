@@ -7,8 +7,8 @@ public class NuevaPelicula {
 
 //ATRIBUTOS
 	private String titulo; //CLASE PELICULA
-	private String genero;
 	private String director;
+	private String genero;
 	private String edad;
 	private Date estreno;
 	private int duracion; // -PELICULA

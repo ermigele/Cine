@@ -64,7 +64,7 @@
                 <th>Salas</th><th>Nº Filas</th><th>Nº Butacas</th>
             </tr>
             <tr th:each=" i : ${butaquitas} ">
-                <td>1</td><td th:text="${i.numButacaXFila}"></td> <td th:text="${i.numFila}"></td>
+                <td th:text="${i.sala.nombreSala}"</td><td th:text="${i.numButacaXFila}"></td> <td th:text="${i.numFila}"></td>
             </tr>
         </table>
         <p>hola</p>
