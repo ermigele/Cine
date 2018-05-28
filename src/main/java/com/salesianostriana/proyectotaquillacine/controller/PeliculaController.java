@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.salesianostriana.proyectotaquillacine.formbean.NuevaPelicula;
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 import com.salesianostriana.proyectotaquillacine.service.PeliculaService;
@@ -43,7 +46,8 @@ public class PeliculaController {
 		//Creamos un array de String para los generos de las peliculas. Sera para trabajar con el menu desplegable ("Select")
 		
 		String[] genero = new String [] {"Animación", "Aventuras", "Bélico", "Biográfica", "Ciencia ficción", "Comedia", "Drama", "Fantasía", "Musical", "Romance", "Terror", "Thriller" };
-		model.addAttribute("genero", genero);
+		
+		model.addAttribute("listaGenero", genero);
 		
 		
 		
@@ -65,10 +69,16 @@ public class PeliculaController {
 	}
 	
 	@PostMapping ( "/addPelicula" )
-	public String submit (@ModelAttribute("FormPelicula") Pelicula pelicula, BindingResult bindingResult, Model model ) {
+	public String submit (@ModelAttribute("FormPelicula") Pelicula pelicula, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model ) {
 		
-		peliculaService.save(pelicula);
-		return "redirect: /admin/index";
+		if (peliculaService.saveAndUpload(pelicula, file)) {
+			// Éxito en la subida
+			return "redirect: /admin/index";
+		} else {
+			// Error en la subida
+			model.addAttribute("uploadError", "Error en la subida de fichero");
+			return "/nuevaPelicula";
+		}
 	}	
 	
 }

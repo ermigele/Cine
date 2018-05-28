@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.salesianostriana.proyectotaquillacine.imgur.Imagen;
+import com.salesianostriana.proyectotaquillacine.imgur.ImgurService;
+import com.salesianostriana.proyectotaquillacine.imgur.RespuestaImagen;
 import com.salesianostriana.proyectotaquillacine.model.EntidadConFichero;
 import com.salesianostriana.proyectotaquillacine.repo.EntidadConFicheroRepository;
-import com.salesianostriana.proyetotaquillacine.jsonIgnoreProperties.Imagen;
-import com.salesianostriana.proyetotaquillacine.jsonIgnoreProperties.RespuestaImagen;
 
 
 /**

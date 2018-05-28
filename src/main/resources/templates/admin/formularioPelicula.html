@@ -81,9 +81,10 @@
 					</div>
 
 					<div class="form-row align-items-center"> <!-- SELECT -->
+						<label for="genero">Genero</label>
 						<select th:field="*{genero}" class="custom-select mr-sm-2" id="genero">
-							<option th:each=" grupoGenero : ${genero}" value="${genero}"
-								th:text="#{${'seedstarter.genero.' + grupoGenero}}">Acción</option>
+							<option selected="selected" value="">Seleccione un genero</option>
+							<option th:each=" grupoGenero : ${listaGenero}" th:text="${grupoGenero}" th:value="${grupoGenero}">Acción</option>
 						</select>
 					</div>
 
@@ -94,7 +95,7 @@
 								<span class="input-group-text">Subir</span>
 							</div>
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="poster">
+								<input id="file" name="file" class="input-file" type="file" />
 								<label class="custom-file-label" for="poster">Imagen publicitaria...</label>
 							</div>
 					</div>
@@ -102,20 +103,17 @@
 					<div class="form-check"> <!-- RADIOBUTTON -->
 						<label for="edad">Clasificación por edades</label>
 							<ul>
-								<li th:each="tiposEdad : ${edad}"><input type="radio"
-									th:field="${edad}" th:value="${tiposEdad}" /> <!--  <label
-								th:for="${#ids.prev('edad')}"
-								th:text="#{${'seedstarter.edad.' + tiposEdad}}">Tipos de edad</label>-->
+								<li th:each="tiposEdad : ${edad}">
+								<input type="radio" id="edad" th:field="*{edad}" th:value="${tiposEdad}" />   
+									<label th:for="${#ids.prev('edad')}" th:text="#{${'seedstarter.edad.' + tiposEdad}}" >Tipos de edad</label>
 									<!-- Esto nos  da el id del elemento previo pintado, porque estamos 
 								pintando el radio antes que el label. Si fuese al revés, pintar antes el label que el radio
 								usaríamos el método	next que también existe. Para ese radio, pintamos la etiqueta que sea
 								con el nombre guardado en el array de tipos normalmente.
 								En resumen, sirve para que al pinchar en el label, también se marque el radio previo-->
-									<label  th:text="${tiposEdad}">tipos</label></li>
 							</ul>
 						</div>
 	
-
 					</div>
 
 							
@@ -173,8 +171,10 @@
 											campo1.type = "text";
 											campo1.setAttribute("onclick","vaciar_campo(this);");
 											
-										var campo2 = campo1.cloneNode(true);
-										var campo3 = campo1.cloneNode(true);
+										var campo2 = document.createElement("input");
+											campo2.type = "time";
+											campo2.setAttribute("onclick", "vaciar_campo(this);");
+										var campo3 = campo2.cloneNode(true);
 										
 										var campo4 = document.createElement("input");
 											campo4.type = "button";

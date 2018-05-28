@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Meta Tags -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            #mySESION {
+                width: 100%;
+                padding: 50px 0;
+                text-align: center;
+                background-color: lightblue;
+                margin-top: 20px;
+                display: none;
+            }
+        </style>
+
+     <!-- DataPicker -->
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/flick/jquery-ui.min.css">
+     <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+     <!-- DurationPicker -->
+    
+    <link th:href="@{/css/duration-picker.css}" rel="stylesheet">
+    <script src="../../static/js/code.jquery.com/jquery.min.js"></script>
+    <script src="../../static/js/duration-picker.js"></script>
+
+
+   
+
+
+    <title>Formulario Pelicula</title>
+
+
+    <!-- Google Fonts -->
+    <link  th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link th:href="@{/css/mdb.min.css}" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+
+</head>
+<body>
+
+
+    <!--Formulario Pelicula-->
+    <form th:object="${nuevaPelicula}" role="form" method="POST"  th:action="@{/addPelicula}">
+
+        <div class="container">
+                <h2>Formulario de Pelicula</h2>
+            <form>
+
+        <!-- Grupo Columna -->        
+        <div class="row">
+            <div class="col-lg-5">
+                    
+            <!-- Titulo -->
+
+                <div class="form-group">
+                    <label for="tituloPelicula">Titulo </label>
+                    <input th:field="*{titulo}" type="text" id="titulo" class="form-control">
+                    
+                </div>                   
+
+            <!-- /Titulo -->
+                                
+
+            <!-- Director -->
+
+                <div class="form-group">
+                        <label for="nombreDirector">Director </label>
+                        <input th:field="director" type="text" id="director" class="form-control">
+                </div>   
+
+            <!-- /Director -->
+        
+
+            <!-- Seleccion de Genero -->
+                <div class="form-row align-items-center">
+                    <label class="mr-sm-2" th:for="${#ids.prev('genero')}">Genero</label>
+                <select th:field="${nuevaPelicula.genero}" class="custom-select mr-sm-2" id="genero">
+                        <option th:each=" grupoGenero : ${genero}" value="${grupoGenero}" th:text="${grupoGenero}">Acción</option>
+                    </select>
+                </div>
+            <!--/Seleccion de Genero-->
+
+            <br>
+            
+            <!-- Poster -->
+
+                <div class="form-row align-items-center">
+                    <label class="mr-sm-2" >Poster</label>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text">Subir</span>
+                            </div>
+                            <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="poster">
+                            <label class="custom-file-label" for="poster">Imagen publicitaria...</label>
+                    </div>
+                </div>        
+            
+            <!-- /Poster -->
+
+        <!-- /Grupo Columna -->
+        </div>
+        </div>
+        
+        <br>
+
+    <!-- Grupo Columna 2 -->   
+        <div class="col-lg-3">   
+        
+        
+            <!--Radio Edades-->
+
+                <div class="form-group">
+                    <p>Clasificación por edades </p>
+
+                    
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio106" checked>
+                        <img src="../../static/image/A.ico"/>
+                        <label for="radio106">(Todos los publicos)</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio107">
+                        <img src="../../static/image/7.ico"/>
+                        <label for="radio107">(Menores de 7 años)</label>
+                    </div>
+                                                    
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio108" checked>
+                        <img src="../../static/image/12.ico"/>
+                        <label for="radio108">(Menores de 12 años)</label>
+                    </div>
+                            
+
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio109">
+                        <img src="../../static/image/16.ico"/>
+                        <label for="radio109">(Menores de 16 años)</label>
+                    </div>
+                                                
+                    <div class="form-check">
+                        <input name="102" type="radio" class="with-gap" id="radio110" checked>
+                        <img src="../../static/image/18.ico"/>
+                        <label for="radio110">(Menores de 18 años)</label>
+                    </div>
+
+                </div>
+
+                <ul><div class="form-check">
+                    <li th:each="grupoEdad : ${edad}"><input type="radio" th:field="${nuevaPelicula.edad}" th:value="${grupoEdad}" /> <!--  <label
+                        th:for="${#ids.prev('tipo')}"
+                        th:text="#{${'seedstarter.tipo.' + tipoProducto}}">Tipo de producto</label>-->
+                        <!-- Esto nos  da el id del elemento previo pintado, porque estamos 
+                        pintando el radio antes que el label. Si fuese al revés, pintar antes el label que el radio
+                        usaríamos el método	next que también existe. Para ese radio, pintamos la etiqueta que sea
+                        con el nombre guardado en el array de tipos normalmente.
+                        En resumen, sirve para que al pinchar en el label, también se marque el radio previo--> 
+                        <label
+                        th:for="${#ids.prev('edad')}" th:text="${grupoEdad}">imagen</label></li>
+                    </div>
+
+
+            <!--Radio Edades-->
+        
+            <br>
+            
+            <!-- Duracion -->
+
+                <div>
+                    <label for='duration'>Duracion</label>
+                    
+                    <input th:field="*{duracion}" type="text" id="duration" name="duration">
+                    <script>
+                        $("#duration").durationPicker({
+                            hours: {
+                                label: "h",
+                                min: 0,
+                                max: 24
+                            },
+                            minutes: {
+                                label: "m",
+                                min: 0,
+                                max: 24
+                            },
+                            seconds: {
+                                label: "s",
+                                min: 0,
+                                max: 24
+                            },
+                            classname: 'form-control',
+                            responsive: true
+                            });
+                    </script>
+
+                </div>
+            <!-- /Duracion -->
+
+            <br>
+
+        </div>
+
+        <!-- /Grupo Columna 2 --> 
+
+
+        <!-- Grupo Columna 3 --> 
+
+        <div class="col-lg-4">
+
+            <!-- Fecha de estreno -->
+                
+                <div id="datepicker"></div>
+                    <div id="datos">
+                        <br>
+                        <label for='fecha'>Fecha de estreno:</label>
+                        <!-- Campo de texto que recibira el valor seleccionado en el datepicker 
+                        le he puesto el atributo readonly para no poder escribir directamente -->
+                        <input th:field="*{estreno}" type='text' name='fecha' id='fecha' readonly />
+                </div>
+                    <script>
+                        $( "#datepicker" ).datepicker({
+                            // Formato de la fecha
+                            dateFormat: "dd/mm/yy",
+                            // Primer dia de la semana El lunes
+                            firstDay: 1,
+                            // Dias Largo en castellano
+                            dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+                            // Dias cortos en castellano
+                            dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+                            // Nombres largos de los meses en castellano
+                            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
+                            // Nombres de los meses en formato corto 
+                            monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec" ],
+                            // Cuando seleccionamos la fecha esta se pone en el campo Input 
+                            onSelect: function(dateText) { 
+                                $('#fecha').val(dateText);
+                            }
+                        });
+                    </script>
+
+            <!--/Fecha de estreno -->
+
+        </div>
+
+        </div>
+
+
+            <!-- Sesiones  SPOILER -->
+            <script>
+                function agregar_fila() {
+                
+                    var tabla = document.getElementById("sesion");
+                    
+                    var fila = tabla.insertRow();
+                    
+                    var celda1 = fila.insertCell(0);
+                    var celda2 = fila.insertCell(1);
+                    var celda3 = fila.insertCell(2);
+                    var celda4 = fila.insertCell(3);
+                    
+                    var campo1 = document.createElement("input");
+                        campo1.type = "text";
+                        campo1.setAttribute("onclick","vaciar_campo(this);");
+                        
+                    var campo2 = campo1.cloneNode(true);
+                    var campo3 = campo1.cloneNode(true);
+                    
+                    var campo4 = document.createElement("input");
+                        campo4.type = "button";
+                        campo4.value = "Borrar Fila";
+                        campo4.onclick = function() {
+                        
+                            var fila = this.parentNode.parentNode;
+                            var tbody = tabla.getElementsByTagName("tbody")[0];
+                            
+                            tbody.removeChild(fila);
+                            
+                        }
+                    
+                    celda1.appendChild(campo1);
+                    celda2.appendChild(campo2);
+                    celda3.appendChild(campo3);
+                    celda4.appendChild(campo4);
+                
+                }
+         
+            function vaciar_campo(input) {
+                    input.value = "";
+            }
+        
+                </script>
+        
+         
+        <table id="sesion" cellpadding="5" cellspacing="5" border="1">
+         
+                <tr>
+                    <td>Nº Sala</td>
+                    <td>Hora inicio</td>
+                    <td>Hora fin</td>
+                    <td>
+            <input type="button" value="Agregar Fila" onclick="agregar_fila();"></td> 
+                </tr>
+             
+            </table>
+		</div>
+    </form>
+        <!-- /Sesiones  SPOILER  -->
+       
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script th:src="@{http://code.jquery.com/jquery-3.3.1.min.js} " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=" anonymous "></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js} " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
+    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js} " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
+   
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript " th:src="@{js/mdb.min.js} "></script>
+
+</body>
+</html>

@@ -11,7 +11,8 @@ public class NuevaPelicula {
 	private String genero;
 	private String edad;
 	private Date estreno;
-	private int duracion; // -PELICULA
+	private int duracion;
+	private String enlace;  // -PELICULA
 	
 	private String nombreSala; //CLASE SALA
 	private LocalTime horaSesion; //CLASE SESION
@@ -21,14 +22,16 @@ public class NuevaPelicula {
 	
 	public NuevaPelicula () { }
 	
-	public NuevaPelicula(String titulo, String genero, String director, String edad, Date estreno, int duracion, String nombreSala,
-			LocalTime horaSesion) {
+	
+	public NuevaPelicula(String titulo, String director, String genero, String edad, Date estreno, int duracion,
+			String enlace, String nombreSala, LocalTime horaSesion) {
 		this.titulo = titulo;
-		this.genero = genero;
 		this.director = director;
+		this.genero = genero;
 		this.edad = edad;
 		this.estreno = estreno;
 		this.duracion = duracion;
+		this.enlace = enlace;
 		this.nombreSala = nombreSala;
 		this.horaSesion = horaSesion;
 	}
@@ -38,55 +41,92 @@ public class NuevaPelicula {
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public String getGenero() {
-		return genero;
-	}
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
+
+
 	public String getDirector() {
 		return director;
 	}
+
+
 	public void setDirector(String director) {
 		this.director = director;
 	}
-	
+
+
+	public String getGenero() {
+		return genero;
+	}
+
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+
 	public String getEdad() {
 		return edad;
 	}
+
 
 	public void setEdad(String edad) {
 		this.edad = edad;
 	}
 
+
 	public Date getEstreno() {
 		return estreno;
 	}
+
+
 	public void setEstreno(Date estreno) {
 		this.estreno = estreno;
 	}
+
+
 	public int getDuracion() {
 		return duracion;
 	}
+
+
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
+
+
+	public String getEnlace() {
+		return enlace;
+	}
+
+
+	public void setEnlace(String enlace) {
+		this.enlace = enlace;
+	}
+
+
 	public String getNombreSala() {
 		return nombreSala;
 	}
+
+
 	public void setNombreSala(String nombreSala) {
 		this.nombreSala = nombreSala;
 	}
+
+
 	public LocalTime getHoraSesion() {
 		return horaSesion;
 	}
+
+
 	public void setHoraSesion(LocalTime horaSesion) {
 		this.horaSesion = horaSesion;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -95,6 +135,7 @@ public class NuevaPelicula {
 		result = prime * result + ((director == null) ? 0 : director.hashCode());
 		result = prime * result + duracion;
 		result = prime * result + ((edad == null) ? 0 : edad.hashCode());
+		result = prime * result + ((enlace == null) ? 0 : enlace.hashCode());
 		result = prime * result + ((estreno == null) ? 0 : estreno.hashCode());
 		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
 		result = prime * result + ((horaSesion == null) ? 0 : horaSesion.hashCode());
@@ -102,6 +143,7 @@ public class NuevaPelicula {
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -123,6 +165,11 @@ public class NuevaPelicula {
 			if (other.edad != null)
 				return false;
 		} else if (!edad.equals(other.edad))
+			return false;
+		if (enlace == null) {
+			if (other.enlace != null)
+				return false;
+		} else if (!enlace.equals(other.enlace))
 			return false;
 		if (estreno == null) {
 			if (other.estreno != null)
@@ -152,11 +199,12 @@ public class NuevaPelicula {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "NuevaPelicula [titulo=" + titulo + ", genero=" + genero + ", director=" + director + ", edad=" + edad
-				+ ", estreno=" + estreno + ", duracion=" + duracion + ", nombreSala=" + nombreSala + ", horaSesion="
-				+ horaSesion + "]";
+		return "NuevaPelicula [titulo=" + titulo + ", director=" + director + ", genero=" + genero + ", edad=" + edad
+				+ ", estreno=" + estreno + ", duracion=" + duracion + ", enlace=" + enlace + ", nombreSala="
+				+ nombreSala + ", horaSesion=" + horaSesion + "]";
 	}
 
 	

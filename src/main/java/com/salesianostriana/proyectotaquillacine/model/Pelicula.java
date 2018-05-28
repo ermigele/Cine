@@ -28,6 +28,7 @@ public class Pelicula {
 	private String edad;
 	private Date estreno;
 	private int duracion;
+	private String enlace;
 	
 	@ManyToOne
 	private Sala sala;
@@ -39,10 +40,9 @@ public class Pelicula {
 	
 	public Pelicula () { }
 	
-	
-	
+
 	public Pelicula(long idPelicula, String titulo, String director, String genero, String edad, Date estreno, int duracion,
-			Sala sala, Set<Sesion> sesion) {
+			String enlace, Sala sala, Set<Sesion> sesion) {
 		this.idPelicula = idPelicula;
 		this.titulo = titulo;
 		this.director = director;
@@ -50,18 +50,16 @@ public class Pelicula {
 		this.edad = edad;
 		this.estreno = estreno;
 		this.duracion = duracion;
+		this.enlace = enlace;
 		this.sala = sala;
 		this.sesion = sesion;
 	}
 
-
-
-//Getters & Setters	
+//GETTERS & SETTERS	
 
 	public long getIdPelicula() {
 		return idPelicula;
 	}
-
 
 
 	public void setIdPelicula(long idPelicula) {
@@ -69,11 +67,9 @@ public class Pelicula {
 	}
 
 
-
 	public String getTitulo() {
 		return titulo;
 	}
-
 
 
 	public void setTitulo(String titulo) {
@@ -81,11 +77,9 @@ public class Pelicula {
 	}
 
 
-
 	public String getDirector() {
 		return director;
 	}
-
 
 
 	public void setDirector(String director) {
@@ -93,11 +87,9 @@ public class Pelicula {
 	}
 
 
-
 	public String getGenero() {
 		return genero;
 	}
-
 
 
 	public void setGenero(String genero) {
@@ -105,11 +97,9 @@ public class Pelicula {
 	}
 
 
-
 	public String getEdad() {
 		return edad;
 	}
-
 
 
 	public void setEdad(String edad) {
@@ -117,11 +107,9 @@ public class Pelicula {
 	}
 
 
-
 	public Date getEstreno() {
 		return estreno;
 	}
-
 
 
 	public void setEstreno(Date estreno) {
@@ -129,11 +117,9 @@ public class Pelicula {
 	}
 
 
-
 	public int getDuracion() {
 		return duracion;
 	}
-
 
 
 	public void setDuracion(int duracion) {
@@ -141,11 +127,19 @@ public class Pelicula {
 	}
 
 
+	public String getEnlace() {
+		return enlace;
+	}
+
+
+	public void setEnlace(String enlace) {
+		this.enlace = enlace;
+	}
+
 
 	public Sala getSala() {
 		return sala;
 	}
-
 
 
 	public void setSala(Sala sala) {
@@ -153,11 +147,9 @@ public class Pelicula {
 	}
 
 
-
 	public Set<Sesion> getSesion() {
 		return sesion;
 	}
-
 
 
 	public void setSesion(Set<Sesion> sesion) {
@@ -165,15 +157,11 @@ public class Pelicula {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "Pelicula [idPelicula=" + idPelicula + ", titulo=" + titulo + ", director=" + director + ", genero="
-				+ genero + ", edad=" + edad + ", estreno=" + estreno + ", duracion=" + duracion + ", sala=" + sala
-				+ ", sesion=" + sesion + "]";
+				+ genero + ", edad=" + edad + ", estreno=" + estreno + ", duracion=" + duracion + ", enlace=" + enlace
+				+ ", sala=" + sala + ", sesion=" + sesion + "]";
 	}
-	
-	
-	
 
 }
