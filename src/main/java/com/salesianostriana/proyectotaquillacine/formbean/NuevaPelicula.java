@@ -1,6 +1,8 @@
 package com.salesianostriana.proyectotaquillacine.formbean;
 
+import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 import com.salesianostriana.proyectotaquillacine.model.Sala;
 
@@ -18,11 +20,21 @@ public class NuevaPelicula {
 	
 	private Sala nuevaSala; //CLASE SALA
 	
-	//CLASE SESION
+	
+	private List<String> sesiones; //CLASE SESION
+	
 	
 	
 //CONSTRUCTORES	
 	
+	public List<String> getSesiones() {
+		return sesiones;
+	}
+
+	public void setSesiones(List<String> sesiones) {
+		this.sesiones = sesiones;
+	}
+
 	public NuevaPelicula () { }
 	
 	public NuevaPelicula(String titulo, String director, String genero, String edad, Date estreno, int duracion,
@@ -119,9 +131,13 @@ public class NuevaPelicula {
 
 	@Override
 	public String toString() {
+		
+		String masCosas = "Sala: "+getNuevaSala().getNombreSala();
+		
+		
 		return "NuevaPelicula [titulo=" + titulo + ", director=" + director + ", genero=" + genero + ", edad=" + edad
 				+ ", estreno=" + estreno + ", duracion=" + duracion + ", enlace=" + enlace + ", nuevaSala=" + nuevaSala
-				+ "]";
+				+ "]"+masCosas;
 	}
 
 

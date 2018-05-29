@@ -60,7 +60,7 @@
 			<div class="row">
 				<div class="col-md-6"> <!-- columna 1 -->
 						<h1>Formulario de Pelicula</h1>
-						<img th:src="@{/image/peliculas/metropolis.jpg}" width="500"/>
+						<img th:src="@{/image/peliculas/metropolis.jpg}" width="550" alt="20"/>
 				<hr>
 
 				</div>  <!--Imagen-->
@@ -87,32 +87,36 @@
 						</select>
 					</div>
 
+					<br>
 
+					<label for="estreno">Calendario</label>
 					<div id="datepicker"></div> <!-- Fecha de estreno -->
 					<div id="datos">
 					<br> <label for='fecha'>Fecha de estreno:</label>
 							<!-- Campo de texto que recibira el valor seleccionado en el datepicker 
 							le he puesto el atributo readonly para no poder escribir directamente -->
-							<input th:field="*{estreno}" type='text' name='fecha' id='fecha'
+							<input th:field="*{estreno}" type='text' name='fecha' id='fecha' class="form-control"
 								readonly />
 				
 					</div>						
-
-		<br>		
-					<div class="form-check"> <!-- RADIOBUTTON -->
-					<label for="edad">Clasificación por edades</label>
-							<ul>
-								<li th:each="tiposEdad : ${listaEdad}">
-								<input type="radio" th:field="*{edad}" th:value="${tiposEdad}" />   
-									<label th:for="${#ids.prev('edad')}" th:text="${tiposEdad}" >Tipos de edad</label>
-																</ul>
-					</div>
-					
-					
+										
 					
 				</div>		
 				<div class="col-md-3"> <!--Columna 3 -->
 
+					<br>
+
+					<div class="form-check"> <!-- RADIOBUTTON -->
+						<label for="edad">Clasificación por edades</label>
+								<ul>
+									<li th:each="tiposEdad : ${listaEdad}">
+									<input type="radio" th:field="*{edad}" th:value="${tiposEdad}" />   
+										<label th:for="${#ids.prev('edad')}" th:text="${tiposEdad}" >Tipos de edad</label>
+								</ul>
+					</div>
+					
+					<br>
+					
 					<div class="form-row align-items-center"> <!-- POSTER -->
 						<label class="mr-sm-2">Poster</label>
 						<div class="input-group mb-3">
@@ -121,18 +125,21 @@
 							</div>
 							<div class="custom-file">
 								<input id="file" name="file" class="input-file" type="file" />
-								<label class="custom-file-label" for="poster">Imagen publicitaria...</label>
+								<label class="custom-file-label" for="poster">Imagen publicitaria.......</label>
 							</div>
 						</div>	
 					</div>
 
 
 					<div class="form-group"> <!-- DURACION -->
-						<label for="director">Duracion </label> 
-						<input th:field="*{duracion}" type="number" id="director" placeholder="Minutos" class="form-control">		
+						<label for="duracion">Duracion </label> 
+						<input th:field="*{duracion}" type="number" id="duracion" placeholder="Minutos" class="form-control">		
 					</div>
 						
 						<script>
+						
+						
+						
 								$("#datepicker").datepicker(
 										{
 											// Formato de la fecha
@@ -162,6 +169,14 @@
 										});
 						</script>
 						<script>   // SESIONES 
+									function agregar_fila_mmm() {
+										var lastSesion = $('.tras').last();
+										
+										var tmpSesion = lastSesion.clone();
+										
+										tmpSesion.insertAfter(lastSesion);
+							
+									}
 									function agregar_fila() {
 									
 										var tabla = document.getElementById("sesion");
@@ -208,7 +223,27 @@
 					<a class="btn btn-primary align-items-center" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
 							Sesiones
 					</a>
-					<div class="collapse" id="collapse">
+					
+					<hr/>
+					
+					
+					
+					<div>
+						<label for='salita'>Sala: </label>
+						<select id='salita' th:field="*{nuevaSala}" >
+							<option th:each=" mostrarSalas : ${listaSala}" th:text="${mostrarSalas.nombreSala}" th:value="${mostrarSalas.idSala}"> </option>
+						</select>
+						<input type="button" value="Agregar Fila" onclick="agregar_fila_mmm();">
+					</div>
+					
+					<div class='tras'>
+						<label>Sesion: </label>
+						<input th:field='*{sesiones}' type="time" />
+					</div>
+					
+					
+					<hr/>
+					<!-- <div class="collapse" id="collapse">
 						
 						<table class="table table-striped w-50" id="sesion" cellpadding="2" cellspacing="1" border="1">
 						
@@ -217,8 +252,10 @@
 						
 								<td><input type="button" value="Agregar Fila" onclick="agregar_fila();"></td> 
 							</tr>
+							
 								 
-						</table>
+						</table>  
+
 					</div>
 
 					<div class="form-group">

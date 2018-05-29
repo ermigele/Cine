@@ -28,19 +28,18 @@ public class Sala {
 	private List<Butaca> listaButacas;
 
 	@OneToMany
-	private List<Sesion> sesion;
+	private List<Sesion> listaSesiones;
 	
 	// Constructores
 
 	public Sala() {
 	}
 
-	public Sala(long idSala, String nombreSala, List<Butaca> listaButacas, List<Sesion> sesion, Cine cine) {
-		super();
+	public Sala(long idSala, String nombreSala, List<Butaca> listaButacas, List<Sesion> listaSesiones, Cine cine) {
 		this.idSala = idSala;
 		this.nombreSala = nombreSala;
 		this.listaButacas = listaButacas;
-		this.sesion = sesion;
+		this.listaSesiones = listaSesiones;
 		this.cine = cine;
 	}
 
@@ -71,12 +70,14 @@ public class Sala {
 		this.nombreSala = nombreSala;
 	}
 
-	public List<Sesion> getSesion() {
-		return sesion;
+
+
+	public List<Sesion> getListaSesiones() {
+		return listaSesiones;
 	}
 
-	public void setSesion(List<Sesion> sesion) {
-		this.sesion = sesion;
+	public void setListaSesiones(List<Sesion> listaSesiones) {
+		this.listaSesiones = listaSesiones;
 	}
 
 	public Cine getCine() {
@@ -87,7 +88,12 @@ public class Sala {
 		this.cine = cine;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Sala [idSala=" + idSala + ", nombreSala=" + nombreSala + ", cine=" + cine + ", listaButacas="
+				+ listaButacas + ", listaSesiones=" + listaSesiones + "]";
+	}
+	
 	/*
 	//metodo Helper   Añadir
 	public Sala addButaca(Butaca b) {  

@@ -1,5 +1,6 @@
 package com.salesianostriana.proyectotaquillacine.controller;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.salesianostriana.proyectotaquillacine.formbean.NuevaPelicula;
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
-import com.salesianostriana.proyectotaquillacine.model.Sesion;
 import com.salesianostriana.proyectotaquillacine.service.PeliculaService;
 import com.salesianostriana.proyectotaquillacine.service.SalaService;
 
@@ -61,33 +61,39 @@ public class PeliculaController {
 		Iterable<Sala> listaSala = salaService.findAll();  //Recogo la sala
 		model.addAttribute("listaSala", listaSala);					  //añado la sala para mostrar	
 		
-		/* Creamos un array para los iconos de las imagenes que van junto al radiobuttons
-		String[] iconoEdad = new String [] {"../../static/image/A.ico", "../../static/image/7.ico", "../../static/image/12.ico", "../../static/image/16.ico", "../../static/image/18.ico" };
-		model.addAttribute("iconoEdad", iconoEdad);
-		*/
 		
 		return "/admin/formularioPelicula";
 	}
 	
 	@PostMapping ( "/addPelicula" )
-	public String submit (@ModelAttribute("FormPelicula")NuevaPelicula nuevaPelicula, Pelicula pelicula, Sala sala,
+	public String submit (
+			@ModelAttribute("FormPelicula")NuevaPelicula nuevaPelicula, 
+			Pelicula pelicula, 
 			@RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model ) {
 		
-		ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
-		Sesion sesion1 = new Sesion();
 		
-		sesiones.add(sesion1);
 		
-		sala.setSesion(nuevaPelicula.getNuevaSala());
 		
+		System.out.println(nuevaPelicula.toString());
+		System.out.println(nuevaPelicula.getNuevaSala().toString());
+		
+		for(String sesion : nuevaPelicula.getSesiones() ) {
+		System.out.println("Sesiones: "+sesion);
+			
+		}
+		
+		//sala.setListaSesiones(listaSesiones);
+		
+		/*
 		salaService.save(sala);
 		
 		pelicula.setSala(sala);
 			
 		peliculaService.save(pelicula);
-	
+		*/
 		
-		if (peliculaService.saveAndUpload(pelicula, file)) {
+		//if (peliculaService.saveAndUpload(pelicula, file)) {
+		if (false) {
 			// Éxito en la subida
 			return "redirect:/admin/index";
 		} else {
