@@ -1,7 +1,9 @@
 package com.salesianostriana.proyectotaquillacine.formbean;
 
-import java.time.LocalTime;
 import java.util.Date;
+
+import com.salesianostriana.proyectotaquillacine.model.Sala;
+
 
 public class NuevaPelicula {
 
@@ -14,27 +16,27 @@ public class NuevaPelicula {
 	private int duracion;
 	private String enlace;  // -PELICULA
 	
-	private String nombreSala; //CLASE SALA
-	private LocalTime horaSesion; //CLASE SESION
+	private Sala nuevaSala; //CLASE SALA
+	
+	//CLASE SESION
 	
 	
 //CONSTRUCTORES	
 	
 	public NuevaPelicula () { }
 	
-	
 	public NuevaPelicula(String titulo, String director, String genero, String edad, Date estreno, int duracion,
-			String enlace, String nombreSala, LocalTime horaSesion) {
-		this.titulo = titulo;
-		this.director = director;
-		this.genero = genero;
-		this.edad = edad;
-		this.estreno = estreno;
-		this.duracion = duracion;
-		this.enlace = enlace;
-		this.nombreSala = nombreSala;
-		this.horaSesion = horaSesion;
+		String enlace, Sala nuevaSala) {
+	this.titulo = titulo;
+	this.director = director;
+	this.genero = genero;
+	this.edad = edad;
+	this.estreno = estreno;
+	this.duracion = duracion;
+	this.enlace = enlace;
+	this.nuevaSala = nuevaSala;
 	}
+
 
 //GETTERS & SETTERS
 	
@@ -107,105 +109,21 @@ public class NuevaPelicula {
 		this.enlace = enlace;
 	}
 
-
-	public String getNombreSala() {
-		return nombreSala;
+	public Sala getNuevaSala() {
+		return nuevaSala;
 	}
 
-
-	public void setNombreSala(String nombreSala) {
-		this.nombreSala = nombreSala;
+	public void setNuevaSala(Sala nuevaSala) {
+		this.nuevaSala = nuevaSala;
 	}
-
-
-	public LocalTime getHoraSesion() {
-		return horaSesion;
-	}
-
-
-	public void setHoraSesion(LocalTime horaSesion) {
-		this.horaSesion = horaSesion;
-	}
-
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((director == null) ? 0 : director.hashCode());
-		result = prime * result + duracion;
-		result = prime * result + ((edad == null) ? 0 : edad.hashCode());
-		result = prime * result + ((enlace == null) ? 0 : enlace.hashCode());
-		result = prime * result + ((estreno == null) ? 0 : estreno.hashCode());
-		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
-		result = prime * result + ((horaSesion == null) ? 0 : horaSesion.hashCode());
-		result = prime * result + ((nombreSala == null) ? 0 : nombreSala.hashCode());
-		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		NuevaPelicula other = (NuevaPelicula) obj;
-		if (director == null) {
-			if (other.director != null)
-				return false;
-		} else if (!director.equals(other.director))
-			return false;
-		if (duracion != other.duracion)
-			return false;
-		if (edad == null) {
-			if (other.edad != null)
-				return false;
-		} else if (!edad.equals(other.edad))
-			return false;
-		if (enlace == null) {
-			if (other.enlace != null)
-				return false;
-		} else if (!enlace.equals(other.enlace))
-			return false;
-		if (estreno == null) {
-			if (other.estreno != null)
-				return false;
-		} else if (!estreno.equals(other.estreno))
-			return false;
-		if (genero == null) {
-			if (other.genero != null)
-				return false;
-		} else if (!genero.equals(other.genero))
-			return false;
-		if (horaSesion == null) {
-			if (other.horaSesion != null)
-				return false;
-		} else if (!horaSesion.equals(other.horaSesion))
-			return false;
-		if (nombreSala == null) {
-			if (other.nombreSala != null)
-				return false;
-		} else if (!nombreSala.equals(other.nombreSala))
-			return false;
-		if (titulo == null) {
-			if (other.titulo != null)
-				return false;
-		} else if (!titulo.equals(other.titulo))
-			return false;
-		return true;
-	}
-
 
 	@Override
 	public String toString() {
 		return "NuevaPelicula [titulo=" + titulo + ", director=" + director + ", genero=" + genero + ", edad=" + edad
-				+ ", estreno=" + estreno + ", duracion=" + duracion + ", enlace=" + enlace + ", nombreSala="
-				+ nombreSala + ", horaSesion=" + horaSesion + "]";
+				+ ", estreno=" + estreno + ", duracion=" + duracion + ", enlace=" + enlace + ", nuevaSala=" + nuevaSala
+				+ "]";
 	}
+
 
 	
 }

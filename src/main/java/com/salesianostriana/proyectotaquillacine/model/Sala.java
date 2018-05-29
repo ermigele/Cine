@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //Clase POJO normal
@@ -20,6 +21,9 @@ public class Sala {
 	private long idSala;
 	private String nombreSala;
 
+	@OneToOne
+	private Cine cine;
+	
 	@OneToMany
 	private List<Butaca> listaButacas;
 
@@ -31,12 +35,13 @@ public class Sala {
 	public Sala() {
 	}
 
-	public Sala(long idSala, String nombreSala, List<Butaca> listaButacas, List<Sesion> sesion) {
+	public Sala(long idSala, String nombreSala, List<Butaca> listaButacas, List<Sesion> sesion, Cine cine) {
 		super();
 		this.idSala = idSala;
 		this.nombreSala = nombreSala;
 		this.listaButacas = listaButacas;
 		this.sesion = sesion;
+		this.cine = cine;
 	}
 
 
@@ -74,7 +79,14 @@ public class Sala {
 		this.sesion = sesion;
 	}
 
-	
+	public Cine getCine() {
+		return cine;
+	}
+
+	public void setCine(Cine cine) {
+		this.cine = cine;
+	}
+
 
 	/*
 	//metodo Helper   Añadir

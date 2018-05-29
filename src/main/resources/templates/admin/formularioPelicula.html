@@ -11,16 +11,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- DataPicker -->
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.3/themes/flick/jquery-ui.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/flick/jquery-ui.min.css">
 <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-<!-- DurationPicker -->
+<!-- Timesetter -->
 
-<link th:href="@{/css/duration-picker.css}" rel="stylesheet">
+<link th:href="@{/css/jquery.timesetter.css}" rel="stylesheet">
 <script src="../../static/js/code.jquery.com/jquery.min.js"></script>
-<script src="../../static/js/duration-picker.js"></script>
+<script src="../../static/js/jquery.timesetter.js"></script>
+
 
 
 <title>Formulario Pelicula</title>
@@ -43,9 +43,8 @@
 	rel="stylesheet">
 
 <!-- Material Design Bootstrap -->
-<link th:href="@{/css/mdb.min.css}" rel="stylesheet">
-
-<link rel="stylesheet" th:href="@{/css/style.css}">
+<link th:href="@{~/css/mdb.min.css}" rel="stylesheet">
+<link rel="stylesheet" th:href="@{~/css/style.css}">
 
 
 </head>
@@ -56,19 +55,19 @@
 		<form th:object="${nuevaPelicula}" role="form" enctype="multipart/form-data" method="POST"
 			th:action="@{/addPelicula}">
 
-			
 
 			<!-- Grupo Columna -->
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-6"> <!-- columna 1 -->
 						<h1>Formulario de Pelicula</h1>
-						<img th:src="@{/image/peliculas/metropolis.jpg}" width="700"/>
+						<img th:src="@{/image/peliculas/metropolis.jpg}" width="500"/>
 				<hr>
 
 				</div>  <!--Imagen-->
-				<div class="col-md-4">   <!--Formulario-->
+
+				<div class="col-md-3">   <!--Columna 2-->
 					
-					<br>
+				<br>
 					
 					<div class="form-group"> <!-- TITULO -->
 						<label for="titulo">Titulo </label> 
@@ -88,6 +87,32 @@
 						</select>
 					</div>
 
+
+					<div id="datepicker"></div> <!-- Fecha de estreno -->
+					<div id="datos">
+					<br> <label for='fecha'>Fecha de estreno:</label>
+							<!-- Campo de texto que recibira el valor seleccionado en el datepicker 
+							le he puesto el atributo readonly para no poder escribir directamente -->
+							<input th:field="*{estreno}" type='text' name='fecha' id='fecha'
+								readonly />
+				
+					</div>						
+
+		<br>		
+					<div class="form-check"> <!-- RADIOBUTTON -->
+					<label for="edad">Clasificación por edades</label>
+							<ul>
+								<li th:each="tiposEdad : ${listaEdad}">
+								<input type="radio" th:field="*{edad}" th:value="${tiposEdad}" />   
+									<label th:for="${#ids.prev('edad')}" th:text="${tiposEdad}" >Tipos de edad</label>
+																</ul>
+					</div>
+					
+					
+					
+				</div>		
+				<div class="col-md-3"> <!--Columna 3 -->
+
 					<div class="form-row align-items-center"> <!-- POSTER -->
 						<label class="mr-sm-2">Poster</label>
 						<div class="input-group mb-3">
@@ -98,29 +123,15 @@
 								<input id="file" name="file" class="input-file" type="file" />
 								<label class="custom-file-label" for="poster">Imagen publicitaria...</label>
 							</div>
+						</div>	
 					</div>
 
-					<div class="form-check"> <!-- RADIOBUTTON -->
-					<label for="edad">Clasificación por edades</label>
-							<ul>
-								<li th:each="tiposEdad : ${listaEdad}">
-								<input type="radio" th:field="*{edad}" th:value="${tiposEdad}" />   
-									<label th:for="${#ids.prev('edad')}" th:text="${tiposEdad}" >Tipos de edad</label>
-																</ul>
-						</div>
-	
-					</div>
 
-							
-					
-					<div id="datepicker"></div> <!-- Fecha de estreno -->
-						<div id="datos">
-						<br> <label for='fecha'>Fecha de estreno:</label>
-								<!-- Campo de texto que recibira el valor seleccionado en el datepicker 
-								le he puesto el atributo readonly para no poder escribir directamente -->
-								<input th:field="*{estreno}" type='text' name='fecha' id='fecha'
-									readonly />
-						</div>
+					<div class="form-group"> <!-- DURACION -->
+						<label for="director">Duracion </label> 
+						<input th:field="*{duracion}" type="number" id="director" placeholder="Minutos" class="form-control">		
+					</div>
+						
 						<script>
 								$("#datepicker").datepicker(
 										{
@@ -150,7 +161,6 @@
 											}
 										});
 						</script>
-
 						<script>   // SESIONES 
 									function agregar_fila() {
 									
@@ -161,7 +171,6 @@
 										var celda1 = fila.insertCell(0);
 										var celda2 = fila.insertCell(1);
 										var celda3 = fila.insertCell(2);
-										var celda4 = fila.insertCell(3);
 										
 										var campo1 = document.createElement("input");
 											campo1.type = "text";
@@ -170,12 +179,11 @@
 										var campo2 = document.createElement("input");
 											campo2.type = "time";
 											campo2.setAttribute("onclick", "vaciar_campo(this);");
-										var campo3 = campo2.cloneNode(true);
 										
-										var campo4 = document.createElement("input");
-											campo4.type = "button";
-											campo4.value = "Borrar Fila";
-											campo4.onclick = function() {
+										var campo3 = document.createElement("input");
+											campo3.type = "button";
+											campo3.value = "Borrar Fila";
+											campo3.onclick = function() {
 											
 												var fila = this.parentNode.parentNode;
 												var tbody = tabla.getElementsByTagName("tbody")[0];
@@ -187,7 +195,6 @@
 										celda1.appendChild(campo1);
 										celda2.appendChild(campo2);
 										celda3.appendChild(campo3);
-										celda4.appendChild(campo4);
 									
 									}
 							 
@@ -196,16 +203,17 @@
 								}
 							
 						</script>
-					
+
+				
 					<a class="btn btn-primary align-items-center" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
 							Sesiones
 					</a>
 					<div class="collapse" id="collapse">
 						
-						<table class="table table-striped" id="sesion" cellpadding="2" cellspacing="1" border="1">
+						<table class="table table-striped w-50" id="sesion" cellpadding="2" cellspacing="1" border="1">
 						
 							<tr>
-								<th>Nº Sala</th><th>Hora inicio</th><th>Hora fin</th>
+								<th>Nº Sala</th><th>Hora inicio</th>
 						
 								<td><input type="button" value="Agregar Fila" onclick="agregar_fila();"></td> 
 							</tr>
@@ -214,11 +222,9 @@
 					</div>
 
 					<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-default">Guardar</button>
-							</div>
+						<button type="submit" class="btn btn-default">Guardar</button>
 					</div>
-				
+				</div>
 			</div>
 		</form>
 	</div>

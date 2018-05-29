@@ -70,18 +70,16 @@ public class PeliculaController {
 	}
 	
 	@PostMapping ( "/addPelicula" )
-	public String submit (@ModelAttribute("nuevaPelicula") Pelicula pelicula, 
-			//@ModelAttribute("listaSesiones") ArrayList<Sesion> sesiones, 
+	public String submit (@ModelAttribute("FormPelicula")NuevaPelicula nuevaPelicula, Pelicula pelicula, Sala sala,
 			@RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model ) {
 		
-	
 		ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
 		Sesion sesion1 = new Sesion();
 		
 		sesiones.add(sesion1);
 		
-		Sala sala = new Sala();
-		sala.setSesion(sesiones);
+		sala.setSesion(nuevaPelicula.getNuevaSala());
+		
 		salaService.save(sala);
 		
 		pelicula.setSala(sala);
