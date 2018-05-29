@@ -84,7 +84,7 @@
 						<label for="genero">Genero</label>
 						<select th:field="*{genero}" class="custom-select mr-sm-2" id="genero">
 							<option selected="selected" value="">Seleccione un genero</option>
-							<option th:each=" grupoGenero : ${listaGenero}" th:text="${grupoGenero}" th:value="${grupoGenero}">Acción</option>
+							<option th:each=" grupoGenero : ${listaGenero}" th:text="${grupoGenero}" th:value="${grupoGenero}"></option>
 						</select>
 					</div>
 
@@ -101,17 +101,12 @@
 					</div>
 
 					<div class="form-check"> <!-- RADIOBUTTON -->
-						<label for="edad">Clasificación por edades</label>
+					<label for="edad">Clasificación por edades</label>
 							<ul>
-								<li th:each="tiposEdad : ${edad}">
-								<input type="radio" id="edad" th:field="*{edad}" th:value="${tiposEdad}" />   
-									<label th:for="${#ids.prev('edad')}" th:text="#{${'seedstarter.edad.' + tiposEdad}}" >Tipos de edad</label>
-									<!-- Esto nos  da el id del elemento previo pintado, porque estamos 
-								pintando el radio antes que el label. Si fuese al revés, pintar antes el label que el radio
-								usaríamos el método	next que también existe. Para ese radio, pintamos la etiqueta que sea
-								con el nombre guardado en el array de tipos normalmente.
-								En resumen, sirve para que al pinchar en el label, también se marque el radio previo-->
-							</ul>
+								<li th:each="tiposEdad : ${listaEdad}">
+								<input type="radio" th:field="*{edad}" th:value="${tiposEdad}" />   
+									<label th:for="${#ids.prev('edad')}" th:text="${tiposEdad}" >Tipos de edad</label>
+																</ul>
 						</div>
 	
 					</div>
@@ -155,6 +150,7 @@
 											}
 										});
 						</script>
+
 						<script>   // SESIONES 
 									function agregar_fila() {
 									
@@ -215,7 +211,13 @@
 							</tr>
 								 
 						</table>
-					</div>	
+					</div>
+
+					<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-default">Guardar</button>
+							</div>
+					</div>
 				
 			</div>
 		</form>

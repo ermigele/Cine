@@ -23,16 +23,22 @@ public class Sala {
 	@OneToMany
 	private List<Butaca> listaButacas;
 
+	@OneToMany
+	private List<Sesion> sesion;
+	
 	// Constructores
 
 	public Sala() {
 	}
 
-	public Sala(String nombreSala, List<Butaca> listaButacas) {
-
+	public Sala(long idSala, String nombreSala, List<Butaca> listaButacas, List<Sesion> sesion) {
+		super();
+		this.idSala = idSala;
 		this.nombreSala = nombreSala;
 		this.listaButacas = listaButacas;
+		this.sesion = sesion;
 	}
+
 
 	// Getters & Setters
 
@@ -59,6 +65,16 @@ public class Sala {
 	public void setNombreSala(String nombreSala) {
 		this.nombreSala = nombreSala;
 	}
+
+	public List<Sesion> getSesion() {
+		return sesion;
+	}
+
+	public void setSesion(List<Sesion> sesion) {
+		this.sesion = sesion;
+	}
+
+	
 
 	/*
 	//metodo Helper   Añadir

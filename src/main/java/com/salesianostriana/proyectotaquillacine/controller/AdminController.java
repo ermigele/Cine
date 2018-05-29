@@ -26,17 +26,17 @@ public class AdminController {
 		return "admin/index";
 	}
 	
-	@GetMapping({"/areaContacto"})
+	@GetMapping({"/listaUsuarios"})
 	public String mostrarUsuarios(Model model) {
 		
 		model.addAttribute("usuarios", usuarioService.findAll());
-		return "admin/areaContacto";
+		return "admin/listaUsuarios";
 	}
 	
 	@GetMapping({"/borrar/{id}"})
 	public String eliminarUsuarios(@PathVariable("id") long id) {
 		usuarioService.delete(usuarioService.findOne(id));
-		return "redirect:/admin/areaContacto";
+		return "redirect:/admin/listaUsuarios";
 	}
 	
 	@GetMapping({"/editar/{id}"})

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,19 +26,16 @@ public class Sesion {
 	@ManyToOne
 	private Pelicula pelicula;
 	
-	@ManyToOne
-	private Sala sala;
 	
 //Constructores	
 	
 	public Sesion() { }
 	
-	public Sesion(long idSesion, LocalTime horaSesion, Date fecha, Pelicula pelicula, Sala sala) {
+	public Sesion(long idSesion, LocalTime horaSesion, Date fecha, Pelicula pelicula) {
 		this.idSesion = idSesion;
 		this.horaSesion = horaSesion;
 		this.fecha = fecha;
 		this.pelicula = pelicula;
-		this.sala = sala;
 	}
 
 //Getters & Setters	
@@ -81,20 +79,12 @@ public class Sesion {
 	}
 
 
-	public Sala getSala() {
-		return sala;
-	}
-
-
-	public void setSala(Sala sala) {
-		this.sala = sala;
-	}
 	
 
 	@Override
 	public String toString() {
 		return "Sesion [idSesion=" + idSesion + ", horaSesion=" + horaSesion + ", fecha=" + fecha + ", pelicula="
-				+ pelicula + ", sala=" + sala + "]";
+				+ pelicula + "]";
 	}
 
 	

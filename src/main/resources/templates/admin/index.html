@@ -39,10 +39,15 @@
         <ul class="navbar-nav ml-auto">
           <a class="nav-link" href="admin/cartelera.html" th:href="@{/admin/listadoPeliculas}">Cartelera</a>
       </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="admin/areaContacto.html"  th:href="@{/admin/areaContacto}" ></a>
-          </li>
+        <ul clas"nav-item" >
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">Area Cliente</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="admin/listaUsuarios.html"  th:href="@{/admin/listaUsuarios}" >Lista de usuarios</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="../login.html" th:href="@{/cerrarSesion}">Cerrar sesión</a>    
+            </div>
+          </li>        
         </ul>
       </div>
     </div>
