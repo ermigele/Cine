@@ -31,7 +31,7 @@
 
      <!-- Navigation -->
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#"> <img th:src="@{/image/logotipo.png}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,12 +39,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-              <a class="nav-link" href="admin/formularioSala.html" th:href="@{/nuevaSala}">Añadir Salas</a>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="admin/formularioPelicula.html"  th:href="@{/nuevaPelicula}">Añadir peliculas</a>
-            </li>
+              <a class="nav-link" href="admin/formularioSala.html" th:href="@{/listaSalas}">Salas</a>
           </ul>
           <ul class="navbar-nav ml-auto">
             <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
@@ -75,7 +70,7 @@
       <div class="row">
           <div class="col-lg-6 portfolio-item" th:each=" i: ${peliculas}">
             <div class="card h-100">
-              <a th:href="@{/admin/pelicula/{id}(id=${i.id})}"><img class="card-img-top" th:src="${i.enlace}" alt=""></a>
+              <a th:href="@{/pelicula/{idPelicula}(idPelicula=${i.idPelicula})}"><img class="card-img-top" th:src="${i.enlace}" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title" th:text="${i.titulo}">
                     Titulo
@@ -131,4 +126,7 @@
 
   </body>
 
+  <script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js}" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js}" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </html>

@@ -21,7 +21,7 @@ public class SesionService {
 	}
 	
 	public Iterable<Sesion> findBySesionDePelicula(Pelicula pelicula) {
-		return repositorio.findBySalaDePelicula(pelicula);
+		return repositorio.findBySesionDePelicula(pelicula);
 	}
 	
 	public Sesion findOne(Long idSesion) {

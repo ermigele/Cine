@@ -20,11 +20,16 @@ public class EntradaController {
 	@Autowired
 	private SesionService sesionService;
 	@Autowired
-	private SalaService salaService;
-	@Autowired ButacaService butacaService;
+	ButacaService butacaService;
 	
 	@GetMapping( "/nuevaEntrada" )
 	public String formularioTicket(Model model) {
+		Iterable <Pelicula> listaPeliculas = peliculaService.findAll();
+		model.addAttribute("peliculas", listaPeliculas);  
+		
+		
+		
+		
 		model.addAttribute("butacas", butacaService.findAll());
 		return "/admin/compraEntrada";
 	}

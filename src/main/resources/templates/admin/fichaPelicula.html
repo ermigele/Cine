@@ -71,20 +71,20 @@
       <!-- Portfolio Item Row -->
       <div class="row">
 
-        <div class="col-md-8" th:each=" i: ${peliculas}">
-          <img class="img-fluid" th:src="${i.enlace}" alt="">
+        <div class="col-md-8" >
+          <img class="img-fluid" th:src="${detallePelicula.enlace}" alt="">
         </div>
 
         <div class="col-md-4">
-          <h3 class="my-3" th:text="${i.titulo}">Titulo</h3>
+          <h3 class="my-3" th:text="${detallePelicula.titulo}">Titulo</h3>
           <p>Los superhéroes se alían para vencer al poderoso Thanos, el peor enemigo al que se han enfrentado. Si Thanos logra reunir las seis gemas del infinito: poder, tiempo, alma, realidad, mente y espacio, nadie podrá detenerlo.</p>
           <h3 class="my-3">Descripción</h3>
           <ul>
-            <li th:text="${i.director}">director</li>
-            <li th:text="${i.genero}">genero</li>
-            <li th:text="${i.edad}">edad</li>
-            <li th:text="${i.duracion}">duracion</li>
-            <li th:text="${i.estreno}">estreno</li>
+            <li th:text="${detallePelicula.director}">director</li>
+            <li th:text="${detallePelicula.genero}">genero</li>
+            <li th:text="${detallePelicula.edad}">edad</li>
+            <li th:text="${detallePelicula.duracion}">duracion</li>
+            <li th:text="${detallePelicula.estreno}">estreno</li>
           </ul>
         </div>
 
@@ -96,9 +96,9 @@
 
       <div class="row">
 
-        <div class="col-md-3 col-sm-6 mb-4">
-          <a th:href="#">
-            <span th:text=""></span>
+        <div class="col-md-3 col-sm-6 mb-4" th:each=" i : ${detallePelicula.getSesion()}">
+       <!--   <a th:href="#"> -->
+            <span th:text="${i.getHoraSesion()}"></span>
           </a>
         </div>
 

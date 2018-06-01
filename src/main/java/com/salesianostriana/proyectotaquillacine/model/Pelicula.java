@@ -163,4 +163,6 @@ public class Pelicula {
 				+ ", sala=" + sala + ", sesion=" + sesion + "]";
 	}
 
+	
+
 }

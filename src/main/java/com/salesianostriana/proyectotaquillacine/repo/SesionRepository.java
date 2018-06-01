@@ -18,6 +18,6 @@ public interface SesionRepository extends JpaRepository<Sesion, Long> {
 	//public Sesion findSesionDePelicula(Pelicula idPelicula);
 	
 	@Query ("SELECT u FROM Sesion u WHERE pelicula = ?1 ")
-	public Iterable<Sesion> findBySalaDePelicula(Pelicula pelicula);
+	public Iterable<Sesion> findBySesionDePelicula(Pelicula pelicula);
 }
 

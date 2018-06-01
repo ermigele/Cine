@@ -46,23 +46,13 @@ public class PeliculaController {
 		
 		Iterable<Pelicula> listPeliculas = peliculaService.findAll();
 		
-		//model.addAttribute("peliculas", listPeliculas);
-		
-		
-		
-		
-		//model.addAttribute("sesionPelicula", listSesiones);
-		
-		
 		List<NuevaPelicula> listPes = new ArrayList<NuevaPelicula>();
 		
 		for (Pelicula element : listPeliculas) {
-			NuevaPelicula newObj = new NuevaPelicula();
+			NuevaPelicula newPeli = new NuevaPelicula();
 			
 		    
-			newObj.setDirector(element.getDirector());
-			//titulo
-			//Eida
+			newPeli.setDirector(element.getDirector());
 			
 			
 			List<String> sesiones = new ArrayList<String>();
@@ -73,28 +63,27 @@ public class PeliculaController {
 				sesiones.add(tiempo);
 			}
 			
-			newObj.setSesiones(sesiones);
+			newPeli.setSesiones(sesiones);
 			
-			listPes.add(newObj);
+			listPes.add(newPeli);
 		}
 		
 		model.addAttribute("peliculas", listPes);
-		
 		
 		
 		return "admin/listaPeliculas";
 	}
 	
 	
-	@GetMapping( "/pelicula/{id}" )
+	@GetMapping( "/pelicula/{idPelicula}" )
 	public String detallePelicula(
-			@PathVariable("id") long id,
-			//@PathVariable("idPelicula") long idPelicula, 
+			//@PathVariable("id") long id,
+			@PathVariable("idPelicula") long idPelicula, 
 			Pelicula pelicula, Model model){
 		
-			model.addAttribute("detallePelicula", peliculaService.findOne(id));
+			model.addAttribute("detallePelicula", peliculaService.findOne(idPelicula));
 			
-			return "admin/cartelera/fichaPelicula";
+			return "admin/fichaPelicula";
 		
 	}
 		

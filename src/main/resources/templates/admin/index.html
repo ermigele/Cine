@@ -61,22 +61,22 @@
     <div class="row text-center">
 
       <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card" th:each=" i: ${peliculas}">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+        <div class="card">
+          <img class="card-img-top" th:src="@{~/image/ticket.jpg}" alt="50">
           <div class="card-body">
-            <h4 class="card-title" th:text="${i.titulo}">Titulo</h4>
-            <p class="card-text" th:text="${i.genero}"></p>
-            <p class="card-text" th:text="${i.edad}"></p>
+            <h4 class="card-title">Vender entrada</h4>
+            <p class="card-text"></p>
+            <p class="card-text"></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Ver ficha pelicula</a>
+            <ath:href="@{/nuevoTicket}" class="btn btn-primary">Click aqui</a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/iconoPelicula.jpg}" alt="50">
+          <img class="card-img-top" th:src="@{~/image/iconoPelicula.jpg}" alt="40">
           <div class="card-body">
             <h4 class="card-title">Modificar Peliculas</h4>
             <p class="card-text"></p>
@@ -126,4 +126,7 @@
     <!-- /.container -->
   </footer>
 
+<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js}" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js}" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </html>
