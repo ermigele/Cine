@@ -1,6 +1,5 @@
 package com.salesianostriana.proyectotaquillacine.formbean;
 
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -27,13 +26,7 @@ public class NuevaPelicula {
 	
 //CONSTRUCTORES	
 	
-	public List<String> getSesiones() {
-		return sesiones;
-	}
-
-	public void setSesiones(List<String> sesiones) {
-		this.sesiones = sesiones;
-	}
+	
 
 	public NuevaPelicula () { }
 	
@@ -129,6 +122,14 @@ public class NuevaPelicula {
 		this.nuevaSala = nuevaSala;
 	}
 
+	public List<String> getSesiones() {
+		return sesiones;
+	}
+
+	public void setSesiones(List<String> sesiones) {
+		this.sesiones = sesiones;
+	}
+	
 	@Override
 	public String toString() {
 		

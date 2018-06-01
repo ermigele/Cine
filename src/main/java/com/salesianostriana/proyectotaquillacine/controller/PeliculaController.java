@@ -2,23 +2,24 @@ package com.salesianostriana.proyectotaquillacine.controller;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.salesianostriana.proyectotaquillacine.formbean.NuevaPelicula;
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
+import com.salesianostriana.proyectotaquillacine.model.Sesion;
 import com.salesianostriana.proyectotaquillacine.service.PeliculaService;
 import com.salesianostriana.proyectotaquillacine.service.SalaService;
+import com.salesianostriana.proyectotaquillacine.service.SesionService;
 
 @Controller
 public class PeliculaController {
@@ -27,23 +28,77 @@ public class PeliculaController {
 	private PeliculaService peliculaService;
 	@Autowired
 	private SalaService salaService;
+	@Autowired
+	private SesionService sesionService;
+	
+	@GetMapping("/listadoPeliculas")
+	public String listadoPeliculas(Pelicula pelicula, Model model, BindingResult bindingResult ) {
+		
+		model.addAttribute("peliculas", peliculaService.findAll());
+		//model.addAttribute(sesionService.findAll(pelicula.));
+		return "admin/cartelera";
+	}
+	
+
+	@GetMapping("/modificarPeliculas")
+	public String modificarPeliculas(Pelicula pelicula, Model model, BindingResult bindingResult ) {
+		
+		
+		Iterable<Pelicula> listPeliculas = peliculaService.findAll();
+		
+		//model.addAttribute("peliculas", listPeliculas);
+		
+		
+		
+		
+		//model.addAttribute("sesionPelicula", listSesiones);
+		
+		
+		List<NuevaPelicula> listPes = new ArrayList<NuevaPelicula>();
+		
+		for (Pelicula element : listPeliculas) {
+			NuevaPelicula newObj = new NuevaPelicula();
+			
+		    
+			newObj.setDirector(element.getDirector());
+			//titulo
+			//Eida
+			
+			
+			List<String> sesiones = new ArrayList<String>();
+			Iterable<Sesion> listSesiones = sesionService.findBySesionDePelicula(element);
+			for (Sesion sesion : listSesiones) {
+				
+				String tiempo = sesion.getHoraSesion().toString();
+				sesiones.add(tiempo);
+			}
+			
+			newObj.setSesiones(sesiones);
+			
+			listPes.add(newObj);
+		}
+		
+		model.addAttribute("peliculas", listPes);
+		
+		
+		
+		return "admin/listaPeliculas";
+	}
 	
 	
 	@GetMapping( "/pelicula/{id}" )
-	public String detallePelicula(@PathVariable("idPelicula") long idPelicula, Pelicula pelicula, Model model){
+	public String detallePelicula(
+			@PathVariable("id") long id,
+			//@PathVariable("idPelicula") long idPelicula, 
+			Pelicula pelicula, Model model){
 		
-		Pelicula infoPelicula = peliculaService.findOne(idPelicula);
-	
-		if(infoPelicula != null) {
-			model.addAttribute("detallePelicula", infoPelicula);
-			return "detallePelicula";
-		}else {
-			//Tratamiento del error
-			return "Error";
-		}
+			model.addAttribute("detallePelicula", peliculaService.findOne(id));
+			
+			return "admin/cartelera/fichaPelicula";
 		
 	}
 		
+	
 	@GetMapping( "/nuevaPelicula" )
 	public String mostrarFormulario(Model model) {
 		
@@ -59,41 +114,49 @@ public class PeliculaController {
 		model.addAttribute("listaEdad", edad);
 		
 		Iterable<Sala> listaSala = salaService.findAll();  //Recogo la sala
-		model.addAttribute("listaSala", listaSala);					  //añado la sala para mostrar	
+		model.addAttribute("listaSala", listaSala);		  //añado la sala para mostrar	
 		
 		
 		return "/admin/formularioPelicula";
 	}
 	
 	@PostMapping ( "/addPelicula" )
-	public String submit (
-			@ModelAttribute("FormPelicula")NuevaPelicula nuevaPelicula, 
-			Pelicula pelicula, 
+	public String submit (NuevaPelicula nuevaPelicula, Pelicula pelicula, 
 			@RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model ) {
 		
 		
+		pelicula.setTitulo(nuevaPelicula.getTitulo());
+		pelicula.setDirector(nuevaPelicula.getDirector());
+		pelicula.setGenero(nuevaPelicula.getGenero());
+		pelicula.setEdad(nuevaPelicula.getEdad());
+		pelicula.setEstreno(nuevaPelicula.getEstreno());
+		pelicula.setDuracion(nuevaPelicula.getDuracion());
+		pelicula.setSala(nuevaPelicula.getNuevaSala());
 		
 		
-		System.out.println(nuevaPelicula.toString());
-		System.out.println(nuevaPelicula.getNuevaSala().toString());
+		System.out.println("Pelicula a guardar: "+pelicula.toString());
+		///AHORA GUARDAR PELICULA
+		peliculaService.save(pelicula);
+		
 		
 		for(String sesion : nuevaPelicula.getSesiones() ) {
-		System.out.println("Sesiones: "+sesion);
+			System.out.println("Sesiones: "+sesion);
 			
+
+			LocalTime nuevoTimeSesion = LocalTime.parse(sesion); //Recoge el bucle de las sesiones y lo parsea de String a LocalTime
+			
+			Sesion nuevaSesion = new Sesion();   //Instanciando Object Sesion
+			
+			nuevaSesion.setHoraSesion(nuevoTimeSesion);  //Cuando tienes el objeto en LocalTime le haces un Set a Sesion
+			
+			nuevaSesion.setSala(nuevaPelicula.getNuevaSala());  //Haces Set a la Sala
+			nuevaSesion.setPelicula(pelicula);                 //Haces Set a la Pelicula
+			
+			sesionService.save(nuevaSesion);
 		}
+
 		
-		//sala.setListaSesiones(listaSesiones);
-		
-		/*
-		salaService.save(sala);
-		
-		pelicula.setSala(sala);
-			
-		peliculaService.save(pelicula);
-		*/
-		
-		//if (peliculaService.saveAndUpload(pelicula, file)) {
-		if (false) {
+		if (peliculaService.saveAndUpload(pelicula, file)) {
 			// Éxito en la subida
 			return "redirect:/admin/index";
 		} else {
@@ -104,17 +167,17 @@ public class PeliculaController {
 	}
 	
 	
-	@GetMapping({"/borrar/{id}"})
-	public String eliminarPelicula(@PathVariable("id")long id) {
-		peliculaService.delete(peliculaService.findOne(id));
-		return "redirect:/admin/index";
+	@GetMapping({"/borrar/{idPelicula}"})
+	public String eliminarPelicula(@PathVariable("idPelicula")long idPelicula) {
+		peliculaService.delete(peliculaService.findOne(idPelicula));
+		return "redirect:/admin/listaPeliculas";
 		
 	}
 	
-	@GetMapping({"/editar/{id}"})
-	public String editarPelicula(@PathVariable("id") long id, Model model) {
-		model.addAttribute("nuevaPelicula", peliculaService.findOne(id));
-		peliculaService.edit(peliculaService.findOne(id));
+	@GetMapping({"/editar/{idPelicula}"})
+	public String editarPelicula(@PathVariable("idPelicula") long idPelicula, Model model) {
+		model.addAttribute("nuevaPelicula", peliculaService.findOne(idPelicula));
+		peliculaService.edit(peliculaService.findOne(idPelicula));
 		
 		return "/admin/formularioPelicula";
 	}

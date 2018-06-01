@@ -3,7 +3,9 @@ package com.salesianostriana.proyectotaquillacine.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
+
 import com.salesianostriana.proyectotaquillacine.repo.SalaRepository;
 
 @Service
@@ -15,7 +17,8 @@ public class SalaService {
 	public Iterable<Sala> findAll() {
 		return repositorio.findAll();
 	}
-		
+	
+	
 	public Sala findOne(Long idSala) {
 		return repositorio.findById(idSala).orElse(null);
 		//return repositorio.findById(idSala).orElse(null);
@@ -37,5 +40,7 @@ public class SalaService {
 			
 		return aBorrar;
 	}
+	
+	
 
 }

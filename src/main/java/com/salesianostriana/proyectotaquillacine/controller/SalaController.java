@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -72,4 +73,31 @@ public class SalaController {
 		return "redirect:/admin/index";
 	}
 
+	
+	@GetMapping({"/listaSalas"})
+	public String mostrarSalas(Model model) {
+		
+		model.addAttribute("salas", salaService.findAll());
+		return "admin/listaSalas";
+	}
+	
+	/*
+	@GetMapping({"/borrar/{id}"})
+	public String eliminarSala(@PathVariable("id") long id) {
+		salaService.delete(salaService.findOne(id));
+		return "redirect:/admin/listaSalas";
+	}
+	
+	*/
+	
+	/*
+	 * @GetMapping({"/editar/{id}"})
+
+	public String editarSala(@PathVariable("id") long id, Model model) {
+		model.addAttribute("nuevaSala", salaService.findOne(id));
+		salaService.edit(salaService.findOne(id));
+		return "admin/formularioSalas";
+	}
+	
+		 */
 }

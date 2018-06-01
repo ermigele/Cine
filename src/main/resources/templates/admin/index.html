@@ -11,7 +11,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Bootstrap core CSS -->
-  <link href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link th:href="@{/css/mdb.min.css}" rel="stylesheet">
 
@@ -29,15 +29,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-            <a class="nav-link" href="admin/formularioSala.html" th:href="@{/nuevaSala}">Añadir Salas</a>
+            <a class="nav-link" href="admin/formularioSala.html" th:href="@{/listaSalas}">Salas</a>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="admin/formularioPelicula.html"  th:href="@{/nuevaPelicula}">Añadir peliculas</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <a class="nav-link" href="admin/cartelera.html" th:href="@{/admin/listadoPeliculas}">Cartelera</a>
+          <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
@@ -59,47 +54,48 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-      <img th:src="@{/image/pantalla3.jpg}" width="1080" />
+      <img th:src="@{/image/peliculas/deadpool.jpg}" width="1080" />
     </header>
 
     <!-- Page Features -->
     <div class="row text-center">
 
       <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card">
+        <div class="card" th:each=" i: ${peliculas}">
           <img class="card-img-top" src="http://placehold.it/500x325" alt="">
           <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <h4 class="card-title" th:text="${i.titulo}">Titulo</h4>
+            <p class="card-text" th:text="${i.genero}"></p>
+            <p class="card-text" th:text="${i.edad}"></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
+            <a href="#" class="btn btn-primary">Ver ficha pelicula</a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <img class="card-img-top" th:src="@{~/image/iconoPelicula.jpg}" alt="50">
           <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
+            <h4 class="card-title">Modificar Peliculas</h4>
+            <p class="card-text"></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
+            <a th:href="@{/modificarPeliculas}" class="btn btn-primary"> Click aqui</a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <img class="card-img-top" th:src="@{~/image/iconoSala.jpg}" alt="50">
           <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <h4 class="card-title">Añadir sala</h4>
+            <p class="card-text"></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
+            <a th:href="@{/nuevaSala}" class="btn btn-primary">Click aqui</a>
           </div>
         </div>
       </div>

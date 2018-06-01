@@ -41,9 +41,8 @@ public class Pelicula {
 	public Pelicula () { }
 	
 
-	public Pelicula(long idPelicula, String titulo, String director, String genero, String edad, Date estreno, int duracion,
+	public Pelicula(String titulo, String director, String genero, String edad, Date estreno, int duracion,
 			String enlace, Sala sala, Set<Sesion> sesion) {
-		this.idPelicula = idPelicula;
 		this.titulo = titulo;
 		this.director = director;
 		this.genero = genero;

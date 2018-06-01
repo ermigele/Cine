@@ -30,6 +30,7 @@ public class Sala {
 	@OneToMany
 	private List<Sesion> listaSesiones;
 	
+	
 	// Constructores
 
 	public Sala() {

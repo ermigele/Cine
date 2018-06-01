@@ -18,33 +18,117 @@
    
    <!-- Nombre Página -->
     <title>Cartelera</title>
-</head>
-<body>
-    
 
-     <!-- Page Features -->
-     <div class="row text-center">
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="50">
-            <div class="card-body">
-              <h4 class="card-title">Titulo Pelicula</h4>
-              <p class="card-text">Descripcion</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Detalle pelicula</a>
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/2-col-portfolio.css}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+     <!-- Navigation -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"> <img th:src="@{/image/logotipo.png}"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+              <a class="nav-link" href="admin/formularioSala.html" th:href="@{/nuevaSala}">Añadir Salas</a>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="admin/formularioPelicula.html"  th:href="@{/nuevaPelicula}">Añadir peliculas</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-user"></i> Area cliente</span></a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-ins" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="admin/listaUsuarios.html"  th:href="@{/admin/listaUsuarios}" >Lista de usuarios</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../login.html" th:href="@{/cerrarSesion}">Cerrar sesión</a>    
+                  </div>
+                </div>
+            </li>
+          </ul>  
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Cartelera
+        <small>Las mejores peliculas a tu alcance</small>
+      </h1>
+
+      <!-- Project One -->
+      <div class="row">
+          <div class="col-lg-6 portfolio-item" th:each=" i: ${peliculas}">
+            <div class="card h-100">
+              <a th:href="@{/admin/pelicula/{id}(id=${i.id})}"><img class="card-img-top" th:src="${i.enlace}" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title" th:text="${i.titulo}">
+                    Titulo
+                </h4>
+                <h3 th:text="${i.genero}">genero</h3>
+                <p class="card-text" th:text="${i.edad}">edad</p>
+              </div>
             </div>
           </div>
-        </div>
-  
-    <!-- Footer -->
+      <!-- /.row -->
 
-    <footer class="py-5 bg-dark">
-        <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Ermigele </p>
-        </div>
-        <!-- /.container -->
-    </footer>
-</body>
+      <hr>
+
+      <!-- Pagination -->
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Ermigele </p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+  </body>
+
 </html>

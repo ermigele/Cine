@@ -25,8 +25,7 @@ public class LineaPedido {
 	
 	public LineaPedido() { }
 	
-	public LineaPedido(long id, int cantidad, Entrada entrada) {
-		this.id = id;
+	public LineaPedido(int cantidad, Entrada entrada) {
 		this.cantidad = cantidad;
 		this.entrada = entrada;
 	}

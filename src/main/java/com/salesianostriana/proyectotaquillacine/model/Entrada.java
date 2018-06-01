@@ -49,6 +49,22 @@ public class Entrada {
 	}
 
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public LineaPedido getLineaPedido() {
+		return lineaPedido;
+	}
+
+	public void setLineaPedido(LineaPedido lineaPedido) {
+		this.lineaPedido = lineaPedido;
+	}
+
 	public void setSesion(Sesion sesion) {
 		this.sesion = sesion;
 	}

@@ -25,7 +25,7 @@ public class Pedido {
 	private List<LineaPedido> LineaPedido;
 
 	
-//Constructores	
+//CONSTRUCTORES
 	public Pedido() { }
 	
 	

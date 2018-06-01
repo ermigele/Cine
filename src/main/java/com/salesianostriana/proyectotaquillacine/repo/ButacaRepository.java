@@ -2,10 +2,7 @@ package com.salesianostriana.proyectotaquillacine.repo;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import com.salesianostriana.proyectotaquillacine.formbean.NuevaSala;
 import com.salesianostriana.proyectotaquillacine.model.Butaca;
 
 @Repository
