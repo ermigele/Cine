@@ -68,6 +68,8 @@ public class SalaController {
 
 				butacaService.save(newButaca); // Guardo las butacas
 			}
+			
+			
 		}
 
 		return "redirect:/admin/index";

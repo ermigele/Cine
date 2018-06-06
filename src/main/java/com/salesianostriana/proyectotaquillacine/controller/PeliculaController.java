@@ -2,7 +2,9 @@ package com.salesianostriana.proyectotaquillacine.controller;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,7 +83,13 @@ public class PeliculaController {
 			@PathVariable("idPelicula") long idPelicula, 
 			Pelicula pelicula, Model model){
 		
-			model.addAttribute("detallePelicula", peliculaService.findOne(idPelicula));
+			Pelicula peli = peliculaService.findOne(idPelicula);
+		
+			model.addAttribute("detallePelicula", peli);
+			
+			
+			List<Sesion> listSesions = new ArrayList<Sesion>();
+			
 			
 			return "admin/fichaPelicula";
 		
@@ -127,6 +135,7 @@ public class PeliculaController {
 		///AHORA GUARDAR PELICULA
 		peliculaService.save(pelicula);
 		
+		List<Sesion> listSesiones = new ArrayList<Sesion>();
 		
 		for(String sesion : nuevaPelicula.getSesiones() ) {
 			System.out.println("Sesiones: "+sesion);
@@ -142,7 +151,15 @@ public class PeliculaController {
 			nuevaSesion.setPelicula(pelicula);                 //Haces Set a la Pelicula
 			
 			sesionService.save(nuevaSesion);
+			listSesiones.add(nuevaSesion);
 		}
+		
+		
+		Set<Sesion> setSesions = new HashSet(listSesiones);
+		
+		pelicula.setSesion(setSesions);
+		
+		peliculaService.save(pelicula);
 
 		
 		if (peliculaService.saveAndUpload(pelicula, file)) {

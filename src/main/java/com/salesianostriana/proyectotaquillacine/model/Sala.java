@@ -26,27 +26,22 @@ public class Sala {
 	
 	@OneToMany
 	private List<Butaca> listaButacas;
+	
 
-	@OneToMany
-	private List<Sesion> listaSesiones;
-	
-	
-	// Constructores
+//Constructores
 
 	public Sala() {
 	}
 
-	public Sala(long idSala, String nombreSala, List<Butaca> listaButacas, List<Sesion> listaSesiones, Cine cine) {
+	public Sala(long idSala, String nombreSala, List<Butaca> listaButacas, Cine cine) {
 		this.idSala = idSala;
 		this.nombreSala = nombreSala;
 		this.listaButacas = listaButacas;
-		this.listaSesiones = listaSesiones;
 		this.cine = cine;
 	}
 
 
 	// Getters & Setters
-
 	public String getNombreSala() {
 		return nombreSala;
 	}
@@ -72,15 +67,6 @@ public class Sala {
 	}
 
 
-
-	public List<Sesion> getListaSesiones() {
-		return listaSesiones;
-	}
-
-	public void setListaSesiones(List<Sesion> listaSesiones) {
-		this.listaSesiones = listaSesiones;
-	}
-
 	public Cine getCine() {
 		return cine;
 	}
@@ -92,7 +78,7 @@ public class Sala {
 	@Override
 	public String toString() {
 		return "Sala [idSala=" + idSala + ", nombreSala=" + nombreSala + ", cine=" + cine + ", listaButacas="
-				+ listaButacas + ", listaSesiones=" + listaSesiones + "]";
+				+ listaButacas + "]";
 	}
 	
 	/*
@@ -104,7 +90,6 @@ public class Sala {
 		}
 		return this;						//Devuelve la butaca
 	}
-
 	*/
 	
 	/*
@@ -116,6 +101,5 @@ public class Sala {
 		}
 		return this;							//te devuelve el objeto eliminado
 	}
-	
 	*/
 }
