@@ -22,7 +22,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#"> <img th:src="@{/image/logotipo.png}"></a>
+          <a class="navbar-brand" th:href="@{/index}"> <img th:src="@{/image/logotipo.png}"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -64,11 +64,12 @@
                 <td th:text="${i.edad}"></td>
                 <td th:text="${i.duracion}"></td>
                <!-- <td th:text="${salaPelicula}"></td> -->
-                <td th:text="${sesiones}"></td>
+                <td th:each=" sesiones : ${sesionPelicula" th:text="${sesiones}"></td>
                 <td>
-                    <a th:href="@{/admin/editar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-warning">Editar</a> 
-                    <a th:href="@{/admin/borrar/{idPelicula}(idPelicula=${i.idPelicula})}"  type="button" class="btn btn-danger">Eliminar</a> 
+                    <a th:href="@{/editar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-warning">Editar</a> 
+                    <a th:href="@{/borrar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-danger">Eliminar</a> 
                 </td>
+
             </tr>
         </table>
         <br>
@@ -83,8 +84,10 @@
         <!-- /.container -->
       </footer>
     
-</body>
-<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js}" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js}" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+ <!-- Bootstrap core JavaScript -->
+  <script th:src="@{js/jquery.min.js}"></script>
+  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js}" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js}" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </html>

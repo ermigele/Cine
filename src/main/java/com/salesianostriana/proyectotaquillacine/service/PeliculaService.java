@@ -1,12 +1,12 @@
 package com.salesianostriana.proyectotaquillacine.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.salesianostriana.proyectotaquillacine.imgur.Imagen;
 import com.salesianostriana.proyectotaquillacine.imgur.ImgurService;
 import com.salesianostriana.proyectotaquillacine.imgur.RespuestaImagen;
@@ -30,6 +30,10 @@ public class PeliculaService {
 		
 	public Pelicula findOne(Long idPelicula) {
 		return repositorio.findById(idPelicula).orElse(null);
+	}
+	
+	public List<Pelicula> findByTitulo(String titulo){
+		return repositorio.findByTituloContainingIgnoreCase(titulo);
 	}
 		
 	public Pelicula save(Pelicula p) {

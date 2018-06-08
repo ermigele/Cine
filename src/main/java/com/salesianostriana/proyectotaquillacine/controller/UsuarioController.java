@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/app")
+@RequestMapping("/admin")
 public class UsuarioController {
 
 	@Autowired
 	private HttpSession session;
 
-	@GetMapping({ "/", "/index" })
+	@GetMapping({ "/index" })
 	public String welcome(Model model) {
 		model.addAttribute("usuario", session.getAttribute("usuarioActual"));
-		return "app/index";
+		return "admin/index";
 	}
 }

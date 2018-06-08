@@ -23,16 +23,27 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#"> <img th:src="@{/image/logotipo.png}"></a>
+      <a class="navbar-brand" th:href="@{/index}"> <img th:src="@{/image/logotipo.png}"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-            <a class="nav-link" href="admin/formularioSala.html" th:href="@{/listaSalas}">Salas</a>
+          <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
+          <form class="form-inline my-2 my-lg-0" action="#" th:action="@{buscar}" th:object="${buscarForm}" method="POST">
+            <input class="form-control mr-sm-2" name="titulo" th:field="*{search}" type="text" placeholder="Buscar ..." aria-label="Buscar ...">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">BUSCAR</button>
+          </form>
+          <!-- <form action="#" th:action="@{search}" th:object="${searchForm}" method="POST">
+		<input type="text" name="nombre" placeholder="Buscar Por Nombre" th:field="*{search}" style="margin-left: 5%; padding: 4px;" />
+		<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+		</form>
+-->
+
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
@@ -62,24 +73,21 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/ticket.jpg}" alt="50">
+          <img class="card-img-top" th:src="@{~/image/modificarSala.jpg}" alt="50">
           <div class="card-body">
-            <h4 class="card-title">Vender entrada</h4>
-            <p class="card-text"></p>
-            <p class="card-text"></p>
+            <h4 class="card-title">Modificar Salas</h4>
           </div>
           <div class="card-footer">
-            <ath:href="@{/nuevoTicket}" class="btn btn-primary">Click aqui</a>
+            <ath:href="@{/listaSalas}" class="btn btn-primary">Click aqui</a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/iconoPelicula.jpg}" alt="40">
+          <img class="card-img-top" th:src="@{~/image/iconoPelicula.jpg}" alt="50">
           <div class="card-body">
             <h4 class="card-title">Modificar Peliculas</h4>
-            <p class="card-text"></p>
           </div>
           <div class="card-footer">
             <a th:href="@{/modificarPeliculas}" class="btn btn-primary"> Click aqui</a>
@@ -89,7 +97,7 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/iconoSala.jpg}" alt="50">
+          <img class="card-img-top" th:src="@{~/image/iconoSala.jpg}">
           <div class="card-body">
             <h4 class="card-title">Añadir sala</h4>
             <p class="card-text"></p>
@@ -102,7 +110,7 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/iconoAñadir.jpg}" alt="50">
+          <img class="card-img-top" th:src="@{~/image/iconoAñadir.jpg}">
           <div class="card-body">
             <h4 class="card-title">Añadir pelicula</h4>
           </div>
@@ -125,7 +133,7 @@
     </div>
     <!-- /.container -->
   </footer>
-
+</body>
 <script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js}" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js}" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

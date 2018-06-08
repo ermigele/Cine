@@ -20,7 +20,7 @@ public class AdminController {
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping({"/", "/index"})
+	@GetMapping({"/", "/indexx"})
 	public String welcome(Model model) {
 		model.addAttribute("usuario", session.getAttribute("usuarioActual"));
 		return "admin/index";

@@ -11,11 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.salesianostriana.proyectotaquillacine.formbean.NuevaPelicula;
+import com.salesianostriana.proyectotaquillacine.formbean.SearchBean;
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
 import com.salesianostriana.proyectotaquillacine.model.Sesion;
@@ -37,7 +39,6 @@ public class PeliculaController {
 	public String listadoPeliculas(Pelicula pelicula, Model model, BindingResult bindingResult ) {
 		
 		model.addAttribute("peliculas", peliculaService.findAll());
-		//model.addAttribute(sesionService.findAll(pelicula.));
 		return "admin/cartelera";
 	}
 	
@@ -84,12 +85,9 @@ public class PeliculaController {
 			Pelicula pelicula, Model model){
 		
 			Pelicula peli = peliculaService.findOne(idPelicula);
+			peli.getSesion();
 		
-			model.addAttribute("detallePelicula", peli);
-			
-			
-			List<Sesion> listSesions = new ArrayList<Sesion>();
-			
+			model.addAttribute("detallePelicula", peli);	
 			
 			return "admin/fichaPelicula";
 		
@@ -155,10 +153,10 @@ public class PeliculaController {
 		}
 		
 		
-		Set<Sesion> setSesions = new HashSet(listSesiones);
+		Set<Sesion> setSesions = new HashSet<Sesion>(listSesiones);
 		
 		pelicula.setSesion(setSesions);
-		
+	
 		peliculaService.save(pelicula);
 
 		
@@ -185,7 +183,32 @@ public class PeliculaController {
 		model.addAttribute("nuevaPelicula", peliculaService.findOne(idPelicula));
 		peliculaService.edit(peliculaService.findOne(idPelicula));
 		
-		return "/admin/formularioPelicula";
+		return "/admin/formularioPelicula";  
 	}
+	
+
+	
+	@GetMapping({"/index"})
+	public String listaPeliculas(Model model) {
+		
+		Iterable<Pelicula> listaPelis = peliculaService.findAll(); 
+		
+		model.addAttribute("peliculas", listaPelis);
+		
+//La siguiente línea viene el último método, que se dedica a buscar, para que este método, muestre también el listado de 
+//peliculas cuando se han buscado, añadimos al model el objeto tipo bean de búsqueda cuando se está buscando algún producto
+		model.addAttribute("buscarForm", new SearchBean());
+		return "/admin/index";
+	}
+	
+/*Método para buscar peliculas*/
+	
+	@PostMapping("/buscar")
+	  public String buscarPelicula(@ModelAttribute("buscarForm") SearchBean searchBean,
+			 Model model){
+	  	model.addAttribute("peliculaBusqueda", peliculaService.findByTitulo(searchBean.getSearch()));
+	  
+	  return "/admin/fichaPelicula";
+	  }
 	
 }

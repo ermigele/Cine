@@ -32,11 +32,6 @@ public class Sesion {
 	
 	public Sesion() { }
 	
-	
-
-
-
-
 	public Sesion(long idSesion, LocalTime horaSesion, Date fecha, Pelicula pelicula, Sala sala) {
 		this.idSesion = idSesion;
 		this.horaSesion = horaSesion;
