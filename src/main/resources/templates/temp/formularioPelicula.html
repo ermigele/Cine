@@ -1,134 +1,284 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <title>Indice</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Bootstrap core CSS -->
-  <link href="@{/css/bootstrap.min.css}" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link th:href="@{/css/mdb.min.css}" rel="stylesheet">
+<!-- Meta Tags -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- DataPicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/flick/jquery-ui.min.css">
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<!-- Timesetter -->
+
+<link th:href="@{/css/jquery.timesetter.css}" rel="stylesheet">
+<script src="../../static/js/code.jquery.com/jquery.min.js"></script>
+<script src="../../static/js/jquery.timesetter.js"></script>
+
+
+
+<title>Formulario Pelicula</title>
+
+
+<!-- Google Fonts -->
+<link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+	rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+
+<!-- Font Awesome -->
+<link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
+<!-- Material Design Bootstrap -->
+<link th:href="@{~/css/mdb.min.css}" rel="stylesheet">
+<link rel="stylesheet" th:href="@{~/css/style.css}">
+
 
 </head>
-
 <body>
 
-  <!-- Navigation -->
+	<!--Formulario Pelicula-->
+	<div class="container">
+		<form th:object="${nuevaPelicula}" role="form" enctype="multipart/form-data" method="POST"
+			th:action="@{/addPelicula}">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#"> <img th:src="@{/image/logotipo.png}"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-            <a class="nav-link" href="admin/formularioSala.html" th:href="@{/listaSalas}">Salas</a>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="admin/formularioPelicula.html"  th:href="@{/nuevaPelicula}">Peliculas</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-user"></i> Area cliente</span></a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-ins" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="admin/listaUsuarios.html"  th:href="@{/admin/listaUsuarios}" >Lista de usuarios</a>
-                <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="../login.html" th:href="@{/cerrarSesion}">Cerrar sesión</a>    
-                </div>
-              </div>
-          </li>
-        </ul>  
-    </div>
-  </nav>
 
-  <!-- Page Content -->
+			<!-- Grupo Columna -->
+			<div class="row">
+				<div class="col-md-6"> <!-- columna 1 -->
+						<h1>Formulario de Pelicula</h1>
+						<img th:src="@{/image/peliculas/metropolis.jpg}" width="550" alt="20"/>
+				<hr>
 
-  <div class="container">
+				</div>  <!--Imagen-->
 
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-      <img th:src="@{/image/peliculas/deadpool.jpg}" width="1080" />
-    </header>
+				<div class="col-md-3">   <!--Columna 2-->
+					
+				<br>
+					
+					<div class="form-group"> <!-- TITULO -->
+						<label for="titulo">Titulo </label> 
+						<input th:field="*{titulo}" name="titulo" type="text" id="titulo" class="form-control" required autofocus>
+					</div>
+				
+					<div class="form-group"> <!-- DIRECTOR -->
+						<label for="director">Director </label> 
+						<input th:field="*{director}" type="text" id="director" class="form-control">		
+					</div>
 
-    <!-- Page Features -->
-    <div class="row text-center">
+					<div class="form-row align-items-center"> <!-- SELECT -->
+						<label for="genero">Genero</label>
+						<select th:field="*{genero}" class="custom-select mr-sm-2" id="genero">
+							<option selected="selected" value="">Seleccione un genero</option>
+							<option th:each=" grupoGenero : ${listaGenero}" th:text="${grupoGenero}" th:value="${grupoGenero}"></option>
+						</select>
+					</div>
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card" th:each=" i: ${peliculas}">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title" th:text="${i.titulo}">Titulo</h4>
-            <p class="card-text" th:text="${i.genero}"></p>
-            <p class="card-text" th:text="${i.edad}"></p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Ver ficha pelicula</a>
-          </div>
-        </div>
-      </div>
+					<br>
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+					<label for="estreno">Calendario</label>
+					<div id="datepicker"></div> <!-- Fecha de estreno -->
+					<div id="datos">
+					<br> <label for='fecha'>Fecha de estreno:</label>
+							<!-- Campo de texto que recibira el valor seleccionado en el datepicker 
+							le he puesto el atributo readonly para no poder escribir directamente -->
+							<input th:field="*{estreno}" type='text' name='fecha' id='fecha' class="form-control"
+								readonly />
+				
+					</div>						
+										
+					
+				</div>		
+				<div class="col-md-3"> <!--Columna 3 -->
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card">
-          <img class="card-img-top"th:src="@{~/image/iconoAñadir.jpg}" alt="50">
-          <div class="card-body">
-            <h4 class="card-title">Añadir sala</h4>
-            <p class="card-text"></p>
-          </div>
-          <div class="card-footer">
-            <a th:href="@{/nuevaSala}" class="btn btn-primary">Click aqui</a>
-          </div>
-        </div>
-      </div>
+					<br>
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card">
-          <img class="card-img-top" th:src="@{~/image/iconoAñadir.jpg}" alt="50">
-          <div class="card-body">
-            <h4 class="card-title">Añadir pelicula</h4>
-          </div>
-          <div class="card-footer">
-            <a th:href="@{/nuevaPelicula}" class="btn btn-primary">Click aqui</a>
-          </div>
-        </div>
-      </div>
+					<div class="form-check"> <!-- RADIOBUTTON -->
+						<label for="edad">Clasificación por edades</label>
+								<ul>
+									<li th:each="tiposEdad : ${listaEdad}">
+									<input type="radio" th:field="*{edad}" th:value="${tiposEdad}" />   
+										<label th:for="${#ids.prev('edad')}" th:text="${tiposEdad}" >Tipos de edad</label>
+								</ul>
+					</div>
+					
+					<br>
+					
+					<div class="form-row align-items-center"> <!-- POSTER -->
+						<label class="mr-sm-2">Poster</label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Subir</span>
+							</div>
+							<div class="custom-file">
+								<input id="file" name="file" class="input-file" type="file" />
+								<label class="custom-file-label" for="poster">Imagen publicitaria.......</label>
+							</div>
+						</div>	
+					</div>
 
-    </div>
-    <!-- /.row -->
 
-  </div>
-  <!-- /.container -->
+					<div class="form-group"> <!-- DURACION -->
+						<label for="duracion">Duracion </label> 
+						<input th:field="*{duracion}" type="number" id="duracion" placeholder="Minutos" class="form-control">		
+					</div>
+						
+						<script>
+						
+						
+						
+								$("#datepicker").datepicker(
+										{
+											// Formato de la fecha
+											dateFormat : "dd/mm/yy",
+											// Primer dia de la semana El lunes
+											firstDay : 1,
+											// Dias Largo en castellano
+											dayNames : [ "Domingo", "Lunes", "Martes",
+													"Miercoles", "Jueves", "Viernes",
+													"Sabado" ],
+											// Dias cortos en castellano
+											dayNamesMin : [ "Do", "Lu", "Ma", "Mi",
+													"Ju", "Vi", "Sa" ],
+											// Nombres largos de los meses en castellano
+											monthNames : [ "Enero", "Febrero", "Marzo",
+													"Abril", "Mayo", "Junio", "Julio",
+													"Agosto", "Septiembre", "Octubre",
+													"Noviembre", "Diciembre" ],
+											// Nombres de los meses en formato corto 
+											monthNamesShort : [ "Ene", "Feb", "Mar",
+													"Abr", "May", "Jun", "Jul", "Ago",
+													"Sep", "Oct", "Nov", "Dec" ],
+											// Cuando seleccionamos la fecha esta se pone en el campo Input 
+											onSelect : function(dateText) {
+												$('#fecha').val(dateText);
+											}
+										});
+						</script>
+						<script>   // SESIONES 
+									function agregar_fila_mmm() {
+										var lastSesion = $('.tras').last();
+										
+										var tmpSesion = lastSesion.clone();
+										
+										tmpSesion.find('input').val('');
+										
+										tmpSesion.insertAfter(lastSesion);
+							
+									}
+									function agregar_fila() {
+									
+										var tabla = document.getElementById("sesion");
+										
+										var fila = tabla.insertRow();
+										
+										var celda1 = fila.insertCell(0);
+										var celda2 = fila.insertCell(1);
+										var celda3 = fila.insertCell(2);
+										
+										var campo1 = document.createElement("input");
+											campo1.type = "text";
+											campo1.setAttribute("onclick","vaciar_campo(this);");
+											
+										var campo2 = document.createElement("input");
+											campo2.type = "time";
+											campo2.setAttribute("onclick", "vaciar_campo(this);");
+										
+										var campo3 = document.createElement("input");
+											campo3.type = "button";
+											campo3.value = "Borrar Fila";
+											campo3.onclick = function() {
+											
+												var fila = this.parentNode.parentNode;
+												var tbody = tabla.getElementsByTagName("tbody")[0];
+												
+												tbody.removeChild(fila);
+												
+											}
+										
+										celda1.appendChild(campo1);
+										celda2.appendChild(campo2);
+										celda3.appendChild(campo3);
+									
+									}
+							 
+								function vaciar_campo(input) {
+										input.value = "";
+								}
+							
+						</script>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Ermigele </p>
-    </div>
-    <!-- /.container -->
-  </footer>
+				
+					<a class="btn btn-primary align-items-center" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
+							Sesiones
+					</a>
+					
+					<hr/>
+					
+					
+					
+					<div>
+						<label for='salita'>Sala: </label>
+						<select id='salita' th:field="*{nuevaSala}" >
+							<option th:each=" mostrarSalas : ${listaSala}" th:text="${mostrarSalas.nombreSala}" th:value="${mostrarSalas.idSala}"> </option>
+						</select>
+						<input type="button" value="Agregar Fila" onclick="agregar_fila_mmm();">
+					</div>
+					
+					<div class='tras'>
+						<label>Sesion: </label>
+						<input th:field='*{sesiones}' type="time" />
+					</div>
+					
+					
+					<hr/>
+					
+					<!-- <div class="collapse" id="collapse">
+						
+						<table class="table table-striped w-50" id="sesion" cellpadding="2" cellspacing="1" border="1">
+						
+							<tr>
+								<th>Nº Sala</th><th>Hora inicio</th>
+						
+								<td><input type="button" value="Agregar Fila" onclick="agregar_fila();"></td> 
+							</tr>
+							
+								 
+						</table>  
 
+					</div> -->
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-default">Guardar</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script th:src="@{http://code.jquery.com/jquery-3.3.1.min.js} " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=" anonymous "></script>
+	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js} " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
+	<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js} " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
+
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript " th:src="@{js/mdb.min.js} "></script>
+
+
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript " src="js/mdb.min.js "></script>
+</body>
 </html>

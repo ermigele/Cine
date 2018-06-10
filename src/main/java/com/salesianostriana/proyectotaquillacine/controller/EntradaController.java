@@ -34,17 +34,21 @@ public class EntradaController {
 	@GetMapping( "/nuevaEntrada/{idSesion}" )
 	public String formularioTicket(@PathVariable("idSesion") long idSesion, Model model){
 
+		model.addAttribute("nuevoTicket", new NuevoTicket());
+		
 		Sesion sesionActual = sesionService.findOne(idSesion);
 		model.addAttribute("sesion", sesionActual);
 		
 		Sala salaActual =  sesionActual.getSala();
 		model.addAttribute("sala", salaActual);
 		
-		
 		List<Butaca> butacaActual = salaActual.getListaButacas();
-		model.addAttribute("butacas", butacaActual);
 		
-		model.addAttribute("nuevoTicket", new NuevoTicket());
+		for(Butaca buta : butacaActual) {
+			System.out.println("Butaca: "+buta);
+		}
+		
+		model.addAttribute("butacasDeLaSala", butacaActual);
 		
 		return "/admin/ticket";
 	}

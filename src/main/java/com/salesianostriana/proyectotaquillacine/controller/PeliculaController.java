@@ -11,13 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.salesianostriana.proyectotaquillacine.formbean.NuevaPelicula;
-import com.salesianostriana.proyectotaquillacine.formbean.SearchBean;
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
 import com.salesianostriana.proyectotaquillacine.model.Sesion;
@@ -38,42 +36,32 @@ public class PeliculaController {
 	@GetMapping("/listadoPeliculas")
 	public String listadoPeliculas(Pelicula pelicula, Model model, BindingResult bindingResult ) {
 		
-		model.addAttribute("peliculas", peliculaService.findAll());
+		Iterable<Pelicula> listaPelis = peliculaService.findAll();
+		
+		//List<Pelicula> tmpPelis = new ArrayList<Pelicula>();
+		
+		for ( Pelicula peli: listaPelis) {
+		
+			//Pelicula tmp = peli;
+			//tmp.setSesion(peli.getSesion());
+			peli.getSesion();
+			
+			//tmpPelis.add(tmp);
+		}
+		
+		model.addAttribute("peliculas", listaPelis );
+		
 		return "admin/cartelera";
 	}
 	
 
 	@GetMapping("/modificarPeliculas")
-	public String modificarPeliculas(Pelicula pelicula, Model model, BindingResult bindingResult ) {
-		
+	public String modificarPeliculas(Pelicula pelicula, Sala sala, Sesion sesion, Model model, BindingResult bindingResult ) {
 		
 		Iterable<Pelicula> listPeliculas = peliculaService.findAll();
+		model.addAttribute("peliculas",listPeliculas);
 		
-		List<NuevaPelicula> listPes = new ArrayList<NuevaPelicula>();
-		
-		for (Pelicula element : listPeliculas) {
-			NuevaPelicula newPeli = new NuevaPelicula();
-			
-		    
-			newPeli.setDirector(element.getDirector());
-			
-			
-			List<String> sesiones = new ArrayList<String>();
-			Iterable<Sesion> listSesiones = sesionService.findBySesionDePelicula(element);
-			for (Sesion sesion : listSesiones) {
-				
-				String tiempo = sesion.getHoraSesion().toString();
-				sesiones.add(tiempo);
-			}
-			
-			newPeli.setSesiones(sesiones);
-			
-			listPes.add(newPeli);
-		}
-		
-		model.addAttribute("peliculas", listPes);
-		
-		
+	
 		return "admin/listaPeliculas";
 	}
 	
@@ -129,7 +117,7 @@ public class PeliculaController {
 		pelicula.setSala(nuevaPelicula.getNuevaSala());
 		
 		
-		System.out.println("Pelicula a guardar: "+pelicula.toString());
+		
 		///AHORA GUARDAR PELICULA
 		peliculaService.save(pelicula);
 		
@@ -185,30 +173,5 @@ public class PeliculaController {
 		
 		return "/admin/formularioPelicula";  
 	}
-	
-
-	
-	@GetMapping({"/index"})
-	public String listaPeliculas(Model model) {
 		
-		Iterable<Pelicula> listaPelis = peliculaService.findAll(); 
-		
-		model.addAttribute("peliculas", listaPelis);
-		
-//La siguiente línea viene el último método, que se dedica a buscar, para que este método, muestre también el listado de 
-//peliculas cuando se han buscado, añadimos al model el objeto tipo bean de búsqueda cuando se está buscando algún producto
-		model.addAttribute("buscarForm", new SearchBean());
-		return "/admin/index";
-	}
-	
-/*Método para buscar peliculas*/
-	
-	@PostMapping("/buscar")
-	  public String buscarPelicula(@ModelAttribute("buscarForm") SearchBean searchBean,
-			 Model model){
-	  	model.addAttribute("peliculaBusqueda", peliculaService.findByTitulo(searchBean.getSearch()));
-	  
-	  return "/admin/fichaPelicula";
-	  }
-	
 }

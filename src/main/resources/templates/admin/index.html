@@ -23,7 +23,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" th:href="@{/index}"> <img th:src="@{/image/logotipo.png}"></a>
+      <a class="navbar-brand" th:href="@{admin/index}"> <img th:src="@{/image/logotipo.png}"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,18 +32,10 @@
           <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <form class="form-inline my-2 my-lg-0" action="#" th:action="@{buscar}" th:object="${buscarForm}" method="POST">
-            <input class="form-control mr-sm-2" name="titulo" th:field="*{search}" type="text" placeholder="Buscar ..." aria-label="Buscar ...">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">BUSCAR</button>
+          <form class="form-inline my-2 my-lg-0" action="#" th:action="@{buscando}" th:object="${buscarForm}" method="POST">
+            <input class="form-control mr-sm-2" name="titulo" th:field="*{search}" type="text" placeholder="Titulo pelicula.." aria-label="Buscar">
+            <button class="btn purple-gradient btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">BUSCAR</button>
           </form>
-          <!-- <form action="#" th:action="@{search}" th:object="${searchForm}" method="POST">
-		<input type="text" name="nombre" placeholder="Buscar Por Nombre" th:field="*{search}" style="margin-left: 5%; padding: 4px;" />
-		<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
-			<span class="glyphicon glyphicon-search"></span>
-		</button>
-		</form>
--->
-
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
@@ -73,7 +65,7 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/modificarSala.jpg}" alt="50">
+          <img class="card-img-top" th:src="@{~/image/iconoSala.jpg}">
           <div class="card-body">
             <h4 class="card-title">Modificar Salas</h4>
           </div>
@@ -85,7 +77,7 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/iconoPelicula.jpg}" alt="50">
+          <img class="card-img-top" th:src="@{~/image/modificarPelicula.jpg}">
           <div class="card-body">
             <h4 class="card-title">Modificar Peliculas</h4>
           </div>
@@ -97,7 +89,7 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/iconoSala.jpg}">
+          <img class="card-img-top" th:src="@{~/image/nuevaSala.jpg}">
           <div class="card-body">
             <h4 class="card-title">Añadir sala</h4>
             <p class="card-text"></p>
@@ -110,7 +102,7 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
-          <img class="card-img-top" th:src="@{~/image/iconoAñadir.jpg}">
+          <img class="card-img-top" th:src="@{~/image/nuevaPelicula2.jpg}">
           <div class="card-body">
             <h4 class="card-title">Añadir pelicula</h4>
           </div>
@@ -127,8 +119,8 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
+  <footer class="py-5 bg-dark footer">
+    <div class="container footer">
       <p class="m-0 text-center text-white">Copyright &copy; Ermigele </p>
     </div>
     <!-- /.container -->

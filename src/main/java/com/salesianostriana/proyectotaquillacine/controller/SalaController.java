@@ -1,6 +1,7 @@
 package com.salesianostriana.proyectotaquillacine.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,7 @@ public class SalaController {
 	@PostMapping({ "/addSala" })
 	public String submit(@ModelAttribute("nuevaSala") NuevaSala nuevaSala, BindingResult bindingResult, Model model) {
 
-
+		List<Butaca> listButacas = new ArrayList<Butaca>();
         Sala sala = new Sala();
 		sala.setNombreSala(nuevaSala.getNombreSala()); // Asigno a la clase Sala la variable nombreSala que recogo del
 														// formulario
@@ -66,10 +67,12 @@ public class SalaController {
 
 				newButaca.setSala(sala);
 
+				listButacas.add(newButaca);   //añado las butacas a la coleccion de la ArrayList listButacas
 				butacaService.save(newButaca); // Guardo las butacas
 			}
 			
-			
+			sala.setListaButacas(listButacas);
+			salaService.save(sala);
 		}
 
 		return "redirect:/admin/index";

@@ -103,17 +103,12 @@ public class Butaca {
 	}
 
 
-
+ 
 	@Override
 	public String toString() {
-		return "Butaca [idButaca=" + idButaca + ", numButacaXFila=" + numButacaXFila + ", numFila=" + numFila
-				+ ", sala=" + sala + ", entrada=" + entrada + "]";
+		//return "Butaca [idButaca=" + idButaca + ", numButacaXFila=" + numButacaXFila + ", numFila=" + numFila
+		//		+ ", sala=" + sala + "]";
+		return "Butaca [numero=" + numButacaXFila + " en fila=" + numFila+"]";
 	}
-
-
-
-
-
-
 	
 }

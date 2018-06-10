@@ -12,12 +12,12 @@ public class NuevoTicket {
 	
 	private Pelicula pelicula;
 	private List<Sesion> sesion;
-	private List<Butaca> listaButacas;
+	private int[] listaButacas;
 	private Sala sala;
 	
 	public NuevoTicket() { }
 	
-	public NuevoTicket(Pelicula pelicula, List<Sesion> sesion, List<Butaca> listaButacas, Sala sala) {
+	public NuevoTicket(Pelicula pelicula, List<Sesion> sesion, int[] listaButacas, Sala sala) {
 		this.pelicula = pelicula;
 		this.sesion = sesion;
 		this.listaButacas = listaButacas;
@@ -40,11 +40,11 @@ public class NuevoTicket {
 		this.sesion = sesion;
 	}
 
-	public List<Butaca> getListaButacas() {
+	public int[] getListaButacas() {
 		return listaButacas;
 	}
 
-	public void setListaButacas(List<Butaca> listaButacas) {
+	public void setListaButacas(int[] listaButacas) {
 		this.listaButacas = listaButacas;
 	}
 

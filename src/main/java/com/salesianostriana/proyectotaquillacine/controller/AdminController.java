@@ -1,13 +1,21 @@
 package com.salesianostriana.proyectotaquillacine.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.salesianostriana.proyectotaquillacine.formbean.SearchBean;
+import com.salesianostriana.proyectotaquillacine.model.Pelicula;
+import com.salesianostriana.proyectotaquillacine.service.PeliculaService;
 import com.salesianostriana.proyectotaquillacine.service.UsuarioService;
 
 @Controller
@@ -16,13 +24,16 @@ public class AdminController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	@Autowired
+	private PeliculaService peliculaService;
 	
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping({"/", "/indexx"})
-	public String welcome(Model model) {
+	@GetMapping({"/", "/index"})
+	public String welcome(Model model) { 
 		model.addAttribute("usuario", session.getAttribute("usuarioActual"));
+		model.addAttribute("buscarForm", new SearchBean());
 		return "admin/index";
 	}
 	
@@ -45,5 +56,43 @@ public class AdminController {
 		usuarioService.edit(usuarioService.findOne(id));
 		return "registroUsuario/registrar";
 	}
+	
+	/*
+	@GetMapping({"/buscar"})
+	public String listaPeliculas(Model model) {
+		
+		Iterable<Pelicula> listaPelis = peliculaService.findAll(); 
+		
+		model.addAttribute("peliculas", listaPelis);
+		
+//La siguiente línea viene el último método, que se dedica a buscar, para que este método, muestre también el listado de 
+//peliculas cuando se han buscado, añadimos al model el objeto tipo bean de búsqueda cuando se está buscando algún producto
+		model.addAttribute("buscarForm", new SearchBean());
+		return "/admin/index";
+	}
+	
+/*Método para buscar peliculas*/
+	
+	@PostMapping("/buscando")
+	  public String buscarPelicula(@ModelAttribute("buscarForm") SearchBean searchBean, Pelicula pelicula,
+			 Model model){
+		
+		List<Pelicula> buscarPelis = peliculaService.findByTitulo(searchBean.getSearch());
+		
+		Pelicula peliEncontrada = null;
+		
+		if(buscarPelis.size() > 0) {
+			peliEncontrada = buscarPelis.get(0);
+		}
+		  	
+		if(peliEncontrada == null) {
+			return "/admin/peliculaNoEncontrada";
+					
+		}else {
+			model.addAttribute("detallePelicula", peliEncontrada);
+			pelicula.getSesion();
+			return "/admin/fichaPelicula";
+		}
+	  }
 	
 }

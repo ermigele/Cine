@@ -21,31 +21,28 @@
 <!-- Navigation -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-          <a class="navbar-brand" th:href="@{/index}"> <img th:src="@{/image/logotipo.png}"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <a class="nav-link" href="admin/formularioSala.html" th:href="@{/listaSalas}">Salas</a>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-              <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-user"></i> Area cliente</span></a>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-ins" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="admin/listaUsuarios.html"  th:href="@{/admin/listaUsuarios}" >Lista de usuarios</a>
-                    <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="../login.html" th:href="@{/cerrarSesion}">Cerrar sesión</a>    
-                    </div>
-                  </div>
-              </li>
-            </ul>  
-        </div>
-      </nav>
+  <div class="container">
+    <a class="navbar-brand" th:href="@{admin/index}"> <img th:src="@{/image/logotipo.png}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <a class="nav-link" href="admin/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-user"></i> Area cliente</span></a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-ins" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="admin/listaUsuarios.html"  th:href="@{/admin/listaUsuarios}" >Lista de usuarios</a>
+              <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../login.html" th:href="@{/cerrarSesion}">Cerrar sesión</a>    
+              </div>
+            </div>
+        </li>
+      </ul>  
+  </div>
+</nav>
     
       <!-- Lista de salas -->
 
@@ -63,8 +60,8 @@
                 <td th:text="${i.estreno}"></td>
                 <td th:text="${i.edad}"></td>
                 <td th:text="${i.duracion}"></td>
-               <!-- <td th:text="${salaPelicula}"></td> -->
-                <td th:each=" sesiones : ${sesionPelicula" th:text="${sesiones}"></td>
+               <td th:text="${i.sala.getNombreSala()}"></td>
+                <td th:text="${i.sesion.getHoraSesion()}"></td>
                 <td>
                     <a th:href="@{/editar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-warning">Editar</a> 
                     <a th:href="@{/borrar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-danger">Eliminar</a> 
@@ -77,7 +74,7 @@
      <!-- /.container -->
 
   <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="footer py-5 bg-dark">
         <div class="container">
           <p class="m-0 text-center text-white">Copyright &copy; Ermigele </p>
         </div>
