@@ -14,6 +14,8 @@ import com.salesianostriana.proyectotaquillacine.formbean.NuevaPelicula;
 import com.salesianostriana.proyectotaquillacine.formbean.NuevoTicket;
 import com.salesianostriana.proyectotaquillacine.formbean.SearchBean;
 import com.salesianostriana.proyectotaquillacine.model.Butaca;
+import com.salesianostriana.proyectotaquillacine.model.Entrada;
+import com.salesianostriana.proyectotaquillacine.model.LineaPedido;
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
 import com.salesianostriana.proyectotaquillacine.model.Sesion;
@@ -55,13 +57,14 @@ public class EntradaController {
 	
 	
 	@PostMapping ("/addEntrada")
-	public String envioTicket(@ModelAttribute("ticketForm") NuevoTicket nuevoTicket, Model model) {
+	public String envioTicket(@ModelAttribute("ticketForm") NuevoTicket nuevoTicket, LineaPedido lineapedido, Model model) {
+		
+		Entrada entrada = new Entrada();
+		
+		 nuevoTicket.getListaButacas();
 		
 		
-		
-		
-		
-		return null;
+		return "/admin/finalizarPedido";
 		
 		
 		

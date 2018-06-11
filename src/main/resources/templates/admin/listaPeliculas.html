@@ -60,8 +60,8 @@
                 <td th:text="${i.estreno}"></td>
                 <td th:text="${i.edad}"></td>
                 <td th:text="${i.duracion}"></td>
-               <td th:text="${i.sala.getNombreSala()}"></td>
-                <td th:text="${i.sesion.getHoraSesion()}"></td>
+               <td th:text="${i.sala.nombreSala}"></td>
+               <!-- <td th:text="${i.sesion.horaSesion}"></td>-->
                 <td>
                     <a th:href="@{/editar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-warning">Editar</a> 
                     <a th:href="@{/borrar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-danger">Eliminar</a> 
