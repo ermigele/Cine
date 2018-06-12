@@ -1,5 +1,6 @@
 package com.salesianostriana.proyectotaquillacine.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,21 +55,30 @@ public class EntradaController {
 	
 	
 	@PostMapping ("/addEntrada")
-	public String submit(@ModelAttribute("nuevoTicket") NuevoTicket nuevoTicket, LineaPedido lineapedido,  BindingResult bindingResult,Model model) {
+	public String submit(@ModelAttribute("nuevoTicket") NuevoTicket nuevoTicket, LineaPedido lineapedido,  BindingResult bindingResult, Model model) {
+		
 		
 		Entrada entrada = new Entrada();
-		 
-		entrada.setSesion(nuevoTicket.getSesion());
+			
+	
+		List<NuevoTicket> tickets = new ArrayList<NuevoTicket>();
 		
-		Butaca butaquita = (Butaca) nuevoTicket.getListaButacas();
+		for (Butaca butaquitas : nuevoTicket.getListaButacas()) {
+			
+			NuevoTicket tmpTick = new NuevoTicket();
+			
+			System.out.println(butaquitas.getIdButaca() + " "
+					+ ""+ butaquitas.getNumFila()
+					+ ""+ butaquitas.getNumButacaXFila());
+			
+		 	tmpTick.setButacaLlena(butaquitas);
+		 	tmpTick.setIdSesion(nuevoTicket.getIdSesion());
+		 	tickets.add(tmpTick);
+		}
 		
-		entrada.setButaca(butaquita);
+		model.addAttribute("ticket",tickets);
 		
-		entradaService.save(entrada);
-		
-		return "redirect:/admin/finalizarPedido";
-		
-		
+		return "/admin/finalizarPedido";
 		
 	}
 	

@@ -77,7 +77,7 @@
 					<li th:each=" butaca : ${butacasDeLaSala}">
 						<div class="form-check">
 							<input class="form-check-input"
-									type="checkbox" th:field="*{listaButacas}" th:value="${butaca}" />
+									type="checkbox" th:field="*{listaButacas}" th:value="${butaca.idButaca}" />
 									<label class="form-check-label" th:for="${#ids.prev('listaButacas')}"
 									th:text="${butaca}">Butacas</label>
 						</div>			
@@ -85,7 +85,7 @@
 					</td>
 				</tr>
 			</table>
-
+			<input  type="hidden" th:field="*{idSesion}" th:value="${sesion.idSesion}" />
 			<div class="form-group">
 				<button type="submit" class="btn btn-default">Enviar Ticket</button>
 			</div>

@@ -3,28 +3,39 @@ package com.salesianostriana.proyectotaquillacine.formbean;
 import java.util.List;
 
 import com.salesianostriana.proyectotaquillacine.model.Butaca;
-import com.salesianostriana.proyectotaquillacine.model.LineaPedido;
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
 import com.salesianostriana.proyectotaquillacine.model.Sesion;
 
 public class NuevoTicket {
 
+	private String idSesion;
 	private Pelicula Pelicula;
 	private Sesion sesion;
 	private Sala sala;
+	public String getIdSesion() {
+		return idSesion;
+	}
+
+
+	public void setIdSesion(String idSesion) {
+		this.idSesion = idSesion;
+	}
+
 	private List<Butaca> listaButacas;
-	private LineaPedido lineaPedido;
+	private Butaca butacaLlena;
 	
 	public NuevoTicket() { }
 
+
 	public NuevoTicket(com.salesianostriana.proyectotaquillacine.model.Pelicula pelicula, Sesion sesion, Sala sala,
-			List<Butaca> listaButacas, LineaPedido lineaPedido) {
+			List<Butaca> listaButacas, Butaca butacaLlena) {
+		super();
 		Pelicula = pelicula;
 		this.sesion = sesion;
 		this.sala = sala;
 		this.listaButacas = listaButacas;
-		this.lineaPedido = lineaPedido;
+		this.butacaLlena = butacaLlena;
 	}
 
 	public Pelicula getPelicula() {
@@ -55,22 +66,24 @@ public class NuevoTicket {
 		return listaButacas;
 	}
 
+	public Butaca getButacaLlena() {
+		return butacaLlena;
+	}
+
+
+	public void setButacaLlena(Butaca butacaLlena) {
+		this.butacaLlena = butacaLlena;
+	}
+
+
 	public void setListaButacas(List<Butaca> listaButacas) {
 		this.listaButacas = listaButacas;
-	}
-
-	public LineaPedido getLineaPedido() {
-		return lineaPedido;
-	}
-
-	public void setLineaPedido(LineaPedido lineaPedido) {
-		this.lineaPedido = lineaPedido;
 	}
 
 	@Override
 	public String toString() {
 		return "NuevoTicket [Pelicula=" + Pelicula + ", sesion=" + sesion + ", sala=" + sala + ", listaButacas="
-				+ listaButacas + ", lineaPedido=" + lineaPedido + "]";
+				+ listaButacas + ", butacaLlena=" + butacaLlena + "]";
 	}
 
 }

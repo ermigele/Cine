@@ -80,23 +80,43 @@ public class SalaController {
 
 	
 	@GetMapping({"/listaSalas"})
-	public String mostrarSalas(Model model, Sala sala) {
+	public String mostrarSalas(Model model, Sala sala, Butaca butaca) {
 		
-		Iterable<Sala> salaActual = salaService.findAll();
-		for ( Sala sali : salaActual ) {
-			System.out.println("Sala: "+sali);
-		}
+		Sala salaActual = new Sala();
+		
+		List<Butaca> total = salaActual.getListaButacas();
+		
+		
+		
+		Iterable<Sala> find = salaService.findAll();
 		
 		model.addAttribute("salas", salaActual);
+		
 	
+		
 		/*
-		List<Butaca> listButaca = sala.getListaButacas();
+		int fila = 10;
+		int numbutaca = 20;
 		
-		for (Butaca butacas : listButaca) {
-			System.out.println(butacas);
-		}
+		listBuscas = [
+		              ---butaca => fila 5, butaca 3
+		              ---butaca => fila 3, butaca 20
+		              butaca => fila 10, butaca 20
+		              ]
 		
-		*/
+	
+		for( Butaca objBucata : listBuscas) {
+			if(objBucata.getFila> fila)
+				fila = bucata.getFila;
+			if(objBucata.getNButaca> numbutaca)
+				numbutaca = bucata.getNButaca;
+			
+		} */
+		
+		//int numSize = listBuscas.size();
+		
+		//listBuscas.get(numSize-1);
+		
 		return "admin/listaSalas";
 	}
 	
