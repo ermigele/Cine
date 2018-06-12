@@ -108,7 +108,8 @@ public class Butaca {
 	public String toString() {
 		//return "Butaca [idButaca=" + idButaca + ", numButacaXFila=" + numButacaXFila + ", numFila=" + numFila
 		//		+ ", sala=" + sala + "]";
-		return "Butaca [numero=" + numButacaXFila + " en fila=" + numFila+"]";
+		//return "Butaca [numero=" + numButacaXFila + " en fila=" + numFila+"]";
+		return "Fila "+numFila+"_Numero "+numButacaXFila;
 	}
 	
 }

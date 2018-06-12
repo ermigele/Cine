@@ -1,6 +1,5 @@
 package com.salesianostriana.proyectotaquillacine.model;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +17,6 @@ public class Entrada {
 
 	@Id @GeneratedValue
 	private long id;
-	private double precio;
 	
 	@ManyToOne
 	private Sesion sesion;
@@ -33,21 +31,16 @@ public class Entrada {
 	
 	public Entrada() { }
 	
-	public Entrada(Sesion sesion, Butaca butaca, double precio) {
+	public Entrada(Sesion sesion, Butaca butaca, LineaPedido lineaPedido) {
 
 		this.sesion = sesion;
 		this.butaca = butaca;
-		this.precio = precio;
+		this.lineaPedido = lineaPedido;
 	}
 
 	
 //Getters & Setters
 	
-
-	public Sesion getSesion() {
-		return sesion;
-	}
-
 
 	public long getId() {
 		return id;
@@ -55,6 +48,22 @@ public class Entrada {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Sesion getSesion() {
+		return sesion;
+	}
+
+	public void setSesion(Sesion sesion) {
+		this.sesion = sesion;
+	}
+
+	public Butaca getButaca() {
+		return butaca;
+	}
+
+	public void setButaca(Butaca butaca) {
+		this.butaca = butaca;
 	}
 
 	public LineaPedido getLineaPedido() {
@@ -65,33 +74,9 @@ public class Entrada {
 		this.lineaPedido = lineaPedido;
 	}
 
-	public void setSesion(Sesion sesion) {
-		this.sesion = sesion;
-	}
-
-
-	public Butaca getButaca() {
-		return butaca;
-	}
-
-
-	public void setButaca(Butaca butaca) {
-		this.butaca = butaca;
-	}
-
-	
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
 	@Override
 	public String toString() {
-		return "Entrada [sesion=" + sesion
-				+ ", butaca=" + butaca + ", precio=" + precio + "]";
+		return "Entrada [id=" + id + ", sesion=" + sesion + ", butaca=" + butaca + ", lineaPedido=" + lineaPedido + "]";
 	}
 	
 	

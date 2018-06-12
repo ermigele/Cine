@@ -80,29 +80,39 @@ public class SalaController {
 
 	
 	@GetMapping({"/listaSalas"})
-	public String mostrarSalas(Model model) {
+	public String mostrarSalas(Model model, Sala sala) {
 		
-		model.addAttribute("salas", salaService.findAll());
+		Iterable<Sala> salaActual = salaService.findAll();
+		for ( Sala sali : salaActual ) {
+			System.out.println("Sala: "+sali);
+		}
+		
+		model.addAttribute("salas", salaActual);
+	
+		/*
+		List<Butaca> listButaca = sala.getListaButacas();
+		
+		for (Butaca butacas : listButaca) {
+			System.out.println(butacas);
+		}
+		
+		*/
 		return "admin/listaSalas";
 	}
 	
-	/*
-	@GetMapping({"/borrar/{id}"})
-	public String eliminarSala(@PathVariable("id") long id) {
-		salaService.delete(salaService.findOne(id));
+	@GetMapping({"/borrar/{idSala}"})
+	public String eliminarSala(@PathVariable("idSala") long idSala) {
+		salaService.delete(salaService.findOne(idSala));
 		return "redirect:/admin/listaSalas";
 	}
 	
-	*/
 	
-	/*
-	 * @GetMapping({"/editar/{id}"})
+	@GetMapping({"/editar/{idSala}"})
 
-	public String editarSala(@PathVariable("id") long id, Model model) {
-		model.addAttribute("nuevaSala", salaService.findOne(id));
-		salaService.edit(salaService.findOne(id));
+	public String editarSala(@PathVariable("idSala") long idSala, Model model) {
+		model.addAttribute("nuevaSala", salaService.findOne(idSala));
+		salaService.edit(salaService.findOne(idSala));
 		return "admin/formularioSalas";
 	}
-	
-		 */
+
 }
