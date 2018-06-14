@@ -26,7 +26,6 @@ public class AdminController {
 	private UsuarioService usuarioService;
 	@Autowired
 	private PeliculaService peliculaService;
-	
 	@Autowired
 	private HttpSession session;
 	
@@ -57,21 +56,6 @@ public class AdminController {
 		return "registroUsuario/registrar";
 	}
 	
-	/*
-	@GetMapping({"/buscar"})
-	public String listaPeliculas(Model model) {
-		
-		Iterable<Pelicula> listaPelis = peliculaService.findAll(); 
-		
-		model.addAttribute("peliculas", listaPelis);
-		
-//La siguiente línea viene el último método, que se dedica a buscar, para que este método, muestre también el listado de 
-//peliculas cuando se han buscado, añadimos al model el objeto tipo bean de búsqueda cuando se está buscando algún producto
-		model.addAttribute("buscarForm", new SearchBean());
-		return "/admin/index";
-	}
-	
-/*Método para buscar peliculas*/
 	
 	@PostMapping("/buscando")
 	  public String buscarPelicula(@ModelAttribute("buscarForm") SearchBean searchBean, Pelicula pelicula,
@@ -86,12 +70,12 @@ public class AdminController {
 		}
 		  	
 		if(peliEncontrada == null) {
-			return "/admin/peliculaNoEncontrada";
+			return "/app/peliculaNoEncontrada";
 					
 		}else {
 			model.addAttribute("detallePelicula", peliEncontrada);
 			pelicula.getSesion();
-			return "/admin/fichaPelicula";
+			return "/app/fichaPelicula";
 		}
 	  }
 	

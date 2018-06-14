@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.proyectotaquillacine.formbean.NuevoTicket;
 import com.salesianostriana.proyectotaquillacine.model.Butaca;
-import com.salesianostriana.proyectotaquillacine.model.Entrada;
 import com.salesianostriana.proyectotaquillacine.model.LineaPedido;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
 import com.salesianostriana.proyectotaquillacine.model.Sesion;
@@ -44,13 +43,9 @@ public class EntradaController {
 		
 		List<Butaca> butacaActual = salaActual.getListaButacas();
 		
-		for(Butaca buta : butacaActual) {
-			System.out.println("Butaca: "+buta);
-		}
-		
 		model.addAttribute("butacasDeLaSala", butacaActual);
 		
-		return "/admin/ticket";
+		return "/app/ticket";
 	}
 	
 	
@@ -60,14 +55,14 @@ public class EntradaController {
 		List<NuevoTicket> tickets = new ArrayList<NuevoTicket>();
 		NuevoTicket tmpTick = new NuevoTicket();
 		
-		long idSesion = 304;
+		/*long idSesion = 304;
 		
 		Sesion sesionActual = new Sesion();
 		
 		sesionService.findOne(idSesion);
 		sesionActual.setIdSesion(idSesion);
 		sesionService.save(sesionActual);
-		
+		*/
 		
 		for (Butaca butaquitas : nuevoTicket.getListaButacas()) {
 			
@@ -84,7 +79,7 @@ public class EntradaController {
 		model.addAttribute("ticketGuardar",new NuevoTicket());
 		model.addAttribute("tickets",tickets);
 		
-		return "/admin/finalizarPedido";
+		return "/app/finalizarPedido";
 		
 	}
 	
@@ -100,7 +95,7 @@ public class EntradaController {
 		}
 		
 		
-		return "redirect:/admin/index";
+		return "redirect:/app/cartelera";
 		
 	}
 	

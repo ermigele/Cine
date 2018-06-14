@@ -33,7 +33,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<a class="nav-link" href="admin/cartelera.html"
+					<a class="nav-link" href="app/cartelera.html"
 						th:href="@{/listadoPeliculas}">Cartelera</a>
 				</ul>
 				<ul class="navbar-nav ml-auto">
@@ -66,13 +66,13 @@
 
 			<table class="table table-striped">
 				<tr>
-					<th th:each=" i : ${teCagas.getPelicula()}"><span
+					<th th:each=" i : ${sesion.getPelicula()}"><span
 						th:text="${i.getTitulo()}"> </span></th>
 					<th th:text="${sala.nombreSala}"></th>
 					  <th th:text="${sesion.horaSesion}"></th>
 					  <th th:text="${sesion.idSesion}"></th>
 					  <th>
-						  <input  type="text" th:field="*{idSesion}" th:value="${sesion.idSesion}" />
+						  <input  type="hidden" th:field="*{idSesion}" th:value="${sesion.idSesion}" />
 
 					  </th>
           

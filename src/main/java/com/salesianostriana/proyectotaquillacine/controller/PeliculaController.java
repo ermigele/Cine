@@ -51,7 +51,7 @@ public class PeliculaController {
 		
 		model.addAttribute("peliculas", listaPelis );
 		
-		return "admin/cartelera";
+		return "app/cartelera";
 	}
 	
 
@@ -77,7 +77,7 @@ public class PeliculaController {
 		
 			model.addAttribute("detallePelicula", peli);	
 			
-			return "admin/fichaPelicula";
+			return "app/fichaPelicula";
 		
 	}
 		
