@@ -56,16 +56,20 @@ public class EntradaController {
 	
 	@PostMapping ("/addEntrada")
 	public String submit(@ModelAttribute("nuevoTicket") NuevoTicket nuevoTicket, LineaPedido lineapedido,  BindingResult bindingResult, Model model) {
-		
-		
-		Entrada entrada = new Entrada();
-			
-	
+					
 		List<NuevoTicket> tickets = new ArrayList<NuevoTicket>();
+		NuevoTicket tmpTick = new NuevoTicket();
+		
+		long idSesion = 304;
+		
+		Sesion sesionActual = new Sesion();
+		
+		sesionService.findOne(idSesion);
+		sesionActual.setIdSesion(idSesion);
+		sesionService.save(sesionActual);
+		
 		
 		for (Butaca butaquitas : nuevoTicket.getListaButacas()) {
-			
-			NuevoTicket tmpTick = new NuevoTicket();
 			
 			System.out.println(butaquitas.getIdButaca() + " "
 					+ ""+ butaquitas.getNumFila()
@@ -75,12 +79,29 @@ public class EntradaController {
 		 	tmpTick.setIdSesion(nuevoTicket.getIdSesion());
 		 	tickets.add(tmpTick);
 		}
+	
 		
-		model.addAttribute("ticket",tickets);
+		model.addAttribute("ticketGuardar",new NuevoTicket());
+		model.addAttribute("tickets",tickets);
 		
 		return "/admin/finalizarPedido";
 		
 	}
 	
+	
+	@GetMapping ("/finalizarPedido")
+	public String mostrarPedido(@ModelAttribute("tickets") NuevoTicket nuevoTicket,  BindingResult bindingResult, Model model) {
+		
+		
+		for (Butaca butaquitas : nuevoTicket.getListaButacas()) {
+			System.out.println(butaquitas.getIdButaca() + " "
+					+ ""+ butaquitas.getNumFila()
+					+ ""+ butaquitas.getNumButacaXFila());
+		}
+		
+		
+		return "redirect:/admin/index";
+		
+	}
 	
 }

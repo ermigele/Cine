@@ -71,20 +71,20 @@
 
         <div class="card-body container">
 
-            <form th:object="${nuevoPedido}" role="form"
-                method="POST" th:action="@{/addPedido}">
+            <form th:object="${ticketGuardar}" role="form"
+                method="POST" th:action="@{/addentrada}">
 
                 <br>
                 
                 <div class="col-sm-offset-2 col-sm-10"></div>
 
                     <table class="table table-striped">
-                        <tr><th>Pelicula</th><th>Sesion</th><th>Sala</th><th>Butaca</th></tr><th>Precio</th>
-                        <tr>
+                        <tr><th>Pelicula</th><th>Sesion</th><th>Sala</th><th>Butaca</th><th>Precio</th></tr>
+                        <tr th:each=" i : ${tickets}">
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            <td th:text=""></td>
                             <td><input type="text" value="5" name="precio" id="precio"></td>
                         </tr>   
 

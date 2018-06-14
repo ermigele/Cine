@@ -9,19 +9,10 @@ import com.salesianostriana.proyectotaquillacine.model.Sesion;
 
 public class NuevoTicket {
 
-	private String idSesion;
+	private long idSesion;
 	private Pelicula Pelicula;
 	private Sesion sesion;
 	private Sala sala;
-	public String getIdSesion() {
-		return idSesion;
-	}
-
-
-	public void setIdSesion(String idSesion) {
-		this.idSesion = idSesion;
-	}
-
 	private List<Butaca> listaButacas;
 	private Butaca butacaLlena;
 	
@@ -30,7 +21,6 @@ public class NuevoTicket {
 
 	public NuevoTicket(com.salesianostriana.proyectotaquillacine.model.Pelicula pelicula, Sesion sesion, Sala sala,
 			List<Butaca> listaButacas, Butaca butacaLlena) {
-		super();
 		Pelicula = pelicula;
 		this.sesion = sesion;
 		this.sala = sala;
@@ -50,6 +40,14 @@ public class NuevoTicket {
 		return sesion;
 	}
 
+	public long getIdSesion() {
+		return idSesion;
+	}
+
+
+	public void setIdSesion(long idSesion) {
+		this.idSesion = idSesion;
+	}
 	public void setSesion(Sesion sesion) {
 		this.sesion = sesion;
 	}

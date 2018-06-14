@@ -18,6 +18,6 @@ public class UsuarioController {
 	@GetMapping({ "/index" })
 	public String welcome(Model model) {
 		model.addAttribute("usuario", session.getAttribute("usuarioActual"));
-		return "admin/index";
+		return "app/index";
 	}
 }
