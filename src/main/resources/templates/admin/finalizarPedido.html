@@ -58,46 +58,42 @@
 	<br><br><br><br>
 	<!-- Page Content -->
     
+    <br><br>
 
     <div class="card center">
         <div class="card-header">
             <h1>Finalizar pedido</h1>
             <hr>
             <br>
+            <div class="form-group">
+                    <button type="submit" class="btn btn-warning">Volver</button>
+            </div>
 
         <div class="card-body container">
 
-            <form th:object="${ticketSaveButaca}" role="form"
-                method="POST" th:action="@{/finalizarTickect}"> <!-- FORM para pintar -->
-				 	<!-- FORM PARA ENVIAR -->			
+            <form th:object="${ticketGuardar}" role="form"
+                method="POST" th:action="@{/finalizarTickect}">
+
+                <br>
                 
                 <div class="col-sm-offset-2 col-sm-10"></div>
 
                     <table class="table table-striped">
-                        <tr><th>Pelicula</th><th>Sesion</th><th>Sala</th><th>Fila</th><th>Butaca</th><th>Precio</th></tr>
-                        <tr th:each=" i : ${ticketButacas.listaButacas}">
-                          	<td th:text="${ticketButacas.pelicula.titulo}"></td>
-                          	<td th:text="${ticketButacas.sesion.horaSesion}" ></td>
-                          	<td th:text="${ticketButacas.sala.nombreSala}"></td>
-                          	<td th:text="${i.numFila}"></td>
-							<td th:text="${i.numButacaXFila}"></td>
-                            <td>
-                            	<input type="text" th:field="*{precio}" name="precio" id="precio">
-                            	
-                            	<input type="hidden" th:field="*{listaButacas}" th:value="${i.idButaca}" />
-                            	
-                            	
-                            </td>
+                        <tr><th>Pelicula</th><th>Sesion</th><th>Sala</th><th>Butaca</th><th>Precio</th></tr>
+                        <tr th:each=" i : ${tickets}">
+                            <td th:text="${i.pelicula}"></td>
+                            <td></td>
+                            <td></td>
+                            <td th:text=""></td>
+                            <td><input type="text" value="5" name="precio" id="precio"></td>
                         </tr>   
-                        
 
                     </table>
-                       <input type="hidden" th:field="*{idSesion}" th:value="${ticketButacas.idSesion}"/>
                    
                     <div class="form-group">
-                        <button type="submit" class="btn btn-warning">Confirmar entrada</button>
+                        <button type="submit" class="btn btn-default">Confirmar entrada</button>
                     </div>
-		    </form> 
+		    </form>
         </div>
         </div>
     </div>

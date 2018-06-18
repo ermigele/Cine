@@ -38,15 +38,10 @@ public class PeliculaController {
 		
 		Iterable<Pelicula> listaPelis = peliculaService.findAll();
 		
-		//List<Pelicula> tmpPelis = new ArrayList<Pelicula>();
 		
 		for ( Pelicula peli: listaPelis) {
 		
-			//Pelicula tmp = peli;
-			//tmp.setSesion(peli.getSesion());
 			peli.getSesion();
-			
-			//tmpPelis.add(tmp);
 		}
 		
 		model.addAttribute("peliculas", listaPelis );
@@ -80,12 +75,10 @@ public class PeliculaController {
 			return "app/fichaPelicula";
 		
 	}
-		
+
 	
 	@GetMapping( "/nuevaPelicula" )
 	public String mostrarFormulario(Model model) {
-		
-		
 		model.addAttribute("nuevaPelicula", new NuevaPelicula());
 		
 		//Creamos un array de String para los generos de las peliculas. Sera para trabajar con el menu desplegable ("Select")
@@ -107,7 +100,10 @@ public class PeliculaController {
 	public String submit (NuevaPelicula nuevaPelicula, Pelicula pelicula, 
 			@RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model ) {
 		
-		
+		if (peliculaService.findByTitulo(nuevaPelicula.getTitulo()) !=null  ) {
+			model.addAttribute("regError", "Pelicula ya existe");
+		}else 
+			
 		pelicula.setTitulo(nuevaPelicula.getTitulo());
 		pelicula.setDirector(nuevaPelicula.getDirector());
 		pelicula.setGenero(nuevaPelicula.getGenero());
@@ -115,7 +111,8 @@ public class PeliculaController {
 		pelicula.setEstreno(nuevaPelicula.getEstreno());
 		pelicula.setDuracion(nuevaPelicula.getDuracion());
 		pelicula.setSala(nuevaPelicula.getNuevaSala());
-		
+		pelicula.setDescripcion(nuevaPelicula.getDescripcion());
+		pelicula.setDisponible(true);
 		
 		
 		///AHORA GUARDAR PELICULA
@@ -158,20 +155,71 @@ public class PeliculaController {
 		}
 	}
 	
+	/*
 	
 	@GetMapping({"/borrar/{idPelicula}"})
 	public String eliminarPelicula(@PathVariable("idPelicula")long idPelicula) {
 		peliculaService.delete(peliculaService.findOne(idPelicula));
 		return "redirect:/admin/listaPeliculas";
 		
+	} */
+	
+	@GetMapping({"/borrarPelicula/{idPelicula}"})
+	public String deshabilitarPelicula(@PathVariable("idPelicula") long idPelicula, Model model) {
+		
+		Pelicula p1 = peliculaService.findOne(idPelicula);
+		model.addAttribute(p1);
+		
+		
+		if (p1 != null) {
+			p1.setDisponible(false);
+			peliculaService.save(p1);
+		}
+		
+		return "redirect:/admin/index";
+		
 	}
 	
+	/*
 	@GetMapping({"/editar/{idPelicula}"})
 	public String editarPelicula(@PathVariable("idPelicula") long idPelicula, Model model) {
 		model.addAttribute("nuevaPelicula", peliculaService.findOne(idPelicula));
 		peliculaService.edit(peliculaService.findOne(idPelicula));
 		
+		
 		return "/admin/formularioPelicula";  
+	} */
+	/*
+	@GetMapping( "/editarPelicula/{idPelicula}" )
+	public String editar(@PathVariable("idPelicula") long idPelicula, Model model) {
+		
+		Pelicula peli = peliculaService.findOne(idPelicula);
+		
+		
+		NuevaPelicula datosPelicula = new NuevaPelicula();
+		
+		datosPelicula.setTitulo(peli.getTitulo());
+		datosPelicula.setDirector(peli.getDirector());
+		datosPelicula.setGenero(peli.getGenero());
+		datosPelicula.setEdad(peli.getEdad());
+		datosPelicula.setEstreno(peli.getEstreno());
+		datosPelicula.setEnlace(peli.getEnlace());
+		datosPelicula.setDuracion(peli.getDuracion());
+		datosPelicula.setNuevaSala(peli.getSala());
+		//datosPelicula.setSesiones(peli.getSesion());
+		
+		datosPelicula.setDescripcion(peli.getDescripcion());
+				
+		model.addAttribute("nuevaPelicula", datosPelicula);
+		
+		return "/admin/formularioEditarPelicula";
+		*/
+	
+	@GetMapping({"/editarPelicula/{idPelicula}"})
+	public String editarUsuarios(@PathVariable("idPelicula") long idPelicula, Model model) {
+		model.addAttribute("nuevaPelicula", peliculaService.findOne(idPelicula));
+		peliculaService.edit(peliculaService.findOne(idPelicula));
+		return "admin/formularioPelicula";
 	}
 		
 }

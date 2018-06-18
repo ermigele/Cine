@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Formulario Pelicula</title>
+  <title>Editar Pelicula</title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -61,13 +61,13 @@
 
 	<div class="card center">
 			<div class="card-header">
-				<h1>Añadir Pelicula</h1></div>
+				<h1>Mofificar datos</h1></div>
 			<div class="card-body container">
 
 				<!--Formulario Pelicula-->
 				<form th:object="${nuevaPelicula}" role="form"
 					enctype="multipart/form-data" method="POST"
-					th:action="@{/addPelicula}">
+					th:action="@{/editarPelicula}">
 
 					<div class="col-md-4">
 						<div class="form-group">

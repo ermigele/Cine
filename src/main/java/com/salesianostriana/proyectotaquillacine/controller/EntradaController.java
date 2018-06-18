@@ -13,11 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.proyectotaquillacine.formbean.NuevoTicket;
 import com.salesianostriana.proyectotaquillacine.model.Butaca;
+import com.salesianostriana.proyectotaquillacine.model.Entrada;
 import com.salesianostriana.proyectotaquillacine.model.LineaPedido;
 import com.salesianostriana.proyectotaquillacine.model.Sala;
 import com.salesianostriana.proyectotaquillacine.model.Sesion;
+import com.salesianostriana.proyectotaquillacine.model.Pedido;
 import com.salesianostriana.proyectotaquillacine.service.ButacaService;
 import com.salesianostriana.proyectotaquillacine.service.EntradaService;
+import com.salesianostriana.proyectotaquillacine.service.LineaPedidoService;
+import com.salesianostriana.proyectotaquillacine.service.PedidoService;
 import com.salesianostriana.proyectotaquillacine.service.SesionService;
 
 @Controller
@@ -29,11 +33,20 @@ public class EntradaController {
 	ButacaService butacaService;
 	@Autowired
 	EntradaService entradaService;
+	@Autowired
+	LineaPedidoService lineaPedidoService;
+	@Autowired
+	PedidoService pedidoService;
+	
+
 	
 	@GetMapping( "/nuevaEntrada/{idSesion}" )
 	public String formularioTicket(@PathVariable("idSesion") long idSesion, Model model){
 
-		model.addAttribute("nuevoTicket", new NuevoTicket());
+		NuevoTicket n1 = new NuevoTicket(); 
+		
+		n1.setIdSesion(idSesion);
+		model.addAttribute("nuevoTicket", n1);
 		
 		Sesion sesionActual = sesionService.findOne(idSesion);
 		model.addAttribute("sesion", sesionActual);
@@ -50,49 +63,71 @@ public class EntradaController {
 	
 	
 	@PostMapping ("/addEntrada")
-	public String submit(@ModelAttribute("nuevoTicket") NuevoTicket nuevoTicket, LineaPedido lineapedido,  BindingResult bindingResult, Model model) {
-					
-		List<NuevoTicket> tickets = new ArrayList<NuevoTicket>();
-		NuevoTicket tmpTick = new NuevoTicket();
+	public String submit(@ModelAttribute("nuevoTicket") NuevoTicket nuevoTicket, BindingResult bindingResult, Model model) {
 		
-		/*long idSesion = 304;
+		NuevoTicket ticketEnviar = new NuevoTicket();
+		Entrada e1 = new Entrada();
+		LineaPedido l1 = new LineaPedido();
+		Pedido p1 = new Pedido();
 		
-		Sesion sesionActual = new Sesion();
+		Sesion s1 = sesionService.findOne(nuevoTicket.getIdSesion());
+		ticketEnviar.setSala(s1.getSala());
+		ticketEnviar.setPelicula(s1.getPelicula());
+		ticketEnviar.setSesion(s1);
 		
-		sesionService.findOne(idSesion);
-		sesionActual.setIdSesion(idSesion);
-		sesionService.save(sesionActual);
-		*/
-		
+		List<Butaca> listButacaSelec = new ArrayList<Butaca>();
 		for (Butaca butaquitas : nuevoTicket.getListaButacas()) {
+			listButacaSelec.add(butaquitas);
 			
-			System.out.println(butaquitas.getIdButaca() + " "
-					+ ""+ butaquitas.getNumFila()
-					+ ""+ butaquitas.getNumButacaXFila());
+			e1.setButaca(butaquitas);
 			
-		 	tmpTick.setButacaLlena(butaquitas);
-		 	tmpTick.setIdSesion(nuevoTicket.getIdSesion());
-		 	tickets.add(tmpTick);
 		}
-	
+
+		ticketEnviar.setListaButacas(listButacaSelec);
+		model.addAttribute("ticketButacas", ticketEnviar);
 		
-		model.addAttribute("ticketGuardar",new NuevoTicket());
-		model.addAttribute("tickets",tickets);
+		
+		NuevoTicket saveButac= new NuevoTicket();
+	
+		saveButac.setIdSesion(111);
+		List<Butaca> bu = new ArrayList<Butaca>();
+		Butaca n1 = new Butaca();
+		n1.setIdButaca(101);
+		bu.add(n1);
+		
+		saveButac.setIdSesion(111);
+		saveButac.setListaButacas(bu);
+		
+		model.addAttribute("ticketSaveButaca", saveButac);
+
+		e1.setSesion(s1);
+		l1.setEntrada(e1);
+		e1.setLineaPedido(l1);
+		l1.setEntrada(e1);
+		l1.setPrecioUnitario(nuevoTicket.getPrecio());
+				
+		List<LineaPedido> listLinea = new ArrayList<LineaPedido>();
+		
+		
+		//Pedido pedidoService.save(p1);
+		//lineaPedidoService.save(l1);
+		//entradaService.save(e1);
+		
 		
 		return "/app/finalizarPedido";
+		
 		
 	}
 	
 	
-	@GetMapping ("/finalizarPedido")
-	public String mostrarPedido(@ModelAttribute("tickets") NuevoTicket nuevoTicket,  BindingResult bindingResult, Model model) {
+	@PostMapping ("/finalizarTickect")
+	public String Pedido(@ModelAttribute("ticketSaveButaca") NuevoTicket nuevoTicket, LineaPedido lineaPedido, BindingResult bindingResult, Model model) {
+	
+	
+
 		
 		
-		for (Butaca butaquitas : nuevoTicket.getListaButacas()) {
-			System.out.println(butaquitas.getIdButaca() + " "
-					+ ""+ butaquitas.getNumFila()
-					+ ""+ butaquitas.getNumButacaXFila());
-		}
+		
 		
 		
 		return "redirect:/app/cartelera";

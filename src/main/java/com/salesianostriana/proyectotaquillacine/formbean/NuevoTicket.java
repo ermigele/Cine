@@ -15,17 +15,19 @@ public class NuevoTicket {
 	private Sala sala;
 	private List<Butaca> listaButacas;
 	private Butaca butacaLlena;
+	private double precio;
 	
 	public NuevoTicket() { }
 
 
 	public NuevoTicket(com.salesianostriana.proyectotaquillacine.model.Pelicula pelicula, Sesion sesion, Sala sala,
-			List<Butaca> listaButacas, Butaca butacaLlena) {
+			List<Butaca> listaButacas, Butaca butacaLlena, double precio) {
 		Pelicula = pelicula;
 		this.sesion = sesion;
 		this.sala = sala;
 		this.listaButacas = listaButacas;
 		this.butacaLlena = butacaLlena;
+		this.precio = precio;
 	}
 
 	public Pelicula getPelicula() {
@@ -71,6 +73,16 @@ public class NuevoTicket {
 
 	public void setButacaLlena(Butaca butacaLlena) {
 		this.butacaLlena = butacaLlena;
+	}
+
+
+	public double getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
 

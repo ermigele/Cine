@@ -87,7 +87,6 @@ public class SalaController {
 		List<Butaca> total = salaActual.getListaButacas();
 		
 		
-		
 		Iterable<Sala> find = salaService.findAll();
 		
 		model.addAttribute("salas", salaActual);
@@ -120,14 +119,14 @@ public class SalaController {
 		return "admin/listaSalas";
 	}
 	
-	@GetMapping({"/borrar/{idSala}"})
+	@GetMapping({"/borrarSala/{idSala}"})
 	public String eliminarSala(@PathVariable("idSala") long idSala) {
 		salaService.delete(salaService.findOne(idSala));
 		return "redirect:/admin/listaSalas";
 	}
 	
 	
-	@GetMapping({"/editar/{idSala}"})
+	@GetMapping({"/editarSala/{idSala}"})
 
 	public String editarSala(@PathVariable("idSala") long idSala, Model model) {
 		model.addAttribute("nuevaSala", salaService.findOne(idSala));

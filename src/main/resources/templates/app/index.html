@@ -32,7 +32,7 @@
           <a class="nav-link" href="app/cartelera.html" th:href="@{/listadoPeliculas}">Cartelera</a>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <form class="form-inline my-2 my-lg-0" action="#" th:action="@{buscando}" th:object="${buscarForm}" method="POST">
+          <form class="form-inline my-2 my-lg-0" action="#" th:action="@{buscar}" th:object="${buscarForm}" method="POST">
             <input class="form-control mr-sm-2" name="titulo" th:field="*{search}" type="text" placeholder="Titulo pelicula.." aria-label="Buscar">
             <button class="btn purple-gradient btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">BUSCAR</button>
           </form>

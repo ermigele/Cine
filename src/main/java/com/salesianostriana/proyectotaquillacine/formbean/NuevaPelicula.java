@@ -15,7 +15,9 @@ public class NuevaPelicula {
 	private String edad;
 	private Date estreno;
 	private int duracion;
-	private String enlace;  // -PELICULA
+	private String enlace;
+	private String descripcion;
+	private boolean disponible;// -PELICULA
 	
 	private Sala nuevaSala; //CLASE SALA
 	
@@ -31,20 +33,25 @@ public class NuevaPelicula {
 	public NuevaPelicula () { }
 	
 	public NuevaPelicula(String titulo, String director, String genero, String edad, Date estreno, int duracion,
-		String enlace, Sala nuevaSala) {
-	this.titulo = titulo;
-	this.director = director;
-	this.genero = genero;
-	this.edad = edad;
-	this.estreno = estreno;
-	this.duracion = duracion;
-	this.enlace = enlace;
-	this.nuevaSala = nuevaSala;
+			String enlace, String descripcion, boolean disponible, Sala nuevaSala, List<String> sesiones) {
+		super();
+		this.titulo = titulo;
+		this.director = director;
+		this.genero = genero;
+		this.edad = edad;
+		this.estreno = estreno;
+		this.duracion = duracion;
+		this.enlace = enlace;
+		this.descripcion = descripcion;
+		this.disponible = disponible;
+		this.nuevaSala = nuevaSala;
+		this.sesiones = sesiones;
 	}
 
 
 //GETTERS & SETTERS
 	
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -130,17 +137,31 @@ public class NuevaPelicula {
 		this.sesiones = sesiones;
 	}
 	
-	@Override
-	public String toString() {
-		
-		String masCosas = "Sala: "+getNuevaSala().getNombreSala();
-		
-		
-		return "NuevaPelicula [titulo=" + titulo + ", director=" + director + ", genero=" + genero + ", edad=" + edad
-				+ ", estreno=" + estreno + ", duracion=" + duracion + ", enlace=" + enlace + ", nuevaSala=" + nuevaSala
-				+ "]"+masCosas;
+	
+	public String getDescripcion() {
+		return descripcion;
 	}
 
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+
+	public boolean isDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
+
+	@Override
+	public String toString() {
+		return "NuevaPelicula [titulo=" + titulo + ", director=" + director + ", genero=" + genero + ", edad=" + edad
+				+ ", estreno=" + estreno + ", duracion=" + duracion + ", enlace=" + enlace + ", descripcion="
+				+ descripcion + ", disponible=" + disponible + ", nuevaSala=" + nuevaSala + ", sesiones=" + sesiones
+				+ "]";
+	}
 
 	
 }

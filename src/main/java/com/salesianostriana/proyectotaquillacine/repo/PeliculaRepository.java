@@ -3,6 +3,7 @@ package com.salesianostriana.proyectotaquillacine.repo;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.salesianostriana.proyectotaquillacine.model.Pelicula;
 
@@ -18,6 +19,10 @@ public interface PeliculaRepository extends JpaRepository<Pelicula, Long> {
 	 * @return devuelve un socio buscado por nombre
 	 */
 	public  List<Pelicula> findByTituloContainingIgnoreCase(String titulo);
+
+	@Query("SELECT t FROM Pelicula t where t.disponible = true") 
+	public Iterable<Pelicula> findAllAvailable();
+	
 
 }
 

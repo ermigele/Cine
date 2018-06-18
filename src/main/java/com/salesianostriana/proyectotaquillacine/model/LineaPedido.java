@@ -16,7 +16,6 @@ public class LineaPedido {
 	@Id @GeneratedValue
 
 	private long id;
-	private int cantidad;
 	private double precioUnitario;
 	
 	@OneToOne
@@ -32,9 +31,7 @@ public class LineaPedido {
 	
 
 	
-	public LineaPedido(int cantidad, double precioUnitario, Entrada entrada, Pedido pedido) {
-		super();
-		this.cantidad = cantidad;
+	public LineaPedido(double precioUnitario, Entrada entrada, Pedido pedido) {
 		this.precioUnitario = precioUnitario;
 		this.entrada = entrada;
 		this.pedido = pedido;
@@ -53,18 +50,6 @@ public class LineaPedido {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
 	}
 
 
@@ -107,8 +92,8 @@ public class LineaPedido {
 
 	@Override
 	public String toString() {
-		return "LineaPedido [id=" + id + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + ", entrada="
-				+ entrada + ", pedido=" + pedido + "]";
+		return "LineaPedido [id=" + id + ", precioUnitario=" + precioUnitario + ", entrada=" + entrada + ", pedido="
+				+ pedido + "]";
 	}
 
 

@@ -24,6 +24,7 @@ public class UsuarioController {
 	@Autowired
 	private PeliculaService peliculaService;
 
+
 	@GetMapping({"/", "/index" })
 	public String welcome(Model model) {
 		model.addAttribute("usuario", session.getAttribute("usuarioActual"));
@@ -31,4 +32,30 @@ public class UsuarioController {
 		return "app/index";
 	}
 	
+	@GetMapping("/pefil")
+	public String perfil(Model model) {
+		model.addAttribute("loginUser", session.getAttribute("usuarioActual"));
+		return "app/perfil";
+	}
+	
+	@PostMapping("/buscar")
+	  public String buscarPelicula1(@ModelAttribute("buscarForm") SearchBean searchBean, Pelicula pelicula,
+			 Model model){
+		
+		List<Pelicula> buscarPelis = peliculaService.findByTitulo(searchBean.getSearch());
+		
+		Pelicula peliEncontrada = null;
+		if(buscarPelis.size() > 0) {
+			peliEncontrada = buscarPelis.get(0);
+		}
+		  	
+		if(peliEncontrada == null) {
+			return "/app/peliculaNoEncontrada";
+					
+		}else {
+			model.addAttribute("detallePelicula", peliEncontrada);
+			pelicula.getSesion();
+			return "/app/fichaPelicula";
+		}
+	  }
 }

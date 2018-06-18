@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
    <!--Meta -->
@@ -69,7 +69,7 @@
 
         <div class="col-md-4">
           <h3 class="my-3" th:text="${detallePelicula.titulo}">Titulo</h3>
-          <p>Los superhéroes se alían para vencer al poderoso Thanos, el peor enemigo al que se han enfrentado. Si Thanos logra reunir las seis gemas del infinito: poder, tiempo, alma, realidad, mente y espacio, nadie podrá detenerlo.</p>
+          <p th:text="${detallePelicula.descripcion}">Los superhéroes se alían para vencer al poderoso Thanos, el peor enemigo al que se han enfrentado. Si Thanos logra reunir las seis gemas del infinito: poder, tiempo, alma, realidad, mente y espacio, nadie podrá detenerlo.</p>
           <h3 class="my-3">Descripción</h3>
           <ul>
             <li th:text="${detallePelicula.director}">director</li>

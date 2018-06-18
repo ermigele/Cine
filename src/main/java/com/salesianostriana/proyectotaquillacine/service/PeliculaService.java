@@ -25,7 +25,8 @@ public class PeliculaService {
 
 	
 	public Iterable <Pelicula> findAll() {
-		return repositorio.findAll();
+		//return repositorio.findAll();
+		return repositorio.findAllAvailable();
 	}
 		
 	public Pelicula findOne(Long idPelicula) {
@@ -51,6 +52,14 @@ public class PeliculaService {
 			
 		return aBorrar;
 	}
+	
+	/*
+	public Pelicula deshabilitar(Pelicula p) {
+		Pelicula aDeshabilitar = repositorio.findById(p.getIdPelicula()));
+		
+	}
+	*/
+	
 	
 	public boolean saveAndUpload(Pelicula p, MultipartFile file) {
 

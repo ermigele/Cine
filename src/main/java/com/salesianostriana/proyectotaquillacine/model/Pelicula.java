@@ -29,6 +29,8 @@ public class Pelicula {
 	private Date estreno;
 	private int duracion;
 	private String enlace;
+	private Boolean disponible;
+	private String descripcion;
 	
 	@ManyToOne
 	private Sala sala;
@@ -40,9 +42,9 @@ public class Pelicula {
 	
 	public Pelicula () { }
 	
-
-	public Pelicula(String titulo, String director, String genero, String edad, Date estreno, int duracion,
-			String enlace, Sala sala, Set<Sesion> sesion) {
+	public Pelicula(long idPelicula, String titulo, String director, String genero, String edad, Date estreno,
+			int duracion, String enlace, Boolean disponible, String descripcion, Sala sala, Set<Sesion> sesion) {
+		this.idPelicula = idPelicula;
 		this.titulo = titulo;
 		this.director = director;
 		this.genero = genero;
@@ -50,9 +52,15 @@ public class Pelicula {
 		this.estreno = estreno;
 		this.duracion = duracion;
 		this.enlace = enlace;
+		this.disponible = disponible;
+		this.descripcion = descripcion;
 		this.sala = sala;
 		this.sesion = sesion;
 	}
+
+
+	
+
 
 //GETTERS & SETTERS	
 
@@ -155,14 +163,31 @@ public class Pelicula {
 		this.sesion = sesion;
 	}
 
+	
+	public Boolean isDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(Boolean disponible) {
+		this.disponible = disponible;
+	}
+	
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
 	@Override
 	public String toString() {
 		return "Pelicula [idPelicula=" + idPelicula + ", titulo=" + titulo + ", director=" + director + ", genero="
 				+ genero + ", edad=" + edad + ", estreno=" + estreno + ", duracion=" + duracion + ", enlace=" + enlace
-				+ ", sala=" + sala + ", sesion=" + sesion + "]";
+				+ ", disponible=" + disponible + ", descripcion=" + descripcion + ", sala=" + sala + ", sesion="
+				+ sesion + "]";
 	}
 
-	
 
 }

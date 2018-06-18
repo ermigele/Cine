@@ -38,7 +38,7 @@
               <li class="nav-item dropdown"><a
                   class="nav-link dropdown-toggle waves-effect waves-light"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i
-                      class="fa fa-user"></i> Area cliente</span></a>
+                      class="fa fa-user"></i> Area contacto</span></a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-ins"
                       aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="admin/listaUsuarios.html"
@@ -64,7 +64,7 @@
         <div class="col-sm-offset-2 col-sm-10"></div>
         <table class="table table-striped">
             <tr>
-              <th>Titulo</th><th>Director</th><th>Genero</th><th>Estreno</th><th>Edades</th><th>Duracion</th><th>Sala</th><th>Sesiones</th><th>Editar/Borrar</th>
+              <th>Titulo</th><th>Director</th><th>Genero</th><th>Estreno</th><th>Edades</th><th>Duracion</th><th>Sala</th><th>Editar/Borrar</th>
             </tr>
             <tr th:each=" i : ${peliculas} ">
                 <td th:text="${i.titulo}"></td>
@@ -76,8 +76,10 @@
                <td th:text="${i.sala.nombreSala}"></td>
                <!-- <td th:text="${i.sesion.horaSesion}"></td>-->
                 <td>
-                    <a th:href="@{/editar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-warning">Editar</a> 
-                    <a th:href="@{/borrar/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-danger">Eliminar</a> 
+
+
+                    <a th:href="@{/editarPelicula/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-warning">Editar</a>
+                    <a th:href="@{/borrarPelicula/{idPelicula}(idPelicula=${i.idPelicula})}" type="button" class="btn btn-danger">Eliminar</a> 
                 </td>
 
             </tr>
